@@ -9,6 +9,9 @@
 <meta name="description"
       content="Discover high-performance electric motorcycles, bikes and accessories at Bike World.">
 
+<!-- Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
 
 /* =========================================================
@@ -60,6 +63,26 @@ img{
     display:none !important;
 }
 
+/* =========================================================
+   SPINNING HOURGLASS ANIMATION
+========================================================= */
+
+.fa-hourglass-half,
+.fa-hourglass,
+.spinning-hourglass {
+    display: inline-block;
+    animation: spinHourglass 2.5s infinite linear;
+}
+
+@keyframes spinHourglass {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 
 /* =========================================================
    HEADER / HERO
@@ -100,7 +123,7 @@ img{
 
 
 /* =========================================================
-   NAVIGATION (Tighter gap to allow larger title)
+   NAVIGATION
 ========================================================= */
 
 .top-nav{
@@ -970,7 +993,7 @@ img{
     height:100%;
 
     background:
-        rgba(0,0,0,.55);
+        rgba(0,0,0,.75);
 
     backdrop-filter:blur(5px);
 
@@ -1004,6 +1027,13 @@ img{
         modalIn .25s ease;
 }
 
+/* Dark mode override for Product Display Modal */
+#productModal .modal-content {
+    background: #000000;
+    color: #ffffff;
+    border: 1px solid #222;
+}
+
 @keyframes modalIn{
     from{
         transform:translateY(30px);
@@ -1034,6 +1064,11 @@ img{
     margin-bottom:25px;
 }
 
+#productModal .page-nav-bar {
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid #222;
+}
+
 .back-btn{
     font-size:15px;
     font-weight:700;
@@ -1049,12 +1084,22 @@ img{
     border-radius:50px;
 }
 
+#productModal .back-btn {
+    background: #111;
+    color: #fff;
+    border: 1px solid #333;
+}
+
 .product-details-header{
     border-bottom:1px solid #e2e8f0;
 
     padding-bottom:20px;
 
     margin-bottom:25px;
+}
+
+#productModal .product-details-header {
+    border-bottom: 1px solid #222;
 }
 
 .product-details-header h2{
@@ -1102,74 +1147,244 @@ img{
     width:100%;
 }
 
-.quantity-input{
-    max-width:100px !important;
+#productModal .options-group select,
+#productModal .options-group input {
+    background: #000;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 0;
 }
 
-.btn-add-cart,
-.btn-proceed-checkout{
-    width:100%;
-
-    border:none;
-
-    color:white;
-
-    padding:16px 25px;
-
-    border-radius:50px;
-
-    font-size:16px;
-
-    font-weight:800;
-
-    margin-top:15px;
+/* Row Action Bar with +/- Quantity Picker & Add To Cart Button */
+.action-purchase-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 20px 0;
 }
 
-.btn-add-cart{
-    background:#0d6efd;
+.custom-qty-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #444444;
+    background: #000000;
+    width: 140px;
+    height: 52px;
+    padding: 0 16px;
+    flex-shrink: 0;
 }
 
-.btn-add-cart:hover{
-    background:#0b5ed7;
+.qty-control-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 6px;
+    line-height: 1;
 }
 
-.perks-list{
-    list-style:none;
-
-    margin:30px 0;
-
-    padding:20px;
-
-    background:#f1f5f9;
-
-    border-radius:16px;
+.qty-control-btn:hover {
+    color: #e62325;
 }
 
-.perks-list li{
-    margin-bottom:12px;
-
-    color:#334155;
-    font-weight:600;
+.qty-val-display {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
 }
 
-.perks-list li:last-child{
-    margin-bottom:0;
+.btn-add-cart-action {
+    flex: 1;
+    background: #e62325;
+    color: #ffffff;
+    border: none;
+    height: 52px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Specific styling for item description block under perks */
-.perks-item-description{
-    margin-top:15px;
-    padding-top:15px;
-    border-top:1px solid #cbd5e1;
-    color:#475569;
-    font-size:14px;
-    line-height:1.6;
+.btn-add-cart-action:hover {
+    background: #cc1f21;
 }
 
-.perks-item-description h4{
-    color:#0f172a;
-    font-size:15px;
-    margin-bottom:6px;
+/* Dynamic Detailed Product Screen Styles */
+.modal-product-brand {
+    font-size: 12px;
+    color: #888888;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.modal-product-title {
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin: 6px 0 15px 0;
+    letter-spacing: 0.5px;
+}
+
+.modal-price-section {
+    margin-bottom: 15px;
+}
+
+.modal-main-price {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.modal-financing {
+    font-size: 14px;
+    margin-top: 4px;
+    color: #ccc;
+}
+
+.modal-financing a {
+    color: #ff3b30;
+    text-decoration: underline;
+}
+
+.modal-tax-info {
+    font-size: 11px;
+    color: #888;
+    display: block;
+    margin-top: 4px;
+}
+
+.modal-part-number {
+    font-size: 16px;
+    color: #cccccc;
+    margin-top: 15px;
+    font-family: monospace;
+}
+
+.modal-highlights-card {
+    background-color: #d1d5db;
+    color: #000000;
+    border-radius: 16px;
+    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 20px 0;
+}
+
+.modal-highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.modal-highlight-item i {
+    font-size: 18px;
+}
+
+.modal-quick-specs-ribbon {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    margin: 20px 0;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.modal-spec-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-spec-tile i {
+    font-size: 24px;
+    color: #fff;
+}
+
+.modal-spec-value {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Accordion Styling with Rotating Arrows */
+.modal-accordion-section {
+    border: 1px solid #333333;
+    margin-top: 12px;
+}
+
+.modal-accordion-header {
+    list-style: none;
+    padding: 18px 16px;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: #000000;
+    user-select: none;
+}
+
+.modal-accordion-header::-webkit-details-marker {
+    display: none;
+}
+
+.modal-accordion-header .accordion-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-accordion-header .arrow-icon {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+details[open] .modal-accordion-header .arrow-icon {
+    transform: rotate(180deg);
+}
+
+.modal-accordion-content {
+    padding: 0 16px 20px 16px;
+    color: #e0e0e0;
+}
+
+.modal-accordion-content h3 {
+    font-size: 13px;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.modal-accordion-content ul {
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.modal-accordion-content li {
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.modal-accordion-content p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #cccccc;
+    margin-bottom: 12px;
 }
 
 
@@ -1317,6 +1532,14 @@ img{
 }
 
 .btn-proceed-checkout{
+    width: 100%;
+    border: none;
+    color: white;
+    padding: 16px 25px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 800;
+    margin-top: 15px;
     background:#16a34a;
 
     box-shadow:
@@ -2084,11 +2307,11 @@ footer{
                 <div class="price-container">
 
                     <span class="original-price">
-                        $300
+                        £300
                     </span>
 
                     <span class="current-price">
-                        $250
+                        £250
                     </span>
 
                 </div>
@@ -2140,11 +2363,11 @@ footer{
                 <div class="price-container">
 
                     <span class="original-price">
-                        $550
+                        £550
                     </span>
 
                     <span class="current-price">
-                        $450
+                        £450
                     </span>
 
                 </div>
@@ -2196,11 +2419,11 @@ footer{
                 <div class="price-container">
 
                     <span class="original-price">
-                        $500
+                        £500
                     </span>
 
                     <span class="current-price">
-                        $400
+                        £400
                     </span>
 
                 </div>
@@ -2252,7 +2475,7 @@ footer{
                 <div class="price-container">
 
                     <span class="current-price">
-                        $180
+                        £180
                     </span>
 
                 </div>
@@ -2441,7 +2664,7 @@ footer{
                 </span>
 
                 <strong id="cartSubtotal">
-                    $0
+                    £0
                 </strong>
 
             </div>
@@ -2467,7 +2690,7 @@ footer{
                 </span>
 
                 <strong id="cartTotal">
-                    $0
+                    £0
                 </strong>
 
             </div>
@@ -2637,7 +2860,7 @@ footer{
                     </span>
 
                     <strong id="checkoutTotal">
-                        $0
+                        £0
                     </strong>
 
                 </div>
@@ -2745,22 +2968,19 @@ footer{
 const products = {
 
     lightBee: {
-
-        name: "Surron Light Bee X",
-
-        price: 3800,
-
-        image:
-        "https://sur-ronusa.us.com/wp-content/uploads/2025/01/Sur-Ron-LBX-Silver-Orange-Angled.jpg",
-
-        description:
-        "High-performance lightweight electric dirt bike built for trail maneuverability.",
-
+        name: "2026 SUR RON LIGHT BEE X 6KW - IN STOCK NOW",
+        brand: "GO OFF ROAD BARNSLEY",
+        price: "£3,800.00 GBP",
+        monthly: "£130.50 /month",
+        partNo: "LIGHTBEE2026",
+        chargeTime: "3.0 HRS",
+        topSpeed: "47 MPH",
+        weight: "47KG",
+        image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/Sur-Ron-LBX-Silver-Orange-Angled.jpg",
+        description: "High-performance lightweight electric dirt bike built for trail maneuverability.",
         options: [
-
             {
-                label:"Color",
-
+                label:"Colour",
                 values:[
                     "Green & Purple",
                     "Silver & Orange",
@@ -2769,145 +2989,173 @@ const products = {
                     "All Black Edition"
                 ]
             }
-
+        ],
+        specs: [
+            "NEW 6kW High-Performance Motor",
+            "Up to 250 Nm Torque",
+            "Lightweight chassis for high maneuverability",
+            "60V 38.5Ah Battery Pack",
+            "Fast charging: 2.5–3.5 hours",
+            "Fully adjustable front & rear suspension",
+            "Forged aluminum alloy frame"
         ]
-
     },
 
-
     stormBee: {
-
-        name:"Surron Storm Bee",
-
-        price:8500,
-
-        image:
-        "https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-storm-1000x1000-1.jpg",
-
-        description:
-        "Full-size electric off-road motorcycle equipped for high-performance riding.",
-
-        options:[
-
+        name: "2026 SUR RON STORM BEE 22.5KW - IN STOCK NOW",
+        brand: "GO OFF ROAD BARNSLEY",
+        price: "£8,500.00 GBP",
+        monthly: "£290.00 /month",
+        partNo: "STORMBEE2026",
+        chargeTime: "4.0 HRS",
+        topSpeed: "68 MPH",
+        weight: "127KG",
+        image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-storm-1000x1000-1.jpg",
+        description: "Full-size electric off-road motorcycle equipped with maximum power and liquid cooling.",
+        options: [
             {
                 label:"Model",
-
                 values:[
                     "Off-Road",
                     "Road Legal"
                 ]
             }
-
+        ],
+        specs: [
+            "22.5kW Peak Motor Power",
+            "520 Nm Instant Torque",
+            "Liquid-cooled powertrain",
+            "104V 55Ah High-Voltage Battery",
+            "4 selectable riding modes including Reverse",
+            "Full-size MX chassis and suspension"
         ]
-
     },
 
-
     ultraBee: {
-
-        name:"Surron Ultra Bee HP 2025",
-
-        price:6200,
-
-        image:
-        "https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-ultra-bee.jpg",
-
-        description:
-        "Versatile mid-sized electric off-road motorcycle featuring high-performance output.",
-
-        options:[
-
+        name: "2026 SUR RON ULTRA BEE HP 21KW - IN STOCK NOW",
+        brand: "GO OFF ROAD BARNSLEY",
+        price: "£6,200.00 GBP",
+        monthly: "£212.00 /month",
+        partNo: "ULTRABEE2026",
+        chargeTime: "4.0 HRS",
+        topSpeed: "59 MPH",
+        weight: "85KG",
+        image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-ultra-bee.jpg",
+        description: "Mid-sized, highly versatile off-road electric motorcycle featuring Turbo mode.",
+        options: [
             {
-                label:"Color",
-
+                label:"Colour",
                 values:[
                     "Carbon Black",
                     "Desert Brown"
                 ]
             }
-
+        ],
+        specs: [
+            "21kW Peak Power Output",
+            "440 Nm Torque",
+            "SRTC Traction Control System",
+            "74V 55Ah High-Density Lithium Battery",
+            "Built-in charger storage",
+            "3 riding modes + Turbo Boost"
         ]
-
     },
-
 
     hyperBee: {
-
-        name:"Surron Hyper Bee",
-
-        price:2400,
-
-        image:
-        "https://sur-ronusa.us.com/wp-content/uploads/2025/01/58.webp",
-
-        description:
-        "Compact electric dirt bike designed for younger riders and mini-pit riding.",
-
-        options:[
-
+        name: "2026 SUR RON HYPER BEE 8KW 14\"/12\" - IN STOCK NOW",
+        brand: "GO OFF ROAD BARNSLEY",
+        price: "£2,995.00 GBP",
+        monthly: "£102.10 /month",
+        partNo: "HYPBEE1412GREEN",
+        chargeTime: "2.5 HRS",
+        topSpeed: "40 MPH",
+        weight: "39KG",
+        image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/58.webp",
+        description: "Compact electric dirt bike designed for younger riders and mini-pit racing.",
+        options: [
             {
-                label:"Color",
-
+                label:"Colour",
                 values:[
-                    "White/Pink",
-                    "Black/Blue",
+                    "Green",
                     "Yellow",
-                    "Black/Green"
+                    "Black",
+                    "White/Pink"
                 ]
             }
-
+        ],
+        specs: [
+            "NEW 8kW High-Performance Motor",
+            "Up to 136 ft-lbs Torque",
+            "0–31mph in just 2.59 seconds",
+            "Lightweight chassis at only 85.9 lbs",
+            "NEW 58V 22Ah Battery Pack",
+            "Fast charging: 20%–80% in approx. 2 hours",
+            "Fully adjustable front & rear suspension",
+            "3 selectable ride modes",
+            "Adjustable throttle response settings",
+            "Advanced MTPA/MTPV controller system",
+            "SAWC Anti-Wheelie Control",
+            "Bluetooth connectivity & app integration",
+            "Magnetic charging system",
+            "Forged aluminium alloy frame"
         ]
-
     },
-
 
     charger: {
-
-        name:"Light Bee Charger 10A",
-
-        price:250,
-
-        image:
-        "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-charger-10a-157796_1178x882.webp",
-
-        description:
-        "High-efficiency charger designed for the Light Bee battery."
-
+        name: "Light Bee Charger 10A",
+        brand: "BIKE WORLD PARTS",
+        price: "£250.00 GBP",
+        monthly: "",
+        partNo: "CHG10A",
+        chargeTime: "-",
+        topSpeed: "-",
+        weight: "1.2KG",
+        image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-charger-10a-157796_1178x882.webp",
+        description: "High-efficiency charger designed for the Light Bee battery.",
+        specs: [
+            "10A Fast Charge Output",
+            "Built-in cooling fan",
+            "Automatic shutoff when full"
+        ]
     },
-
 
     battery: {
-
-        name:"Lithium Battery 48V 20Ah",
-
-        price:450,
-
-        image:
-        "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-s-lithium-battery-48v20ah-851993_798x798.webp",
-
-        description:
-        "High-capacity replacement battery."
-
+        name: "Lithium Battery 48V 20Ah",
+        brand: "BIKE WORLD PARTS",
+        price: "£450.00 GBP",
+        monthly: "",
+        partNo: "BAT4820",
+        chargeTime: "-",
+        topSpeed: "-",
+        weight: "7KG",
+        image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-s-lithium-battery-48v20ah-851993_798x798.webp",
+        description: "High-capacity replacement battery designed for dependable output.",
+        specs: [
+            "48V 20Ah high capacity",
+            "Integrated Smart BMS Protection"
+        ]
     },
 
-
     wheelKit: {
-
-        name:"16/19 Wheel Rim Kit KKE",
-
-        price:400,
-
-        image:
-        "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-1619-wheel-rim-kit-kke-429448_700x700.webp",
-
-        description:
-        "Heavy-duty wheel rim kit for rugged off-road use."
-
+        name: "16/19 Wheel Rim Kit KKE",
+        brand: "BIKE WORLD PARTS",
+        price: "£400.00 GBP",
+        monthly: "",
+        partNo: "WHEEL1619",
+        chargeTime: "-",
+        topSpeed: "-",
+        weight: "5KG",
+        image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-1619-wheel-rim-kit-kke-429448_700x700.webp",
+        description: "Heavy-duty wheel rim kit designed for rugged off-road riding.",
+        specs: [
+            "16 inch rear / 19 inch front combination",
+            "Reinforced spokes and alloy construction"
+        ]
     }
 
 };
 
-
+let currentModalQty = 1;
 
 /* =========================================================
    CART
@@ -2981,25 +3229,10 @@ function addToCart(productId){
 
     }
 
+    let qty = currentModalQty || 1;
 
-    const qtyInput =
-        document.querySelector(
-            "#productModalContent .quantity-input"
-        );
-
-
-    let qty =
-        parseInt(
-            qtyInput?.value || 1
-        );
-
-
-    if(isNaN(qty) || qty < 1){
-
-        qty = 1;
-
-    }
-
+    // Extract numeric value from price string
+    const numericPrice = parseFloat(product.price.replace(/[^0-9.]/g, '')) || 0;
 
     const existing =
         cart.find(
@@ -3021,7 +3254,7 @@ function addToCart(productId){
 
             name:product.name,
 
-            price:product.price,
+            price:numericPrice,
 
             image:product.image,
 
@@ -3097,164 +3330,150 @@ function addCustomItem(
 
 
 /* =========================================================
+   QUANTITY CONTROL HELPERS
+========================================================= */
+
+function adjustModalQty(delta) {
+    currentModalQty += delta;
+    if (currentModalQty < 1) currentModalQty = 1;
+    const qtyElem = document.getElementById("modalQtyVal");
+    if (qtyElem) {
+        qtyElem.textContent = currentModalQty;
+    }
+}
+
+
+/* =========================================================
    OPEN PRODUCT
 ========================================================= */
 
 function openProduct(productId){
 
-    const product =
-        products[productId];
-
-
+    const product = products[productId];
     if(!product) return;
 
+    currentModalQty = 1;
 
     let optionsHTML = "";
-
-
     if(product.options){
-
-        product.options.forEach(
-            (option,index) => {
-
-                optionsHTML += `
-
-                    <div class="options-group">
-
-                        <label>
-                            ${option.label}
-                        </label>
-
-                        <select
-                            required
-                            id="productOption${index}"
-                        >
-
-                            <option value="">
-                                Choose an option
-                            </option>
-
-                            ${option.values.map(
-                                value => `
-                                <option value="${value}">
-                                    ${value}
-                                </option>
-                                `
-                            ).join("")}
-
-                        </select>
-
-                    </div>
-
-                `;
-
-            }
-        );
-
+        product.options.forEach((option, index) => {
+            optionsHTML += `
+                <div class="options-group">
+                    <label>${option.label}</label>
+                    <select required id="productOption${index}">
+                        ${option.values.map(val => `<option value="${val}">${val}</option>`).join("")}
+                    </select>
+                </div>
+            `;
+        });
     }
 
+    let specsListHTML = "";
+    if(product.specs){
+        specsListHTML = product.specs.map(spec => `<li>${spec}</li>`).join("");
+    }
 
-    document.getElementById(
-        "productModalContent"
-    ).innerHTML = `
+    let financingHTML = "";
+    if(product.monthly){
+        financingHTML = `or <strong>${product.monthly}</strong> <a href="#">Learn more</a>`;
+    }
 
-        <div class="product-details-header">
-
-            <h2>
-                ${product.name}
-            </h2>
-
-            <p
-                style="
-                    color:#64748b;
-                    margin-top:5px;
-                "
-            >
-                ${product.description}
-            </p>
-
+    document.getElementById("productModalContent").innerHTML = `
+        <div class="main-image-container">
+            <img class="product-main-image" src="${product.image}" alt="${product.name}">
         </div>
 
+        <div class="modal-product-brand">${product.brand}</div>
+        <h1 class="modal-product-title">${product.name}</h1>
 
-        <img
-            class="product-main-image"
-            src="${product.image}"
-            alt="${product.name}"
-        >
+        <div class="modal-price-section">
+            <div class="modal-main-price">${product.price}</div>
+            <div class="modal-financing">${financingHTML}</div>
+            <span class="modal-tax-info">Tax included.</span>
+        </div>
 
+        <div class="modal-part-number">Part Number: <span>${product.partNo}</span></div>
 
         ${optionsHTML}
 
-
-        <div class="options-group">
-
-            <label>
-                Quantity
-            </label>
-
-            <input
-                class="quantity-input"
-                type="number"
-                min="1"
-                value="1"
-            >
-
-        </div>
-
-
-        <div
-            class="summary-card"
-        >
-
-            <div class="summary-item">
-
-                <span>
-                    Price
-                </span>
-
-                <strong>
-                    $${product.price.toLocaleString()}
-                </strong>
-
+        <div class="modal-highlights-card">
+            <div class="modal-highlight-item">
+                <i class="fa-regular fa-shield-check"></i>
+                <span><strong>12 MONTHS WARRANTY INCLUDED</strong></span>
             </div>
-
+            <div class="modal-highlight-item">
+                <i class="fa-solid fa-truck"></i>
+                <span><strong>DELIVERED, BUILT & PDI'D</strong></span>
+            </div>
+            <div class="modal-highlight-item">
+                <i class="fa-solid fa-hourglass-half spinning-hourglass"></i>
+                <span><strong>LOW STOCK, SELLING FAST</strong></span>
+            </div>
         </div>
 
+        <!-- Custom Quantity & Add To Cart Button Container -->
+        <div class="action-purchase-row">
+            <div class="custom-qty-selector">
+                <button type="button" class="qty-control-btn" onclick="adjustModalQty(-1)">−</button>
+                <span class="qty-val-display" id="modalQtyVal">1</span>
+                <button type="button" class="qty-control-btn" onclick="adjustModalQty(1)">+</button>
+            </div>
+            <button class="btn-add-cart-action" onclick="addToCart('${productId}')">
+                ADD TO CART
+            </button>
+        </div>
 
-        <button
-            class="btn-add-cart"
-            onclick="addToCart('${productId}')"
-        >
-            🛒 Add To Cart
-        </button>
+        <div class="modal-quick-specs-ribbon">
+            <div class="modal-spec-tile">
+                <i class="fa-solid fa-battery-three-quarters"></i>
+                <span class="modal-spec-value">${product.chargeTime}</span>
+            </div>
+            <div class="modal-spec-tile">
+                <i class="fa-solid fa-gauge-high"></i>
+                <span class="modal-spec-value">${product.topSpeed}</span>
+            </div>
+            <div class="modal-spec-tile">
+                <i class="fa-solid fa-weight-hanging"></i>
+                <span class="modal-spec-value">${product.weight}</span>
+            </div>
+        </div>
 
+        <!-- DESCRIPTION ACCORDION -->
+        <div class="modal-accordion-section">
+            <details class="modal-accordion-item">
+                <summary class="modal-accordion-header">
+                    <span class="accordion-title">DESCRIPTION</span>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </summary>
+                <div class="modal-accordion-content">
+                    <h3>KEY PERFORMANCE SPECS:</h3>
+                    <ul>
+                        ${specsListHTML}
+                    </ul>
+                </div>
+            </details>
+        </div>
 
-        <ul class="perks-list">
-
-            <li>
-                ✓ Secure checkout
-            </li>
-
-            <li>
-                ✓ Multiple payment options
-            </li>
-
-            <li>
-                ✓ Order tracking available
-            </li>
-
-            <li class="perks-item-description">
-                <h4>Product Details & Specification:</h4>
-                ${product.description}
-            </li>
-
-        </ul>
-
+        <!-- SHIPPING ACCORDION -->
+        <div class="modal-accordion-section">
+            <details class="modal-accordion-item">
+                <summary class="modal-accordion-header">
+                    <span class="accordion-title"><i class="fa-solid fa-truck"></i> SHIPPING</span>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </summary>
+                <div class="modal-accordion-content">
+                    <p>
+                        The usual timeframe for delivery of bikes which are in stock is around 2-3 working days depending on when the bike was ordered and if it was ordered via finance or not.
+                    </p>
+                    <p>
+                        Finance orders MUST be delivered by an in house courier which can delay the delivery. We will be in contact beforehand to schedule the delivery date and time with you.
+                    </p>
+                </div>
+            </details>
+        </div>
     `;
 
-
     openModal("productModal");
-
 }
 
 
@@ -3350,11 +3569,11 @@ function renderCart(){
 
         document.getElementById(
             "cartSubtotal"
-        ).textContent = "$0";
+        ).textContent = "£0";
 
         document.getElementById(
             "cartTotal"
-        ).textContent = "$0";
+        ).textContent = "£0";
 
         return;
 
@@ -3430,7 +3649,7 @@ function renderCart(){
                     <div
                         class="cart-price"
                     >
-                        $${(
+                        £${(
                             item.price *
                             item.qty
                         ).toLocaleString()}
@@ -3455,14 +3674,14 @@ function renderCart(){
     document.getElementById(
         "cartSubtotal"
     ).textContent =
-        "$" +
+        "£" +
         total.toLocaleString();
 
 
     document.getElementById(
         "cartTotal"
     ).textContent =
-        "$" +
+        "£" +
         total.toLocaleString();
 
 }
@@ -3546,7 +3765,7 @@ function openCheckout(){
     document.getElementById(
         "checkoutTotal"
     ).textContent =
-        "$" +
+        "£" +
         total.toLocaleString();
 
 
