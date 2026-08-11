@@ -638,7 +638,7 @@ img{
 
 
 /* =========================================================
-   ABOUT SECTION
+   ABOUT SECTION (YELLOW BOX)
 ========================================================= */
 
 .about-surron-box{
@@ -927,11 +927,16 @@ img{
 /* =========================================================
    FEATURES
 ========================================================= */
+
 .features-section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
   margin-top: 35px;
+  padding: 0 5%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .feature-box {
@@ -956,19 +961,20 @@ img{
 .feature-icon-wrapper {
   margin-bottom: 10px;
 }
-feature-icon {
+
+.feature-icon {
   width: 42px;
   height: 42px;
   stroke: #ff2d87;
   fill: none;
-  stroke-width: 2.5; /* Bold icon stroke */
+  stroke-width: 2.5;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .feature-box h3 {
   font-size: 16px;
-  font-weight: 900; /* Maximum bold */
+  font-weight: 900;
   color: #000000;
   margin-bottom: 6px;
   text-transform: uppercase;
@@ -977,29 +983,9 @@ feature-icon {
 
 .feature-box p {
   font-size: 13px;
-
-.feature-icon {
-  width: 64px;
-  height: 64px;
-  stroke: #ff2d87;
-  fill: none;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.feature-box h3 {
-  font-size: 22px;
-  font-weight: 800;
-  color: #0f172a;
-  margin-bottom: 12px;
-  letter-spacing: -0.3px;
-}
-
-.feature-box p {
-  font-size: 15px;
   color: #475569;
   line-height: 1.5;
+}
 
 
 /* =========================================================
@@ -2223,7 +2209,7 @@ footer{
 
 
 <!-- =========================================================
-     ABOUT
+     ABOUT (YELLOW BOX PLACED UNDER ALL BIKES)
 ========================================================= -->
 
 <div
@@ -2532,6 +2518,7 @@ footer{
     </div>
 
 </div>
+
 <!-- FEATURES SECTION -->
 <div class="features-section">
   <div class="feature-box">
@@ -2571,20 +2558,6 @@ footer{
     <h3>Secure Payments</h3>
     <p>Encrypted options, flexible financing, and crypto discounts.</p>
   </div>
-</div>
-
-
-
-
-        <p>
-            Your checkout interface is designed with
-            security and usability in mind.
-        </p>
-
-    </div>
-
-</div>
-
 </div>
 
 
@@ -3408,7 +3381,7 @@ function openProduct(productId){
 
         <div class="modal-highlights-card">
             <div class="modal-highlight-item">
-                <i class="fa-solid fa-shield-halved"></i>
+                <i class="fa-regular fa-shield-check"></i>
                 <span><strong>12 MONTHS WARRANTY INCLUDED</strong></span>
             </div>
             <div class="modal-highlight-item">
@@ -3798,13 +3771,16 @@ document.getElementById(
 
         event.preventDefault();
 
+
         const message =
             document.getElementById(
                 "checkoutMessage"
             );
 
+
         message.style.display =
             "block";
+
 
         message.textContent =
             "Order information received. Your payment gateway can now be connected here.";
