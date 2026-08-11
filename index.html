@@ -927,57 +927,79 @@ img{
 /* =========================================================
    FEATURES
 ========================================================= */
-
-.features-section{
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(280px,1fr)
-        );
-
-    gap:24px;
-
-    margin-top:50px;
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 35px;
 }
 
-.feature-box{
-    background:#fcfbf7;
-
-    border:2px solid #4a4a4a;
-
-    border-radius:12px;
-
-    padding:40px 25px;
-
-    text-align:center;
-
-    transition:.3s;
+.feature-box {
+  background-color: #ffffff;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  padding: 20px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 0px #000000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.feature-box:hover{
-    transform:translateY(-4px);
-
-    box-shadow:
-        0 10px 25px rgba(0,0,0,.08);
+.feature-box:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
 }
 
-.feature-icon-wrapper{
-    font-size:32px;
+.feature-icon-wrapper {
+  margin-bottom: 10px;
+}
+feature-icon {
+  width: 42px;
+  height: 42px;
+  stroke: #ff2d87;
+  fill: none;
+  stroke-width: 2.5; /* Bold icon stroke */
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.feature-box h3{
-    font-size:22px;
-
-    margin:20px 0 12px;
+.feature-box h3 {
+  font-size: 16px;
+  font-weight: 900; /* Maximum bold */
+  color: #000000;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.feature-box p{
-    font-size:15px;
+.feature-box p {
+  font-size: 13px;
 
-    color:#475569;
+.feature-icon {
+  width: 64px;
+  height: 64px;
+  stroke: #ff2d87;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
+
+.feature-box h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+
+.feature-box p {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.5;
 
 
 /* =========================================================
@@ -1968,7 +1990,7 @@ footer{
     class="section-title"
     id="categories"
 >
-    ⚡ Featured Bike Categories
+     Featuring
 </h2>
 
 
@@ -2510,61 +2532,49 @@ footer{
     </div>
 
 </div>
-
-
-
-<!-- =========================================================
-     FEATURES
-========================================================= -->
-
-<div class="container">
-
+<!-- FEATURES SECTION -->
 <div class="features-section">
-
-    <div class="feature-box">
-
-        <div class="feature-icon-wrapper">
-            🚚
-        </div>
-
-        <h3>
-            Fast Delivery
-        </h3>
-
-        <p>
-            Fast delivery options with order tracking.
-        </p>
-
+  <div class="feature-box">
+    <div class="feature-icon-wrapper">
+      <svg class="feature-icon" viewBox="0 0 24 24">
+        <rect x="1" y="3" width="15" height="13" rx="2" ry="2"/>
+        <path d="M16 8h4l3 3v5h-7V8z"/>
+        <circle cx="5.5" cy="18.5" r="2.5"/>
+        <circle cx="18.5" cy="18.5" r="2.5"/>
+        <path d="M9 7h3"/>
+      </svg>
     </div>
+    <h3>Fastest Delivery</h3>
+    <p>Fast and free delivery across the USA with real-time tracking.</p>
+  </div>
 
-
-    <div class="feature-box">
-
-        <div class="feature-icon-wrapper">
-            💳
-        </div>
-
-        <h3>
-            Flexible Payments
-        </h3>
-
-        <p>
-            Multiple payment options can be connected
-            to your checkout.
-        </p>
-
+  <div class="feature-box">
+    <div class="feature-icon-wrapper">
+      <svg class="feature-icon" viewBox="0 0 24 24">
+        <path d="M6 3h12l4 6-10 12L2 9l4-6z"/>
+        <path d="M11 3l1 18"/>
+        <path d="M2 9h20"/>
+      </svg>
     </div>
+    <h3>Pay In Installments</h3>
+    <p>Flexible plans to split your ride into easy monthly payments.</p>
+  </div>
+
+  <div class="feature-box">
+    <div class="feature-icon-wrapper">
+      <svg class="feature-icon" viewBox="0 0 24 24">
+        <rect x="2" y="5" width="20" height="14" rx="3" ry="3"/>
+        <rect x="15" y="11" width="5" height="4" rx="1" ry="1"/>
+        <path d="M2 10h20"/>
+      </svg>
+    </div>
+    <h3>Secure Payments</h3>
+    <p>Encrypted options, flexible financing, and crypto discounts.</p>
+  </div>
+</div>
 
 
-    <div class="feature-box">
 
-        <div class="feature-icon-wrapper">
-            🔒
-        </div>
-
-        <h3>
-            Secure Checkout
-        </h3>
 
         <p>
             Your checkout interface is designed with
