@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -592,6 +591,7 @@ img{
     color:#cbd5e1;
 
     font-size:12px;
+
     font-weight:600;
 
     padding:4px 10px;
@@ -1561,57 +1561,416 @@ details[open] .modal-accordion-header .arrow-icon {
 
 
 /* =========================================================
-   CHECKOUT FORM
+   CHECKOUT FORM & INTEGRATED COMPONENT
 ========================================================= */
 
-.checkout-form{
-    display:grid;
-
-    gap:18px;
+#checkoutModal .modal-content {
+    max-width: 540px;
+    padding: 20px;
 }
 
-.form-group{
-    display:flex;
-
-    flex-direction:column;
-
-    gap:7px;
+.checkout-container-box {
+    width: 100%;
+    background: #ffffff;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-.form-group label{
-    font-weight:700;
+.checkout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
-    font-size:14px;
+.checkout-logo {
+    font-size: 24px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -1px;
+    background: #ffaa2b;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 4px;
+    color: #000;
+}
+
+.btn-close {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: 300;
+    color: #666;
+    cursor: pointer;
+    line-height: 1;
+    padding: 5px;
+    border-radius: 50%;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.btn-close:hover {
+    color: #000;
+    background: #eee;
+}
+
+.checkout-section-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #111;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #444;
 }
 
 .form-group input,
-.form-group select,
-.form-group textarea{
-    width:100%;
-
-    padding:13px 15px;
-
-    border:1px solid #cbd5e1;
-
-    border-radius:10px;
-
-    outline:none;
-
-    background:#f8fafc;
+.form-group select {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+    outline: none;
+    background-color: #fff;
+    color: #333;
 }
 
-.form-group textarea{
-    min-height:100px;
-
-    resize:vertical;
+/* Order Summary Box */
+.order-box {
+    border: 1px solid #222;
+    background-color: #fffdf5;
+    padding: 15px;
+    margin-top: 25px;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-    border-color:#0d6efd;
+.login-prompt {
+    border: 1px dashed #666;
+    background: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
 
-    background:#fff;
+.login-prompt a {
+    color: #d88900;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.review-table {
+    width: 100%;
+    border: 1px solid #333;
+    border-collapse: collapse;
+    background: #fdfaf0;
+}
+
+.review-table th, 
+.review-table td {
+    border: 1px solid #333;
+    padding: 8px;
+    font-size: 11px;
+}
+
+.review-table th {
+    text-align: left;
+    background-color: #f0ebd8;
+}
+
+.product-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.product-img {
+    width: 35px;
+    height: 35px;
+    background: #ddd;
+    border-radius: 4px;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* Payment Section */
+.payment-section {
+    margin-top: 25px;
+    border: 1px solid #e0e0e0;
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.payment-area {
+    width: 100%;
+    background: #414754;
+    padding: 12px 10px;
+    display: flex;
+    justify-content: center;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.payment-methods {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.payment-logo {
+    width: 65px;
+    height: 42px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.25),
+        inset 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+/* VISA */
+.visa {
+    background: #1769aa;
+    color: white;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -1px;
+}
+
+/* MASTERCARD */
+.mastercard {
+    background: #202020;
+    position: relative;
+}
+
+.mastercard::before,
+.mastercard::after {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    top: 8px;
+}
+
+.mastercard::before {
+    background: #eb001b;
+    left: 15px;
+}
+
+.mastercard::after {
+    background: #f79e1b;
+    left: 26px;
+}
+
+/* AMERICAN EXPRESS */
+.amex {
+    background: #159bd3;
+    color: white;
+    border: 1px solid #67c9eb;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
+
+/* DISCOVER */
+.discover {
+    background: #ffffff;
+    color: #252525;
+    border: 1px solid #d2d2d2;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.discover .orange {
+    color: #f47c20;
+    font-size: 13px;
+    margin-left: -1px;
+    margin-right: -1px;
+}
+
+/* PAYPAL */
+.paypal {
+    background: #ffffff;
+    display: flex;
+    gap: 2px;
+}
+
+.paypal-icon {
+    position: relative;
+    width: 18px;
+    height: 28px;
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    font-style: italic;
+}
+
+.paypal-back {
+    position: absolute;
+    left: 3px;
+    top: -2px;
+    color: #003087;
+}
+
+.paypal-front {
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: #009cde;
+}
+
+.paypal-name {
+    font-size: 10px;
+    font-weight: 700;
+    font-style: italic;
+    color: #003087;
+}
+
+/* APPLE PAY */
+.apple-pay {
+    background: #ffffff;
+    color: #111111;
+    border: 1px solid #d2d2d2;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* RADIO BUTTON PAYMENT LIST STYLES */
+.payment-radio-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.payment-radio-option {
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    background: #ffffff;
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.payment-radio-option:hover {
+    border-color: #cbd5e1;
+}
+
+.payment-radio-option.selected {
+    border-color: #16a34a;
+    background: #f0fdf4;
+}
+
+.payment-radio-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.payment-radio-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.payment-radio-left input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #16a34a;
+    cursor: pointer;
+}
+
+.payment-title-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.payment-subtitle {
+    font-size: 11px;
+    color: #64748b;
+}
+
+.crypto-badge {
+    background: #16a34a;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 3px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.payment-details-panel {
+    display: none;
+    padding: 12px 14px;
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    font-size: 12px;
+}
+
+.payment-radio-option.selected .payment-details-panel {
+    display: block;
+}
+
+.crypto-wallet-box {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 11px;
+    margin-top: 6px;
+    word-break: break-all;
+}
+
+.discount-applied-row {
+    color: #16a34a;
+    font-weight: 800;
 }
 
 .checkout-message{
@@ -1626,6 +1985,8 @@ details[open] .modal-accordion-header .arrow-icon {
     color:#166534;
 
     font-weight:700;
+    
+    margin-top: 15px;
 }
 
 
@@ -1761,6 +2122,9 @@ footer{
 
         border-radius:0;
     }
+
+}
+
 /* =========================================================
    RELATED PRODUCTS
 ========================================================= */
@@ -2817,168 +3181,232 @@ footer{
 
     <div class="modal-content">
 
-        <div class="page-nav-bar">
+        <div class="checkout-container-box">
+            <header class="checkout-header">
+                <div class="checkout-logo">BIKE WORLD</div>
+                <button type="button" class="btn-close" onclick="closeModal('checkoutModal')">&times;</button>
+            </header>
 
-            <button
-                class="back-btn"
-                onclick="closeModal('checkoutModal')"
-            >
-                ← Back to Cart
-            </button>
+            <form class="checkout-form" id="checkoutForm">
+                <h2 class="checkout-section-title">Shipping & Contact Details</h2>
 
-        </div>
-
-
-        <div class="product-details-header">
-
-            <h2>
-                Secure Checkout
-            </h2>
-
-            <p>
-                Enter your information to continue.
-            </p>
-
-        </div>
-
-
-        <form
-            class="checkout-form"
-            id="checkoutForm"
-        >
-
-            <div class="form-group">
-
-                <label>
-                    Full Name
-                </label>
-
-                <input
-                    type="text"
-                    id="customerName"
-                    required
-                    placeholder="Your full name"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Email Address
-                </label>
-
-                <input
-                    type="email"
-                    id="customerEmail"
-                    required
-                    placeholder="you@example.com"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Phone Number
-                </label>
-
-                <input
-                    type="tel"
-                    id="customerPhone"
-                    required
-                    placeholder="Phone number"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Shipping Address
-                </label>
-
-                <textarea
-                    id="customerAddress"
-                    required
-                    placeholder="Enter your shipping address"
-                ></textarea>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Payment Method
-                </label>
-
-                <select
-                    id="paymentMethod"
-                    required
-                >
-
-                    <option value="">
-                        Select payment method
-                    </option>
-
-                    <option value="card">
-                        Credit / Debit Card
-                    </option>
-
-                    <option value="paypal">
-                        PayPal
-                    </option>
-
-                    <option value="crypto">
-                        Cryptocurrency
-                    </option>
-
-                    <option value="bank">
-                        Bank Transfer
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="summary-card">
-
-                <div class="summary-item">
-
-                    <span>
-                        Order Total
-                    </span>
-
-                    <strong id="checkoutTotal">
-                        £0
-                    </strong>
-
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerFirstName">First Name</label>
+                        <input type="text" id="customerFirstName" required placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="customerLastName">Last Name</label>
+                        <input type="text" id="customerLastName" required placeholder="Last Name">
+                    </div>
                 </div>
 
-            </div>
+                <div class="form-group">
+                    <label for="customerEmail">Email Address</label>
+                    <input type="email" id="customerEmail" required placeholder="you@example.com">
+                </div>
 
+                <div class="form-group">
+                    <label for="customerPhone">Phone Number</label>
+                    <input type="tel" id="customerPhone" required placeholder="Phone number">
+                </div>
 
-            <div
-                class="checkout-message"
-                id="checkoutMessage"
-            >
-                Order information received.
-            </div>
+                <div class="form-group">
+                    <label for="customerAddress">Address</label>
+                    <input type="text" id="customerAddress" required placeholder="Street Address">
+                </div>
 
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerCity">City</label>
+                        <input type="text" id="customerCity" required placeholder="City">
+                    </div>
+                    <div class="form-group">
+                        <label for="customerPostcode">Postcode / ZIP</label>
+                        <input type="text" id="customerPostcode" required placeholder="Postcode">
+                    </div>
+                </div>
 
-            <button
-                type="submit"
-                class="btn-proceed-checkout"
-            >
-                Continue to Payment →
-            </button>
+                <div class="form-group">
+                    <label for="customerCountry">Country</label>
+                    <select id="customerCountry" required>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="United States">United States</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Australia">Australia</option>
+                    </select>
+                </div>
 
-        </form>
+                <!-- Order Review Table -->
+                <div class="order-box">
+                    <div class="login-prompt">
+                        Already have an account? <a href="#" onclick="closeModal('checkoutModal'); openModal('profileModal'); return false;">Log in</a> to speed up checkout.
+                    </div>
+
+                    <table class="review-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th class="text-right">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="checkoutOrderItems">
+                            <!-- Injected Dynamically via Javascript -->
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td><strong>Subtotal</strong></td>
+                                <td class="text-right"><strong id="checkoutSubtotal">£0</strong></td>
+                            </tr>
+                            <tr id="cryptoDiscountRow" class="hidden">
+                                <td class="discount-applied-row"><strong>Crypto Discount (10%)</strong></td>
+                                <td class="text-right discount-applied-row"><strong id="checkoutDiscount">-£0</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Shipping</strong></td>
+                                <td class="text-right"><strong>Free</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total</strong></td>
+                                <td class="text-right"><strong id="checkoutTotal">£0</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <!-- Payment Section -->
+                <div class="payment-section">
+                    <h2 class="checkout-section-title">Select Payment Method</h2>
+                    
+                    <div class="payment-area">
+                        <div class="payment-methods">
+                            <div class="payment-logo visa">VISA</div>
+                            <div class="payment-logo mastercard"></div>
+                            <div class="payment-logo amex">AMEX</div>
+                            <div class="payment-logo discover">DISC<span class="orange">O</span>VER</div>
+                            <div class="payment-logo paypal">
+                                <span class="paypal-icon">
+                                    <span class="paypal-back">P</span>
+                                    <span class="paypal-front">P</span>
+                                </span>
+                                <span class="paypal-name">PayPal</span>
+                            </div>
+                            <div class="payment-logo apple-pay">Pay</div>
+                        </div>
+                    </div>
+
+                    <div class="payment-radio-list">
+                        <!-- 1. CRYPTO (First & Highlighted with Discount) -->
+                        <div class="payment-radio-option selected" id="opt-crypto">
+                            <label class="payment-radio-label" for="pay-crypto">
+                                <div class="payment-radio-left">
+                                    <input type="radio" id="pay-crypto" name="paymentMethod" value="crypto" checked onchange="handlePaymentChange('crypto')">
+                                    <div class="payment-title-group">
+                                        <span class="payment-title"><i class="fa-brands fa-bitcoin"></i> Cryptocurrency</span>
+                                        <span class="payment-subtitle">BTC, ETH, USDT, SOL accepted</span>
+                                    </div>
+                                </div>
+                                <span class="crypto-badge">SAVE 10%</span>
+                            </label>
+                            <div class="payment-details-panel">
+                                <p><strong>10% instant discount applied to your order total!</strong></p>
+                                <p style="margin-top:4px;">Please transfer the exact amount after checkout to one of our payment addresses:</p>
+                                <div class="crypto-wallet-box">
+                                    <strong>BTC:</strong> 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa<br>
+                                    <strong>USDT (TRC20):</strong> T9yD14Nj9j7xAB4dbGeiX9h8A9yD14Nj9j
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. CASH APP -->
+                        <div class="payment-radio-option" id="opt-cashapp">
+                            <label class="payment-radio-label" for="pay-cashapp">
+                                <div class="payment-radio-left">
+                                    <input type="radio" id="pay-cashapp" name="paymentMethod" value="cashapp" onchange="handlePaymentChange('cashapp')">
+                                    <div class="payment-title-group">
+                                        <span class="payment-title"><i class="fa-solid fa-dollar-sign"></i> Cash App</span>
+                                        <span class="payment-subtitle">Fast & secure mobile transfer</span>
+                                    </div>
+                                </div>
+                            </label>
+                            <div class="payment-details-panel">
+                                <p>Send payment to our Cashtag: <strong>$BikeWorldOfficial</strong></p>
+                                <p style="margin-top:4px; color:#666;">Include your Order ID in the payment note.</p>
+                            </div>
+                        </div>
+
+                        <!-- 3. DEBIT / CREDIT CARD -->
+                        <div class="payment-radio-option" id="opt-card">
+                            <label class="payment-radio-label" for="pay-card">
+                                <div class="payment-radio-left">
+                                    <input type="radio" id="pay-card" name="paymentMethod" value="card" onchange="handlePaymentChange('card')">
+                                    <div class="payment-title-group">
+                                        <span class="payment-title"><i class="fa-solid fa-credit-card"></i> Credit / Debit Card</span>
+                                        <span class="payment-subtitle">Visa, MasterCard, Amex, Discover</span>
+                                    </div>
+                                </div>
+                            </label>
+                            <div class="payment-details-panel">
+                                <div class="form-group" style="margin-top:6px;">
+                                    <label>Card Number</label>
+                                    <input type="text" placeholder="1234 5678 9012 3456">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Expiry Date</label>
+                                        <input type="text" placeholder="MM/YY">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>CVC / CVV</label>
+                                        <input type="text" placeholder="123">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. PAYPAL -->
+                        <div class="payment-radio-option" id="opt-paypal">
+                            <label class="payment-radio-label" for="pay-paypal">
+                                <div class="payment-radio-left">
+                                    <input type="radio" id="pay-paypal" name="paymentMethod" value="paypal" onchange="handlePaymentChange('paypal')">
+                                    <div class="payment-title-group">
+                                        <span class="payment-title"><i class="fa-brands fa-paypal"></i> PayPal</span>
+                                        <span class="payment-subtitle">Safe online payment</span>
+                                    </div>
+                                </div>
+                            </label>
+                            <div class="payment-details-panel">
+                                <p>You will be redirected to PayPal to complete your purchase securely.</p>
+                            </div>
+                        </div>
+
+                        <!-- 5. BANK TRANSFER -->
+                        <div class="payment-radio-option" id="opt-bank">
+                            <label class="payment-radio-label" for="pay-bank">
+                                <div class="payment-radio-left">
+                                    <input type="radio" id="pay-bank" name="paymentMethod" value="bank" onchange="handlePaymentChange('bank')">
+                                    <div class="payment-title-group">
+                                        <span class="payment-title"><i class="fa-solid fa-building-columns"></i> Bank Transfer</span>
+                                        <span class="payment-subtitle">Direct wire payment</span>
+                                    </div>
+                                </div>
+                            </label>
+                            <div class="payment-details-panel">
+                                <p>Bank Account Details will be provided immediately upon placing the order.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-message" id="checkoutMessage">
+                    Order information received.
+                </div>
+
+                <button type="submit" class="btn-proceed-checkout">
+                    Complete Order →
+                </button>
+            </form>
+        </div>
 
     </div>
 
@@ -3097,7 +3525,7 @@ const products = {
         related: [
            "charger",
            "battery",
-           "wheelkit"
+           "wheelKit"
     ]
     
     },
@@ -3137,7 +3565,7 @@ const products = {
       related: [
            "charger",
            "battery",
-           "wheelkit"
+           "wheelKit"
     ]
     
     },
@@ -3172,7 +3600,7 @@ const products = {
         related: [
            "charger",
            "battery",
-           "wheelkit"
+           "wheelKit"
     ]
     
     },
@@ -3219,7 +3647,7 @@ const products = {
         related: [
            "charger",
            "battery",
-           "wheelkit"
+           "wheelKit"
     ]
     
     },
@@ -3996,8 +4424,45 @@ function removeFromCart(index){
 
 
 /* =========================================================
-   CHECKOUT
+   CHECKOUT & PAYMENT LOGIC
 ========================================================= */
+
+function updateCheckoutTotals() {
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value || 'crypto';
+    
+    const subtotalElem = document.getElementById("checkoutSubtotal");
+    const totalElem = document.getElementById("checkoutTotal");
+    const discountRow = document.getElementById("cryptoDiscountRow");
+    const discountElem = document.getElementById("checkoutDiscount");
+
+    if (subtotalElem) subtotalElem.textContent = "£" + subtotal.toLocaleString();
+
+    if (selectedMethod === 'crypto') {
+        const discount = subtotal * 0.10;
+        const finalTotal = subtotal - discount;
+
+        if (discountRow) discountRow.classList.remove("hidden");
+        if (discountElem) discountElem.textContent = "-£" + discount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        if (totalElem) totalElem.textContent = "£" + finalTotal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    } else {
+        if (discountRow) discountRow.classList.add("hidden");
+        if (totalElem) totalElem.textContent = "£" + subtotal.toLocaleString();
+    }
+}
+
+function handlePaymentChange(method) {
+    document.querySelectorAll('.payment-radio-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+
+    const activeOption = document.getElementById(`opt-${method}`);
+    if (activeOption) {
+        activeOption.classList.add('selected');
+    }
+
+    updateCheckoutTotals();
+}
 
 function openCheckout(){
 
@@ -4011,23 +4476,30 @@ function openCheckout(){
 
     }
 
+    const orderItemsContainer = document.getElementById("checkoutOrderItems");
+    if(orderItemsContainer) {
+        orderItemsContainer.innerHTML = cart.map(item => `
+            <tr>
+                <td>
+                    <div class="product-cell">
+                        <img src="${item.image}" alt="${item.name}" class="product-img">
+                        <div>
+                            <div>${item.name}</div>
+                            <small>Qty: ${item.qty}${item.option ? ' | ' + item.option : ''}</small>
+                        </div>
+                    </div>
+                </td>
+                <td class="text-right">£${(item.price * item.qty).toLocaleString()}</td>
+            </tr>
+        `).join("");
+    }
 
-    const total =
-        cart.reduce(
-            (sum,item) =>
-                sum +
-                item.price *
-                item.qty,
-            0
-        );
-
-
-    document.getElementById(
-        "checkoutTotal"
-    ).textContent =
-        "£" +
-        total.toLocaleString();
-
+    // Default to Crypto selected when opening checkout
+    const cryptoRadio = document.getElementById("pay-crypto");
+    if (cryptoRadio) {
+        cryptoRadio.checked = true;
+        handlePaymentChange('crypto');
+    }
 
     closeModal("cartModal");
 
@@ -4037,7 +4509,7 @@ function openCheckout(){
 
 
 /* =========================================================
-   CHECKOUT FORM
+   CHECKOUT FORM SUBMIT
 ========================================================= */
 
 document.getElementById(
@@ -4054,13 +4526,18 @@ document.getElementById(
                 "checkoutMessage"
             );
 
+        const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value;
 
         message.style.display =
             "block";
 
-
-        message.textContent =
-            "Order information received. Your payment gateway can now be connected here.";
+        if(selectedMethod === 'crypto') {
+            message.textContent = "Order placed! Please transfer the discounted crypto total to complete your purchase.";
+        } else if(selectedMethod === 'cashapp') {
+            message.textContent = "Order placed! Please send payment to $BikeWorldOfficial via Cash App.";
+        } else {
+            message.textContent = "Order information received. Payment gateway processing initialized.";
+        }
 
     }
 );
@@ -4329,40 +4806,6 @@ document.addEventListener(
 
     }
 );
-
-
-/* =========================================================
-   CLOSE MOBILE MENU AFTER LINK CLICK
-========================================================= */
-
-document.querySelectorAll(
-    ".mobile-menu a"
-).forEach(link => {
-
-    link.addEventListener(
-        "click",
-        function(){
-
-            mobileMenu.classList.remove(
-                "active"
-            );
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        }
-    );
-
-});
-
-
-/* =========================================================
-   INITIALIZE
-========================================================= */
-
-updateCartCount();
 
 </script>
 
