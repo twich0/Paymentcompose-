@@ -1,4127 +1,1013 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIKE WORLD | Performance E-Mobility</title>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ===== RESET & GLOBAL ===== */
+    * { margin:0; padding:0; box-sizing:border-box; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background:#f8fafc; color:#0f172a; line-height:1.5; -webkit-font-smoothing: antialiased; }
+    button { cursor:pointer; }
+    img { max-width:100%; display:block; }
+    .hidden { display:none !important; }
 
-<title>BIKE WORLD | Performance E-Mobility</title>
-
-<meta name="description"
-      content="Discover high-performance electric motorcycles, bikes and accessories at Bike World.">
-
-<!-- Font Awesome for Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#f8fafc;
-    color:#0f172a;
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-}
-
-button,
-input,
-select,
-textarea{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-img{
-    max-width:100%;
-    display:block;
-}
-
-.hidden{
-    display:none !important;
-}
-
-/* =========================================================
-   SPINNING HOURGLASS ANIMATION
-========================================================= */
-
-.fa-hourglass-half,
-.fa-hourglass,
-.spinning-hourglass {
-    display: inline-block;
-    animation: spinHourglass 2.5s infinite linear;
-}
-
-@keyframes spinHourglass {
-    0% {
-        transform: rotate(0deg);
+    /* ===== SPINNING HOURGLASS ===== */
+    .fa-hourglass-half, .fa-hourglass, .spinning-hourglass {
+      display: inline-block;
+      animation: spinHourglass 2.5s infinite linear;
     }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-
-/* =========================================================
-   HEADER / HERO
-========================================================= */
-
-.site-header-hero{
-    background:
-        linear-gradient(
-            180deg,
-            rgba(9,13,22,.78),
-            rgba(9,13,22,.96)
-        ),
-        url("hero-bg.jpg") center/cover no-repeat;
-
-    color:#fff;
-    position:relative;
-    overflow:hidden;
-    border-bottom:1px solid rgba(255,255,255,.08);
-    box-shadow:0 10px 40px rgba(0,0,0,.4);
-}
-
-.site-header-hero::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:50%;
-    transform:translateX(-50%);
-    width:60%;
-    height:1px;
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,45,87,.7),
-            transparent
-        );
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.top-nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:16px 3%;
-    max-width:1280px;
-    margin:auto;
-    gap:8px;
-    position:relative;
-    z-index:20;
-}
-
-.brand-logo{
-    text-align:left;
-    flex-shrink:0;
-}
-
-.brand-logo h1{
-    font-size:38px;
-    font-weight:900;
-    letter-spacing:-1px;
-    line-height:1;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff 30%,
-            #ff4d4d 100%
-        );
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.brand-logo p{
-    color:#94a3b8;
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:.5px;
-    text-transform:uppercase;
-    margin-top:2px;
-}
-
-
-/* =========================================================
-   ICON BUTTONS
-========================================================= */
-
-.icon-btn{
-    background:rgba(0,0,0,.3);
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:50%;
-    width:42px;
-    height:42px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:#e2e8f0;
-
-    transition:.3s;
-    flex-shrink:0;
-    position:relative;
-}
-
-.icon-btn:hover{
-    background:rgba(255,77,77,.2);
-    border-color:#ff4d4d;
-    color:#ff4d4d;
-    transform:translateY(-2px);
-}
-
-.icon-btn svg{
-    width:20px;
-    height:20px;
-    stroke-width:2.2;
-}
-
-
-/* =========================================================
-   CART BADGE
-========================================================= */
-
-.cart-badge{
-    position:absolute;
-    top:-3px;
-    right:-3px;
-
-    background:#ef4444;
-    color:white;
-
-    font-size:10px;
-    font-weight:800;
-
-    width:19px;
-    height:19px;
-
-    border-radius:50%;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:2px solid #090d16;
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-.header-actions-center{
-    flex:1;
-    max-width:480px;
-
-    display:flex;
-    align-items:center;
-}
-
-.search-container{
-    width:100%;
-
-    display:flex;
-    align-items:center;
-
-    background:white;
-    border:1px solid #cbd5e1;
-
-    border-radius:50px;
-
-    padding:5px 8px 5px 16px;
-
-    box-shadow:0 4px 12px rgba(0,0,0,.15);
-
-    transition:.3s;
-}
-
-.search-container:focus-within{
-    border-color:#ff4d4d;
-    box-shadow:0 0 15px rgba(255,77,77,.4);
-}
-
-.search-input{
-    width:100%;
-    border:none;
-    outline:none;
-    background:transparent;
-
-    color:#0f172a;
-    font-size:14px;
-}
-
-.search-input::placeholder{
-    color:#64748b;
-}
-
-.search-button{
-    background:none;
-    border:none;
-    color:#64748b;
-
-    width:34px;
-    height:34px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.search-button:hover{
-    color:#ff4d4d;
-}
-
-.search-button svg{
-    width:18px;
-    height:18px;
-    fill:currentColor;
-}
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-.mobile-menu{
-    display:none;
-
-    background:#0f172a;
-    border-bottom:1px solid rgba(255,255,255,.1);
-
-    padding:15px 5%;
-
-    text-align:center;
-
-    position:relative;
-    z-index:15;
-}
-
-.mobile-menu.active{
-    display:block;
-}
-
-.mobile-menu a{
-    color:#fff;
-    text-decoration:none;
-
-    display:block;
-    padding:11px 0;
-
-    font-weight:600;
-}
-
-.mobile-menu a:hover{
-    color:#ff4d4d;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero-content{
-    padding:70px 20px 80px;
-
-    text-align:center;
-
-    max-width:800px;
-    margin:auto;
-
-    position:relative;
-    z-index:2;
-}
-
-.hero-tag{
-    display:inline-flex;
-    align-items:center;
-
-    gap:6px;
-
-    background:rgba(255,77,77,.15);
-    border:1px solid rgba(255,77,77,.35);
-
-    color:#ff4d4d;
-
-    font-size:12px;
-    font-weight:700;
-
-    padding:6px 16px;
-
-    border-radius:50px;
-
-    text-transform:uppercase;
-    letter-spacing:.8px;
-
-    margin-bottom:20px;
-}
-
-.hero-content h2{
-    font-size:46px;
-    font-weight:900;
-
-    letter-spacing:-1.5px;
-    line-height:1.15;
-
-    margin-bottom:16px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #fff,
-            #cbd5e1
-        );
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.hero-content p{
-    font-size:18px;
-    color:#cbd5e1;
-
-    max-width:540px;
-    margin:auto;
-
-    line-height:1.6;
-}
-
-
-/* =========================================================
-   MAIN CONTAINER
-========================================================= */
-
-.container{
-    width:90%;
-    max-width:1200px;
-
-    margin:auto;
-
-    padding:50px 0;
-}
-
-.section-title{
-    font-size:26px;
-    font-weight:800;
-
-    margin-bottom:25px;
-
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-
-/* =========================================================
-   PRODUCT GRID
-========================================================= */
-
-.grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(260px,1fr)
-        );
-
-    gap:30px;
-}
-
-
-/* =========================================================
-   PRODUCT CARD
-========================================================= */
-
-.card{
-    background:
-        linear-gradient(
-            145deg,
-            #1e293b,
-            #0f172a
-        );
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.3);
-
-    transition:.4s;
-
-    display:flex;
-    flex-direction:column;
-
-    position:relative;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-
-    box-shadow:
-        0 0 25px rgba(13,110,253,.35),
-        0 20px 40px rgba(0,0,0,.5);
-}
-
-.card-img-wrapper{
-    height:220px;
-
-    background:#020617;
-
-    overflow:hidden;
-
-    position:relative;
-}
-
-.card img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    transition:.6s;
-
-    filter:
-        brightness(.9)
-        contrast(1.05);
-}
-
-.card:hover img{
-    transform:scale(1.08);
-
-    filter:
-        brightness(1)
-        contrast(1.1);
-}
-
-.card-tag{
-    position:absolute;
-
-    top:15px;
-    right:15px;
-
-    background:rgba(15,23,42,.8);
-
-    color:#38bdf8;
-
-    border:1px solid rgba(56,189,248,.3);
-
-    font-size:11px;
-    font-weight:800;
-
-    padding:6px 12px;
-
-    border-radius:50px;
-
-    text-transform:uppercase;
-
-    z-index:2;
-}
-
-.card-content{
-    padding:24px;
-
-    display:flex;
-    flex-direction:column;
-
-    flex-grow:1;
-}
-
-.card h3{
-    font-size:22px;
-    color:white;
-
-    margin-bottom:8px;
-}
-
-.card p{
-    color:#94a3b8;
-
-    font-size:14px;
-    line-height:1.6;
-
-    margin-bottom:18px;
-
-    flex-grow:1;
-}
-
-.tech-specs{
-    display:flex;
-    gap:8px;
-
-    flex-wrap:wrap;
-
-    margin-bottom:20px;
-}
-
-.spec-badge{
-    background:rgba(255,255,255,.05);
-
-    border:1px solid rgba(255,255,255,.1);
-
-    color:#cbd5e1;
-
-    font-size:12px;
-
-    font-weight:600;
-
-    padding:4px 10px;
-
-    border-radius:6px;
-}
-
-.card button{
-    background:
-        linear-gradient(
-            135deg,
-            #0d6efd,
-            #0052cc
-        );
-
-    color:white;
-
-    border:1px solid rgba(255,255,255,.2);
-
-    padding:14px 20px;
-
-    border-radius:50px;
-
-    font-size:15px;
-
-    font-weight:700;
-
-    width:100%;
-
-    transition:.3s;
-}
-
-.card button:hover{
-    background:
-        linear-gradient(
-            135deg,
-            #38bdf8,
-            #0d6efd
-        );
-
-    color:#000;
-
-    transform:translateY(-2px);
-}
-
-
-/* =========================================================
-   ABOUT SECTION (YELLOW BOX)
-========================================================= */
-
-.about-surron-box{
-    background:
-        linear-gradient(
-            135deg,
-            #fff3c4,
-            #ffc107 40%,
-            #ffab00
-        );
-
-    color:#1a1a1a;
-
-    padding:45px 40px;
-
-    border-radius:20px;
-
-    margin-top:40px;
-
-    box-shadow:
-        0 12px 35px rgba(255,171,0,.25);
-
-    position:relative;
-    overflow:hidden;
-}
-
-.about-surron-box h3{
-    font-size:32px;
-
-    margin-bottom:20px;
-}
-
-.about-surron-box p{
-    font-size:17px;
-
-    line-height:1.7;
-
-    margin-bottom:18px;
-}
-
-.surron-box-footer{
-    margin-top:30px;
-
-    padding-top:20px;
-
-    border-top:1px solid rgba(0,0,0,.1);
-}
-
-.order-now-btn{
-    display:inline-flex;
-
-    align-items:center;
-    gap:10px;
-
-    background:#111;
-    color:white;
-
-    border:none;
-
-    font-size:18px;
-    font-weight:700;
-
-    padding:16px 38px;
-
-    border-radius:50px;
-
-    transition:.3s;
-}
-
-.order-now-btn:hover{
-    background:#000;
-
-    transform:translateY(-3px);
-}
-
-
-/* =========================================================
-   ACCESSORIES
-========================================================= */
-
-.accessories-section{
-    margin-top:50px;
-
-    background:#000;
-
-    padding-bottom:40px;
-}
-
-.header-banner{
-    background:#0a0a0a;
-
-    color:white;
-
-    padding:25px 0;
-
-    text-align:center;
-
-    border-bottom:1px solid rgba(255,255,255,.1);
-}
-
-.slider-container{
-    display:flex;
-
-    gap:24px;
-
-    overflow-x:auto;
-
-    padding:30px 5%;
-
-    max-width:1200px;
-
-    margin:auto;
-
-    scroll-snap-type:x mandatory;
-}
-
-.accessory-card{
-    flex:
-        0 0
-        calc(33.333% - 16px);
-
-    min-width:280px;
-
-    background:white;
-
-    border-radius:16px;
-
-    overflow:hidden;
-
-    display:flex;
-    flex-direction:column;
-
-    transition:.3s;
-}
-
-.accessory-card:hover{
-    transform:translateY(-5px);
-
-    box-shadow:
-        0 12px 30px rgba(0,0,0,.35);
-}
-
-.accessory-img-wrapper{
-    height:200px;
-
-    background:#f8fafc;
-
-    overflow:hidden;
-
-    position:relative;
-}
-
-.accessory-img-wrapper img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    transition:.4s;
-}
-
-.accessory-card:hover img{
-    transform:scale(1.05);
-}
-
-.discount-badge{
-    position:absolute;
-
-    top:12px;
-    left:12px;
-
-    background:#dc2626;
-    color:white;
-
-    font-size:12px;
-    font-weight:800;
-
-    padding:4px 10px;
-
-    border-radius:50px;
-
-    z-index:2;
-}
-
-.accessory-content{
-    padding:20px;
-
-    display:flex;
-    flex-direction:column;
-
-    flex-grow:1;
-}
-
-.accessory-content h4{
-    font-size:18px;
-
-    color:#0f172a;
-
-    margin-bottom:6px;
-}
-
-.accessory-content p{
-    font-size:14px;
-
-    color:#475569;
-
-    margin-bottom:12px;
-
-    flex-grow:1;
-}
-
-.price-container{
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    margin-bottom:16px;
-}
-
-.original-price{
-    color:#ef4444;
-
-    text-decoration:line-through;
-
-    font-weight:700;
-}
-
-.current-price{
-    font-size:22px;
-
-    color:#0284c7;
-
-    font-weight:800;
-}
-
-.add-cart-btn{
-    background:
-        linear-gradient(
-            135deg,
-            #0d6efd,
-            #0052cc
-        );
-
-    color:white;
-
-    border:none;
-
-    padding:12px 18px;
-
-    border-radius:50px;
-
-    font-weight:700;
-
-    width:100%;
-}
-
-.view-more-container{
-    text-align:center;
-
-    margin-top:20px;
-}
-
-.view-more-btn{
-    background:transparent;
-
-    color:white;
-
-    border:2px solid #38bdf8;
-
-    padding:12px 32px;
-
-    border-radius:50px;
-
-    font-weight:700;
-}
-
-.view-more-btn:hover{
-    background:#38bdf8;
-
-    color:#000;
-}
-
-
-/* =========================================================
-   FEATURES
-========================================================= */
-
-.features-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-  margin-top: 35px;
-  padding: 0 5%;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.feature-box {
-  background-color: #ffffff;
-  border: 3px solid #000000;
-  border-radius: 10px;
-  padding: 20px 16px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 4px 4px 0px #000000;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.feature-box:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000;
-}
-
-.feature-icon-wrapper {
-  margin-bottom: 10px;
-}
-
-.feature-icon {
-  width: 42px;
-  height: 42px;
-  stroke: #ff2d87;
-  fill: none;
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.feature-box h3 {
-  font-size: 16px;
-  font-weight: 900;
-  color: #000000;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.feature-box p {
-  font-size: 13px;
-  color: #475569;
-  line-height: 1.5;
-}
-
-
-/* =========================================================
-   MODAL SYSTEM
-========================================================= */
-
-.modal-overlay{
-    position:fixed;
-
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    background:
-        rgba(0,0,0,.75);
-
-    backdrop-filter:blur(5px);
-
-    display:none;
-
-    z-index:1000;
-
-    overflow-y:auto;
-
-    padding:20px;
-}
-
-.modal-overlay.active{
-    display:block;
-}
-
-.modal-content{
-    background:white;
-
-    width:100%;
-
-    max-width:900px;
-
-    margin:20px auto;
-
-    border-radius:20px;
-
-    padding:20px 20px 60px;
-
-    animation:
-        modalIn .25s ease;
-}
-
-/* Dark mode override for Product Display Modal */
-#productModal .modal-content {
-    background: #000000;
-    color: #ffffff;
-    border: 1px solid #222;
-}
-
-@keyframes modalIn{
-    from{
-        transform:translateY(30px);
-        opacity:0;
+    @keyframes spinHourglass {
+      0% { transform:rotate(0deg); }
+      100% { transform:rotate(360deg); }
     }
 
-    to{
-        transform:translateY(0);
-        opacity:1;
+    /* ===== HEADER / HERO ===== */
+    .site-header-hero {
+      background: linear-gradient(180deg, rgba(9,13,22,.78), rgba(9,13,22,.96)), url("hero-bg.jpg") center/cover no-repeat;
+      color:#fff;
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      box-shadow:0 10px 40px rgba(0,0,0,.4);
     }
-}
-
-.page-nav-bar{
-    position:sticky;
-
-    top:0;
-
-    background:rgba(255,255,255,.92);
-
-    backdrop-filter:blur(10px);
-
-    padding:15px 0;
-
-    border-bottom:1px solid #e2e8f0;
-
-    z-index:10;
-
-    margin-bottom:25px;
-}
-
-#productModal .page-nav-bar {
-    background: rgba(0, 0, 0, 0.9);
-    border-bottom: 1px solid #222;
-}
-
-.back-btn{
-    font-size:15px;
-    font-weight:700;
-
-    color:#0d6efd;
-
-    border:none;
-
-    background:#eff6ff;
-
-    padding:10px 20px;
-
-    border-radius:50px;
-}
-
-#productModal .back-btn {
-    background: #111;
-    color: #fff;
-    border: 1px solid #333;
-}
-
-.product-details-header{
-    border-bottom:1px solid #e2e8f0;
-
-    padding-bottom:20px;
-
-    margin-bottom:25px;
-}
-
-#productModal .product-details-header {
-    border-bottom: 1px solid #222;
-}
-
-.product-details-header h2{
-    font-size:28px;
-}
-
-.product-main-image{
-    width:100%;
-
-    max-height:400px;
-
-    object-fit:cover;
-
-    border-radius:16px;
-
-    margin-bottom:25px;
-}
-
-.options-group{
-    margin:20px 0;
-}
-
-.options-group label{
-    font-weight:700;
-
-    display:block;
-
-    margin-bottom:8px;
-}
-
-.options-group select,
-.options-group input,
-.options-group textarea{
-    padding:12px 16px;
-
-    border:1px solid #cbd5e1;
-
-    border-radius:10px;
-
-    font-size:15px;
-
-    outline:none;
-
-    background:#f8fafc;
-
-    width:100%;
-}
-
-#productModal .options-group select,
-#productModal .options-group input,
-#productModal .options-group textarea {
-    background: #000;
-    color: #fff;
-    border: 1px solid #444;
-    border-radius: 0;
-}
-
-/* Row Action Bar with +/- Quantity Picker & Add To Cart Button */
-.action-purchase-row {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.custom-qty-selector {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #444444;
-    background: #000000;
-    width: 140px;
-    height: 52px;
-    padding: 0 16px;
-    flex-shrink: 0;
-}
-
-.qty-control-btn {
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 0 6px;
-    line-height: 1;
-}
-
-.qty-control-btn:hover {
-    color: #e62325;
-}
-
-.qty-val-display {
-    font-size: 16px;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-.btn-add-cart-action {
-    flex: 1;
-    background: #e62325;
-    color: #ffffff;
-    border: none;
-    height: 52px;
-    font-size: 15px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: background 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-add-cart-action:hover {
-    background: #cc1f21;
-}
-
-/* Dynamic Detailed Product Screen Styles */
-.modal-product-brand {
-    font-size: 12px;
-    color: #888888;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-}
-
-.modal-product-title {
-    font-size: 26px;
-    font-weight: 900;
-    line-height: 1.1;
-    text-transform: uppercase;
-    margin: 6px 0 15px 0;
-    letter-spacing: 0.5px;
-}
-
-.modal-price-section {
-    margin-bottom: 15px;
-}
-
-.modal-main-price {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.modal-financing {
-    font-size: 14px;
-    margin-top: 4px;
-    color: #ccc;
-}
-
-.modal-financing a {
-    color: #ff3b30;
-    text-decoration: underline;
-}
-
-.modal-tax-info {
-    font-size: 11px;
-    color: #888;
-    display: block;
-    margin-top: 4px;
-}
-
-.modal-part-number {
-    font-size: 16px;
-    color: #cccccc;
-    margin-top: 15px;
-    font-family: monospace;
-}
-
-.modal-highlights-card {
-    background-color: #d1d5db;
-    color: #000000;
-    border-radius: 16px;
-    padding: 20px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin: 20px 0;
-}
-
-.modal-highlight-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 13px;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
-}
-
-.modal-highlight-item i {
-    font-size: 18px;
-}
-
-.modal-quick-specs-ribbon {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px 0;
-    margin: 20px 0;
-    border-top: 1px solid #222;
-    border-bottom: 1px solid #222;
-}
-
-.modal-spec-tile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.modal-spec-tile i {
-    font-size: 24px;
-    color: #fff;
-}
-
-.modal-spec-value {
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-}
-
-/* Accordion Styling with Rotating Arrows */
-.modal-accordion-section {
-    border: 1px solid #333333;
-    margin-top: 12px;
-}
-
-.modal-accordion-header {
-    list-style: none;
-    padding: 18px 16px;
-    font-size: 16px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    background-color: #000000;
-    user-select: none;
-}
-
-.modal-accordion-header::-webkit-details-marker {
-    display: none;
-}
-
-.modal-accordion-header .accordion-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.modal-accordion-header .arrow-icon {
-    font-size: 14px;
-    transition: transform 0.3s ease;
-}
-
-details[open] .modal-accordion-header .arrow-icon {
-    transform: rotate(180deg);
-}
-
-.modal-accordion-content {
-    padding: 0 16px 20px 16px;
-    color: #e0e0e0;
-}
-
-.modal-accordion-content h3 {
-    font-size: 13px;
-    margin-bottom: 12px;
-    letter-spacing: 0.5px;
-}
-
-.modal-accordion-content ul {
-    padding-left: 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.modal-accordion-content li {
-    font-size: 13px;
-    line-height: 1.4;
-}
-
-.modal-accordion-content p {
-    font-size: 13px;
-    line-height: 1.6;
-    color: #cccccc;
-    margin-bottom: 12px;
-}
-
-
-/* =========================================================
-   CART
-========================================================= */
-
-.cart-items{
-    display:flex;
-
-    flex-direction:column;
-
-    gap:15px;
-
-    margin-bottom:25px;
-}
-
-.cart-item{
-    display:grid;
-
-    grid-template-columns:
-        80px
-        1fr
-        auto;
-
-    gap:15px;
-
-    align-items:center;
-
-    padding:15px;
-
-    border:1px solid #e2e8f0;
-
-    border-radius:14px;
-
-    background:#fff;
-}
-
-.cart-item img{
-    width:80px;
-    height:80px;
-
-    object-fit:cover;
-
-    border-radius:10px;
-}
-
-.cart-item h4{
-    margin-bottom:5px;
-}
-
-.cart-item small{
-    color:#64748b;
-}
-
-.cart-controls{
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    margin-top:8px;
-}
-
-.qty-btn{
-    width:30px;
-    height:30px;
-
-    border:none;
-
-    background:#e2e8f0;
-
-    border-radius:7px;
-
-    font-weight:800;
-}
-
-.remove-btn{
-    margin-top:8px;
-
-    background:none;
-
-    border:none;
-
-    color:#dc2626;
-
-    font-size:13px;
-
-    font-weight:700;
-}
-
-.cart-price{
-    font-weight:800;
-
-    white-space:nowrap;
-}
-
-.empty-cart{
-    text-align:center;
-
-    padding:50px 20px;
-
-    color:#64748b;
-}
-
-.empty-cart-icon{
-    font-size:50px;
-
-    margin-bottom:10px;
-}
-
-.summary-card{
-    background:#f8fafc;
-
-    border:1px solid #e2e8f0;
-
-    border-radius:16px;
-
-    padding:24px;
-
-    margin:20px 0 30px;
-}
-
-.summary-item{
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:20px;
-
-    padding:12px 0;
-
-    border-bottom:1px solid #cbd5e1;
-}
-
-.summary-item:last-child{
-    border-bottom:none;
-}
-
-.summary-total{
-    font-size:20px;
-
-    font-weight:800;
-}
-
-.btn-proceed-checkout{
-    width: 100%;
-    border: none;
-    color: white;
-    padding: 16px 25px;
-    border-radius: 50px;
-    font-size: 16px;
-    font-weight: 800;
-    margin-top: 15px;
-    background:#16a34a;
-
-    box-shadow:
-        0 6px 20px rgba(22,163,74,.3);
-}
-
-.btn-proceed-checkout:hover{
-    background:#15803d;
-}
-
-
-/* =========================================================
-   CHECKOUT FORM & INTEGRATED COMPONENT
-========================================================= */
-
-#checkoutModal .modal-content {
-    max-width: 540px;
-    padding: 20px;
-}
-
-.checkout-container-box {
-    width: 100%;
-    background: #ffffff;
-    padding: 15px;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-.checkout-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.checkout-logo {
-    font-size: 24px;
-    font-weight: 900;
-    font-style: italic;
-    letter-spacing: -1px;
-    background: #ffaa2b;
-    display: inline-block;
-    padding: 5px 15px;
-    border-radius: 4px;
-    color: #000;
-}
-
-.btn-close {
-    background: transparent;
-    border: none;
-    font-size: 24px;
-    font-weight: 300;
-    color: #666;
-    cursor: pointer;
-    line-height: 1;
-    padding: 5px;
-    border-radius: 50%;
-    transition: color 0.2s ease, background 0.2s ease;
-}
-
-.btn-close:hover {
-    color: #000;
-    background: #eee;
-}
-
-.checkout-section-title {
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: #111;
-}
-
-.form-row {
-    display: flex;
-    gap: 10px;
-}
-
-.form-group {
-    margin-bottom: 12px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 12px;
-    font-weight: 600;
-    color: #444;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 9px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 13px;
-    outline: none;
-    background-color: #fff;
-    color: #333;
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 80px;
-}
-
-/* Order Summary Box */
-.order-box {
-    border: 1px solid #222;
-    background-color: #fffdf5;
-    padding: 15px;
-    margin-top: 25px;
-}
-
-.login-prompt {
-    border: 1px dashed #666;
-    background: #fff;
-    padding: 10px;
-    text-align: center;
-    font-size: 12px;
-    margin-bottom: 15px;
-}
-
-.login-prompt a {
-    color: #d88900;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.review-table {
-    width: 100%;
-    border: 1px solid #333;
-    border-collapse: collapse;
-    background: #fdfaf0;
-}
-
-.review-table th, 
-.review-table td {
-    border: 1px solid #333;
-    padding: 8px;
-    font-size: 11px;
-}
-
-.review-table th {
-    text-align: left;
-    background-color: #f0ebd8;
-}
-
-.product-cell {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.product-img {
-    width: 35px;
-    height: 35px;
-    background: #ddd;
-    border-radius: 4px;
-    flex-shrink: 0;
-    object-fit: cover;
-}
-
-.text-right {
-    text-align: right;
-}
-
-/* Payment Section */
-.payment-section {
-    margin-top: 25px;
-    border: 1px solid #e0e0e0;
-    background: #fafafa;
-    padding: 15px;
-    border-radius: 6px;
-}
-
-.payment-area {
-    width: 100%;
-    background: #414754;
-    padding: 12px 10px;
-    display: flex;
-    justify-content: center;
-    border-radius: 6px;
-    margin-bottom: 15px;
-}
-
-.payment-methods {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    flex-wrap: wrap;
-}
-
-.payment-logo {
-    width: 65px;
-    height: 42px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    font-family: Arial, Helvetica, sans-serif;
-    box-shadow:
-        0 1px 2px rgba(0,0,0,0.25),
-        inset 0 0 0 1px rgba(0,0,0,0.08);
-}
-
-/* VISA */
-.visa {
-    background: #1769aa;
-    color: white;
-    font-size: 18px;
-    font-weight: 900;
-    font-style: italic;
-    letter-spacing: -1px;
-}
-
-/* MASTERCARD */
-.mastercard {
-    background: #202020;
-    position: relative;
-}
-
-.mastercard::before,
-.mastercard::after {
-    content: "";
-    position: absolute;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    top: 8px;
-}
-
-.mastercard::before {
-    background: #eb001b;
-    left: 15px;
-}
-
-.mastercard::after {
-    background: #f79e1b;
-    left: 26px;
-}
-
-/* AMERICAN EXPRESS */
-.amex {
-    background: #159bd3;
-    color: white;
-    border: 1px solid #67c9eb;
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: -0.5px;
-}
-
-/* DISCOVER */
-.discover {
-    background: #ffffff;
-    color: #252525;
-    border: 1px solid #d2d2d2;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-}
-
-.discover .orange {
-    color: #f47c20;
-    font-size: 13px;
-    margin-left: -1px;
-    margin-right: -1px;
-}
-
-/* PAYPAL */
-.paypal {
-    background: #ffffff;
-    display: flex;
-    gap: 2px;
-}
-
-.paypal-icon {
-    position: relative;
-    width: 18px;
-    height: 28px;
-    font-family: Arial, sans-serif;
-    font-size: 28px;
-    font-weight: 900;
-    font-style: italic;
-}
-
-.paypal-back {
-    position: absolute;
-    left: 3px;
-    top: -2px;
-    color: #003087;
-}
-
-.paypal-front {
-    position: absolute;
-    left: 0;
-    top: 1px;
-    color: #009cde;
-}
-
-.paypal-name {
-    font-size: 10px;
-    font-weight: 700;
-    font-style: italic;
-    color: #003087;
-}
-
-/* APPLE PAY */
-.apple-pay {
-    background: #ffffff;
-    color: #111111;
-    border: 1px solid #d2d2d2;
-    font-size: 13px;
-    font-weight: 700;
-}
-
-/* RADIO BUTTON PAYMENT LIST STYLES */
-.payment-radio-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.payment-radio-option {
-    border: 2px solid #e2e8f0;
-    border-radius: 8px;
-    background: #ffffff;
-    transition: all 0.2s ease;
-    overflow: hidden;
-}
-
-.payment-radio-option:hover {
-    border-color: #cbd5e1;
-}
-
-.payment-radio-option.selected {
-    border-color: #16a34a;
-    background: #f0fdf4;
-}
-
-.payment-radio-label {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 14px;
-    cursor: pointer;
-    user-select: none;
-}
-
-.payment-radio-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.payment-radio-left input[type="radio"] {
-    width: 18px;
-    height: 18px;
-    accent-color: #16a34a;
-    cursor: pointer;
-}
-
-.payment-title-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.payment-title {
-    font-size: 14px;
-    font-weight: 800;
-    color: #0f172a;
-}
-
-.payment-subtitle {
-    font-size: 11px;
-    color: #64748b;
-}
-
-.crypto-badge {
-    background: #16a34a;
-    color: #ffffff;
-    font-size: 10px;
-    font-weight: 900;
-    padding: 3px 8px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.7; }
-    100% { opacity: 1; }
-}
-
-.payment-details-panel {
-    display: none;
-    padding: 12px 14px;
-    background: #ffffff;
-    border-top: 1px solid #e2e8f0;
-    font-size: 12px;
-}
-
-.payment-radio-option.selected .payment-details-panel {
-    display: block;
-}
-
-.crypto-wallet-box {
-    background: #1e293b;
-    color: #ffffff;
-    padding: 10px;
-    border-radius: 6px;
-    font-family: monospace;
-    font-size: 11px;
-    margin-top: 6px;
-    word-break: break-all;
-}
-
-.discount-applied-row {
-    color: #16a34a;
-    font-weight: 800;
-}
-
-.checkout-message{
-    display:none;
-
-    padding:15px;
-
-    border-radius:10px;
-
-    background:#dcfce7;
-
-    color:#166534;
-
-    font-weight:700;
-    
-    margin-top: 15px;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-    background:#0f172a;
-
-    color:#94a3b8;
-
-    padding:30px 20px;
-
-    text-align:center;
-
-    margin-top:60px;
-
-    font-size:14px;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(min-width:1024px){
-    .brand-logo h1{
-        font-size:44px;
-    }
-}
-
-@media(max-width:768px){
-
-    .top-nav{
-        flex-wrap:wrap;
-        gap:12px;
+    .site-header-hero::before {
+      content:"";
+      position:absolute;
+      top:0;
+      left:50%;
+      transform:translateX(-50%);
+      width:60%;
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(255,45,87,.7), transparent);
     }
 
-    .brand-logo{
-        order:1;
+    /* ===== NAV ===== */
+    .top-nav {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 3%;
+      max-width:1280px;
+      margin:auto;
+      gap:8px;
+      position:relative;
+      z-index:20;
+    }
+    .brand-logo { flex-shrink:0; }
+    .brand-logo h1 {
+      font-size:38px;
+      font-weight:900;
+      letter-spacing:-1px;
+      line-height:1;
+      background: linear-gradient(135deg, #fff 30%, #ff4d4d 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .brand-logo p { color:#94a3b8; font-size:11px; font-weight:600; letter-spacing:.5px; text-transform:uppercase; margin-top:2px; }
+
+    .icon-btn {
+      background:rgba(0,0,0,.3);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:50%;
+      width:42px;
+      height:42px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#e2e8f0;
+      transition:.3s;
+      flex-shrink:0;
+      position:relative;
+    }
+    .icon-btn:hover { background:rgba(255,77,77,.2); border-color:#ff4d4d; color:#ff4d4d; transform:translateY(-2px); }
+    .icon-btn svg { width:20px; height:20px; stroke-width:2.2; }
+
+    .cart-badge {
+      position:absolute;
+      top:-3px;
+      right:-3px;
+      background:#ef4444;
+      color:white;
+      font-size:10px;
+      font-weight:800;
+      width:19px;
+      height:19px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:2px solid #090d16;
     }
 
-    #menuToggleBtn{
-        order:0;
+    .header-actions-center { flex:1; max-width:480px; display:flex; align-items:center; }
+    .search-container {
+      width:100%;
+      display:flex;
+      align-items:center;
+      background:white;
+      border:1px solid #cbd5e1;
+      border-radius:50px;
+      padding:5px 8px 5px 16px;
+      box-shadow:0 4px 12px rgba(0,0,0,.15);
+      transition:.3s;
+    }
+    .search-container:focus-within { border-color:#ff4d4d; box-shadow:0 0 15px rgba(255,77,77,.4); }
+    .search-input { width:100%; border:none; outline:none; background:transparent; color:#0f172a; font-size:14px; }
+    .search-input::placeholder { color:#64748b; }
+    .search-button { background:none; border:none; color:#64748b; width:34px; height:34px; display:flex; align-items:center; justify-content:center; }
+    .search-button:hover { color:#ff4d4d; }
+    .search-button svg { width:18px; height:18px; fill:currentColor; }
+
+    .mobile-menu { display:none; background:#0f172a; border-bottom:1px solid rgba(255,255,255,.1); padding:15px 5%; text-align:center; position:relative; z-index:15; }
+    .mobile-menu.active { display:block; }
+    .mobile-menu a { color:#fff; text-decoration:none; display:block; padding:11px 0; font-weight:600; }
+    .mobile-menu a:hover { color:#ff4d4d; }
+
+    .hero-content { padding:70px 20px 80px; text-align:center; max-width:800px; margin:auto; position:relative; z-index:2; }
+    .hero-tag {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:rgba(255,77,77,.15);
+      border:1px solid rgba(255,77,77,.35);
+      color:#ff4d4d;
+      font-size:12px;
+      font-weight:700;
+      padding:6px 16px;
+      border-radius:50px;
+      text-transform:uppercase;
+      letter-spacing:.8px;
+      margin-bottom:20px;
+    }
+    .hero-content h2 {
+      font-size:46px;
+      font-weight:900;
+      letter-spacing:-1.5px;
+      line-height:1.15;
+      margin-bottom:16px;
+      background: linear-gradient(180deg, #fff, #cbd5e1);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .hero-content p { font-size:18px; color:#cbd5e1; max-width:540px; margin:auto; line-height:1.6; }
+
+    .container { width:90%; max-width:1200px; margin:auto; padding:50px 0; }
+    .section-title { font-size:26px; font-weight:800; margin-bottom:25px; display:flex; align-items:center; gap:10px; }
+
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:30px; }
+
+    .card {
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,.3);
+      transition:.4s;
+      display:flex;
+      flex-direction:column;
+      position:relative;
+    }
+    .card:hover { transform:translateY(-8px); box-shadow:0 0 25px rgba(13,110,253,.35), 0 20px 40px rgba(0,0,0,.5); }
+    .card-img-wrapper { height:220px; background:#020617; overflow:hidden; position:relative; }
+    .card img { width:100%; height:100%; object-fit:cover; transition:.6s; filter:brightness(.9) contrast(1.05); }
+    .card:hover img { transform:scale(1.08); filter:brightness(1) contrast(1.1); }
+    .card-tag {
+      position:absolute; top:15px; right:15px;
+      background:rgba(15,23,42,.8); color:#38bdf8;
+      border:1px solid rgba(56,189,248,.3);
+      font-size:11px; font-weight:800; padding:6px 12px; border-radius:50px; text-transform:uppercase; z-index:2;
+    }
+    .card-content { padding:24px; display:flex; flex-direction:column; flex-grow:1; }
+    .card h3 { font-size:22px; color:white; margin-bottom:8px; }
+    .card p { color:#94a3b8; font-size:14px; line-height:1.6; margin-bottom:18px; flex-grow:1; }
+    .tech-specs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+    .spec-badge { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); color:#cbd5e1; font-size:12px; font-weight:600; padding:4px 10px; border-radius:6px; }
+    .card button {
+      background: linear-gradient(135deg, #0d6efd, #0052cc);
+      color:white;
+      border:1px solid rgba(255,255,255,.2);
+      padding:14px 20px;
+      border-radius:50px;
+      font-size:15px;
+      font-weight:700;
+      width:100%;
+      transition:.3s;
+    }
+    .card button:hover { background:linear-gradient(135deg, #38bdf8, #0d6efd); color:#000; transform:translateY(-2px); }
+
+    /* ===== ABOUT YELLOW ===== */
+    .about-surron-box {
+      background: linear-gradient(135deg, #fff3c4, #ffc107 40%, #ffab00);
+      color:#1a1a1a;
+      padding:45px 40px;
+      border-radius:20px;
+      margin-top:40px;
+      box-shadow:0 12px 35px rgba(255,171,0,.25);
+      position:relative;
+      overflow:hidden;
+    }
+    .about-surron-box h3 { font-size:32px; margin-bottom:20px; }
+    .about-surron-box p { font-size:17px; line-height:1.7; margin-bottom:18px; }
+    .surron-box-footer { margin-top:30px; padding-top:20px; border-top:1px solid rgba(0,0,0,.1); }
+    .order-now-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      background:#111;
+      color:white;
+      border:none;
+      font-size:18px;
+      font-weight:700;
+      padding:16px 38px;
+      border-radius:50px;
+      transition:.3s;
+    }
+    .order-now-btn:hover { background:#000; transform:translateY(-3px); }
+
+    /* ===== ACCESSORIES ===== */
+    .accessories-section { margin-top:50px; background:#000; padding-bottom:40px; }
+    .header-banner { background:#0a0a0a; color:white; padding:25px 0; text-align:center; border-bottom:1px solid rgba(255,255,255,.1); }
+
+    .slider-container {
+      display:flex;
+      gap:24px;
+      overflow-x:auto;
+      padding:30px 5%;
+      max-width:1200px;
+      margin:auto;
+      scroll-snap-type:x mandatory;
+    }
+    .accessory-card {
+      flex: 0 0 calc(33.333% - 16px);
+      min-width:280px;
+      background:white;
+      border-radius:16px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition:.3s;
+    }
+    .accessory-card:hover { transform:translateY(-5px); box-shadow:0 12px 30px rgba(0,0,0,.35); }
+    .accessory-img-wrapper { height:200px; background:#f8fafc; overflow:hidden; position:relative; }
+    .accessory-img-wrapper img { width:100%; height:100%; object-fit:cover; transition:.4s; }
+    .accessory-card:hover img { transform:scale(1.05); }
+    .discount-badge {
+      position:absolute; top:12px; left:12px;
+      background:#dc2626; color:white;
+      font-size:12px; font-weight:800; padding:4px 10px; border-radius:50px; z-index:2;
+    }
+    .accessory-content { padding:20px; display:flex; flex-direction:column; flex-grow:1; }
+    .accessory-content h4 { font-size:18px; color:#0f172a; margin-bottom:6px; }
+    .accessory-content p { font-size:14px; color:#475569; margin-bottom:12px; flex-grow:1; }
+    .price-container { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+    .original-price { color:#ef4444; text-decoration:line-through; font-weight:700; }
+    .current-price { font-size:22px; color:#0284c7; font-weight:800; }
+    .add-cart-btn {
+      background: linear-gradient(135deg, #0d6efd, #0052cc);
+      color:white;
+      border:none;
+      padding:12px 18px;
+      border-radius:50px;
+      font-weight:700;
+      width:100%;
     }
 
-    .header-actions-center{
-        order:3;
+    .view-more-container { text-align:center; margin-top:20px; }
+    .view-more-btn {
+      background:transparent;
+      color:white;
+      border:2px solid #38bdf8;
+      padding:12px 32px;
+      border-radius:50px;
+      font-weight:700;
+    }
+    .view-more-btn:hover { background:#38bdf8; color:#000; }
 
-        width:100%;
+    /* ===== FEATURES ===== */
+    .features-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 35px;
+      padding: 0 5%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .feature-box {
+      background-color: #ffffff;
+      border: 3px solid #000000;
+      border-radius: 10px;
+      padding: 20px 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 4px 4px 0px #000000;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .feature-box:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #000000; }
+    .feature-icon-wrapper { margin-bottom: 10px; }
+    .feature-icon { width: 42px; height: 42px; stroke: #ff2d87; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .feature-box h3 { font-size: 16px; font-weight: 900; color: #000000; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .feature-box p { font-size: 13px; color: #475569; line-height: 1.5; }
 
-        max-width:none;
+    /* ===== MODAL OVERLAY ===== */
+    .modal-overlay {
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,.75);
+      backdrop-filter:blur(5px);
+      display:none;
+      z-index:1000;
+      overflow-y:auto;
+      padding:20px;
+    }
+    .modal-overlay.active { display:block; }
+    .modal-content {
+      background:white;
+      width:100%;
+      max-width:900px;
+      margin:20px auto;
+      border-radius:20px;
+      padding:20px 20px 60px;
+      animation: modalIn .25s ease;
+    }
+    #productModal .modal-content,
+    #galleryModal .modal-content {
+      background: #000000;
+      color: #ffffff;
+      border: 1px solid #222;
+    }
+    @keyframes modalIn {
+      from { transform:translateY(30px); opacity:0; }
+      to { transform:translateY(0); opacity:1; }
+    }
+    .page-nav-bar {
+      position:sticky;
+      top:0;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(10px);
+      padding:15px 0;
+      border-bottom:1px solid #e2e8f0;
+      z-index:10;
+      margin-bottom:25px;
+    }
+    #productModal .page-nav-bar,
+    #galleryModal .page-nav-bar {
+      background: rgba(0,0,0,0.9);
+      border-bottom:1px solid #222;
+    }
+    .back-btn { font-size:15px; font-weight:700; color:#0d6efd; border:none; background:#eff6ff; padding:10px 20px; border-radius:50px; }
+    #productModal .back-btn,
+    #galleryModal .back-btn { background:#111; color:#fff; border:1px solid #333; }
+    .product-details-header { border-bottom:1px solid #e2e8f0; padding-bottom:20px; margin-bottom:25px; }
+    #productModal .product-details-header { border-bottom:1px solid #222; }
+    .product-details-header h2 { font-size:28px; }
+
+    /* ===== GALLERY GRID (Sur Ron Gallery) ===== */
+    .surron-gallery-container {
+      --bg-color: #0b0b0b;
+      --card-bg: #ffffff;
+      --text-main: #ffffff;
+      --text-dark: #000000;
+      --subtext: #888888;
+      --accent-orange: #c84c1c;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      padding: 20px 16px;
+      border-radius: 20px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .surron-gallery-container header { text-align:center; margin-bottom:16px; }
+    .surron-gallery-container header h1 { font-size:1.5rem; font-weight:900; letter-spacing:0.5px; text-transform:uppercase; color:#fff; }
+    .surron-gallery-container header p { color:var(--subtext); font-size:0.75rem; font-weight:600; letter-spacing:1px; margin-top:2px; text-transform:uppercase; }
+    .surron-gallery-container .controls-bar { display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; font-weight:600; margin-bottom:16px; padding:0 4px; }
+    .surron-gallery-container .filter-btn { display:flex; align-items:center; gap:6px; cursor:pointer; }
+    .surron-gallery-container .gallery-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+    .surron-gallery-container .bike-card { background-color:var(--card-bg); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; color:var(--text-dark); text-align:center; padding-bottom:16px; }
+    .surron-gallery-container .image-container { background:#f4f4f4; padding:12px 8px; height:180px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .surron-gallery-container .image-container img { width:100%; height:100%; object-fit:contain; display:block; }
+    .surron-gallery-container .card-content { padding:12px 8px 0 8px; display:flex; flex-direction:column; align-items:center; gap:6px; flex-grow:1; justify-content:space-between; }
+    .surron-gallery-container .card-content h2 { font-size:1.1rem; font-weight:900; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-dark); }
+    .surron-gallery-container .card-content p { font-size:0.75rem; font-weight:800; line-height:1.2; text-transform:uppercase; color:#111; min-height:36px; display:flex; align-items:center; justify-content:center; }
+    .surron-gallery-container .details-btn { margin-top:6px; background:transparent; border:2px solid var(--accent-orange); color:var(--text-dark); padding:6px 16px; border-radius:20px; font-size:0.75rem; font-weight:700; cursor:pointer; transition:background 0.2s, color 0.2s; width:auto; }
+    .surron-gallery-container .details-btn:hover { background:var(--accent-orange); color:#fff; }
+
+    /* ===== CART MODAL ===== */
+    .cart-items { display:flex; flex-direction:column; gap:15px; margin-bottom:25px; }
+    .cart-item { display:grid; grid-template-columns:80px 1fr auto; gap:15px; align-items:center; padding:15px; border:1px solid #e2e8f0; border-radius:14px; background:#fff; }
+    .cart-item img { width:80px; height:80px; object-fit:cover; border-radius:10px; }
+    .cart-item h4 { margin-bottom:5px; }
+    .cart-item small { color:#64748b; }
+    .cart-controls { display:flex; align-items:center; gap:8px; margin-top:8px; }
+    .qty-btn { width:30px; height:30px; border:none; background:#e2e8f0; border-radius:7px; font-weight:800; }
+    .remove-btn { margin-top:8px; background:none; border:none; color:#dc2626; font-size:13px; font-weight:700; }
+    .cart-price { font-weight:800; white-space:nowrap; }
+    .empty-cart { text-align:center; padding:50px 20px; color:#64748b; }
+    .empty-cart-icon { font-size:50px; margin-bottom:10px; }
+    .summary-card { background:#f8fafc; border:1px solid #e2e8f0; border-radius:16px; padding:24px; margin:20px 0 30px; }
+    .summary-item { display:flex; justify-content:space-between; gap:20px; padding:12px 0; border-bottom:1px solid #cbd5e1; }
+    .summary-item:last-child { border-bottom:none; }
+    .summary-total { font-size:20px; font-weight:800; }
+    .btn-proceed-checkout { width:100%; border:none; color:white; padding:16px 25px; border-radius:50px; font-size:16px; font-weight:800; margin-top:15px; background:#16a34a; box-shadow:0 6px 20px rgba(22,163,74,.3); }
+    .btn-proceed-checkout:hover { background:#15803d; }
+
+    /* ===== CHECKOUT ===== */
+    #checkoutModal .modal-content { max-width:540px; padding:20px; }
+    .checkout-container-box { width:100%; background:#ffffff; padding:15px; border:1px solid #e0e0e0; box-shadow:0 4px 10px rgba(0,0,0,0.05); }
+    .checkout-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+    .checkout-logo { font-size:24px; font-weight:900; font-style:italic; letter-spacing:-1px; background:#ffaa2b; display:inline-block; padding:5px 15px; border-radius:4px; color:#000; }
+    .btn-close { background:transparent; border:none; font-size:24px; font-weight:300; color:#666; cursor:pointer; line-height:1; padding:5px; border-radius:50%; transition:color 0.2s ease, background 0.2s ease; }
+    .btn-close:hover { color:#000; background:#eee; }
+    .checkout-section-title { font-size:18px; margin-bottom:15px; color:#111; }
+    .form-row { display:flex; gap:10px; }
+    .form-group { margin-bottom:12px; flex:1; display:flex; flex-direction:column; gap:4px; }
+    .form-group label { display:block; font-size:12px; font-weight:600; color:#444; }
+    .form-group input, .form-group select, .form-group textarea { width:100%; padding:9px 10px; border:1px solid #ccc; border-radius:4px; font-size:13px; outline:none; background-color:#fff; color:#333; }
+    .form-group textarea { resize:vertical; min-height:80px; }
+    .order-box { border:1px solid #222; background-color:#fffdf5; padding:15px; margin-top:25px; }
+    .login-prompt { border:1px dashed #666; background:#fff; padding:10px; text-align:center; font-size:12px; margin-bottom:15px; }
+    .login-prompt a { color:#d88900; text-decoration:none; font-weight:bold; }
+    .review-table { width:100%; border:1px solid #333; border-collapse:collapse; background:#fdfaf0; }
+    .review-table th, .review-table td { border:1px solid #333; padding:8px; font-size:11px; }
+    .review-table th { text-align:left; background-color:#f0ebd8; }
+    .product-cell { display:flex; align-items:center; gap:8px; }
+    .product-img { width:35px; height:35px; background:#ddd; border-radius:4px; flex-shrink:0; object-fit:cover; }
+    .text-right { text-align:right; }
+    .payment-section { margin-top:25px; border:1px solid #e0e0e0; background:#fafafa; padding:15px; border-radius:6px; }
+    .payment-area { width:100%; background:#414754; padding:12px 10px; display:flex; justify-content:center; border-radius:6px; margin-bottom:15px; }
+    .payment-methods { display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap; }
+    .payment-logo { width:65px; height:42px; border-radius:4px; display:flex; align-items:center; justify-content:center; overflow:hidden; font-family:Arial, Helvetica, sans-serif; box-shadow:0 1px 2px rgba(0,0,0,0.25), inset 0 0 0 1px rgba(0,0,0,0.08); }
+    .visa { background:#1769aa; color:white; font-size:18px; font-weight:900; font-style:italic; letter-spacing:-1px; }
+    .mastercard { background:#202020; position:relative; }
+    .mastercard::before, .mastercard::after { content:""; position:absolute; width:26px; height:26px; border-radius:50%; top:8px; }
+    .mastercard::before { background:#eb001b; left:15px; }
+    .mastercard::after { background:#f79e1b; left:26px; }
+    .amex { background:#159bd3; color:white; border:1px solid #67c9eb; font-size:12px; font-weight:900; letter-spacing:-0.5px; }
+    .discover { background:#ffffff; color:#252525; border:1px solid #d2d2d2; font-size:10px; font-weight:700; letter-spacing:-0.5px; }
+    .discover .orange { color:#f47c20; font-size:13px; margin-left:-1px; margin-right:-1px; }
+    .paypal { background:#ffffff; display:flex; gap:2px; }
+    .paypal-icon { position:relative; width:18px; height:28px; font-family:Arial, sans-serif; font-size:28px; font-weight:900; font-style:italic; }
+    .paypal-back { position:absolute; left:3px; top:-2px; color:#003087; }
+    .paypal-front { position:absolute; left:0; top:1px; color:#009cde; }
+    .paypal-name { font-size:10px; font-weight:700; font-style:italic; color:#003087; }
+    .apple-pay { background:#ffffff; color:#111111; border:1px solid #d2d2d2; font-size:13px; font-weight:700; }
+    .payment-radio-list { display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+    .payment-radio-option { border:2px solid #e2e8f0; border-radius:8px; background:#ffffff; transition:all 0.2s ease; overflow:hidden; }
+    .payment-radio-option:hover { border-color:#cbd5e1; }
+    .payment-radio-option.selected { border-color:#16a34a; background:#f0fdf4; }
+    .payment-radio-label { display:flex; align-items:center; justify-content:space-between; padding:12px 14px; cursor:pointer; user-select:none; }
+    .payment-radio-left { display:flex; align-items:center; gap:10px; }
+    .payment-radio-left input[type="radio"] { width:18px; height:18px; accent-color:#16a34a; cursor:pointer; }
+    .payment-title-group { display:flex; flex-direction:column; }
+    .payment-title { font-size:14px; font-weight:800; color:#0f172a; }
+    .payment-subtitle { font-size:11px; color:#64748b; }
+    .crypto-badge { background:#16a34a; color:#ffffff; font-size:10px; font-weight:900; padding:3px 8px; border-radius:20px; letter-spacing:0.5px; text-transform:uppercase; animation:pulse 2s infinite; }
+    @keyframes pulse { 0% { opacity:1; } 50% { opacity:0.7; } 100% { opacity:1; } }
+    .payment-details-panel { display:none; padding:12px 14px; background:#ffffff; border-top:1px solid #e2e8f0; font-size:12px; }
+    .payment-radio-option.selected .payment-details-panel { display:block; }
+    .crypto-wallet-box { background:#1e293b; color:#ffffff; padding:10px; border-radius:6px; font-family:monospace; font-size:11px; margin-top:6px; word-break:break-all; }
+    .discount-applied-row { color:#16a34a; font-weight:800; }
+    .checkout-message { display:none; padding:15px; border-radius:10px; background:#dcfce7; color:#166534; font-weight:700; margin-top:15px; }
+
+    footer { background:#0f172a; color:#94a3b8; padding:30px 20px; text-align:center; margin-top:60px; font-size:14px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width:768px) {
+      .top-nav { flex-wrap:wrap; gap:12px; }
+      .brand-logo { order:1; }
+      #menuToggleBtn { order:0; }
+      .header-actions-center { order:3; width:100%; max-width:none; }
+      .hero-content h2 { font-size:34px; }
+      .hero-content p { font-size:16px; }
+      .container { width:92%; padding:35px 0; }
+      .about-surron-box { padding:30px 22px; }
+      .about-surron-box h3 { font-size:27px; }
+      .accessory-card { flex:0 0 85%; }
+      .cart-item { grid-template-columns:65px 1fr; }
+      .cart-item img { width:65px; height:65px; }
+      .cart-price { grid-column:2; }
+      .surron-gallery-container .gallery-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:480px) {
+      .brand-logo h1 { font-size:28px; }
+      .brand-logo p { font-size:9px; }
+      .hero-content { padding:55px 15px 65px; }
+      .hero-content h2 { font-size:29px; }
+      .section-title { font-size:22px; }
+      .card-content { padding:20px; }
+      .modal-overlay { padding:0; }
+      .modal-content { min-height:100vh; margin:0; border-radius:0; }
     }
 
-    .hero-content h2{
-        font-size:34px;
-    }
-
-    .hero-content p{
-        font-size:16px;
-    }
-
-    .container{
-        width:92%;
-
-        padding:35px 0;
-    }
-
-    .about-surron-box{
-        padding:30px 22px;
-    }
-
-    .about-surron-box h3{
-        font-size:27px;
-    }
-
-    .accessory-card{
-        flex:0 0 85%;
-    }
-
-    .cart-item{
-        grid-template-columns:
-            65px
-            1fr;
-    }
-
-    .cart-item img{
-        width:65px;
-        height:65px;
-    }
-
-    .cart-price{
-        grid-column:2;
-    }
-
-}
-
-@media(max-width:480px){
-
-    .brand-logo h1{
-        font-size:28px;
-    }
-
-    .brand-logo p{
-        font-size:9px;
-    }
-
-    .hero-content{
-        padding:55px 15px 65px;
-    }
-
-    .hero-content h2{
-        font-size:29px;
-    }
-
-    .section-title{
-        font-size:22px;
-    }
-
-    .card-content{
-        padding:20px;
-    }
-
-    .modal-overlay{
-        padding:0;
-    }
-
-    .modal-content{
-        min-height:100vh;
-
-        margin:0;
-
-        border-radius:0;
-    }
-
-}
-
-/* =========================================================
-   RELATED PRODUCTS
-========================================================= */
-
-.related-products-section {
-    margin-top: 35px;
-    padding-top: 30px;
-    border-top: 1px solid #222;
-}
-
-.related-products-title {
-    font-size: 22px;
-    font-weight: 900;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-    letter-spacing: .5px;
-}
-
-.related-products-subtitle {
-    color: #999;
-    font-size: 13px;
-    margin-bottom: 20px;
-}
-
-.related-products-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 15px;
-}
-
-.related-product-card {
-    background: #111;
-    border: 1px solid #292929;
-    overflow: hidden;
-    transition: .25s ease;
-}
-
-.related-product-card:hover {
-    border-color: #e62325;
-    transform: translateY(-3px);
-}
-
-.related-product-image {
-    width: 100%;
-    height: 150px;
-    background: #050505;
-    overflow: hidden;
-}
-
-.related-product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: .3s ease;
-}
-
-.related-product-card:hover .related-product-image img {
-    transform: scale(1.05);
-}
-
-.related-product-info {
-    padding: 14px;
-}
-
-.related-product-info h4 {
-    color: #fff;
-    font-size: 14px;
-    line-height: 1.3;
-    margin-bottom: 8px;
-}
-
-.related-product-info p {
-    color: #888;
-    font-size: 12px;
-    line-height: 1.5;
-    margin-bottom: 12px;
-}
-
-.related-product-price {
-    color: #fff;
-    font-size: 17px;
-    font-weight: 900;
-    margin-bottom: 12px;
-}
-
-.related-add-btn {
-    width: 100%;
-    border: none;
-    background: #e62325;
-    color: #fff;
-    padding: 11px 12px;
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: .2s ease;
-}
-
-.related-add-btn:hover {
-    background: #cc1f21;
-}
-
-@media(max-width:600px) {
-
-    .related-products-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .related-product-image {
-        height: 180px;
-    }
-
-}
-
-</style>
+    /* ===== RELATED PRODUCTS ===== */
+    .related-products-section { margin-top:35px; padding-top:30px; border-top:1px solid #222; }
+    .related-products-title { font-size:22px; font-weight:900; text-transform:uppercase; margin-bottom:18px; letter-spacing:.5px; }
+    .related-products-subtitle { color:#999; font-size:13px; margin-bottom:20px; }
+    .related-products-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:15px; }
+    .related-product-card { background:#111; border:1px solid #292929; overflow:hidden; transition:.25s ease; }
+    .related-product-card:hover { border-color:#e62325; transform:translateY(-3px); }
+    .related-product-image { width:100%; height:150px; background:#050505; overflow:hidden; }
+    .related-product-image img { width:100%; height:100%; object-fit:cover; transition:.3s ease; }
+    .related-product-card:hover .related-product-image img { transform:scale(1.05); }
+    .related-product-info { padding:14px; }
+    .related-product-info h4 { color:#fff; font-size:14px; line-height:1.3; margin-bottom:8px; }
+    .related-product-info p { color:#888; font-size:12px; line-height:1.5; margin-bottom:12px; }
+    .related-product-price { color:#fff; font-size:17px; font-weight:900; margin-bottom:12px; }
+    .related-add-btn { width:100%; border:none; background:#e62325; color:#fff; padding:11px 12px; font-size:12px; font-weight:800; text-transform:uppercase; cursor:pointer; transition:.2s ease; }
+    .related-add-btn:hover { background:#cc1f21; }
+    @media (max-width:600px) { .related-products-grid { grid-template-columns:1fr; } .related-product-image { height:180px; } }
+  </style>
 </head>
-
-
 <body>
-
-
-<!-- =========================================================
-     HEADER
-========================================================= -->
-
+<!-- ===== HEADER ===== -->
 <header class="site-header-hero">
-
-<nav class="top-nav">
-
-    <!-- MENU -->
-    <button
-        class="icon-btn"
-        id="menuToggleBtn"
-        aria-label="Open menu"
-        aria-expanded="false"
-    >
-
-        <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-        >
-            <line x1="4" y1="6" x2="20" y2="6"/>
-            <line x1="4" y1="12" x2="20" y2="12"/>
-            <line x1="4" y1="18" x2="20" y2="18"/>
-        </svg>
-
+  <nav class="top-nav">
+    <button class="icon-btn" id="menuToggleBtn" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
     </button>
-
-
-    <!-- LOGO -->
     <div class="brand-logo">
-
-        <h1>E-BIKE WORLD</h1>
-
-        <p>Performance E-Mobility</p>
-
+      <h1>E-BIKE WORLD</h1>
+      <p>Performance E-Mobility</p>
     </div>
-
-
-    <!-- SEARCH -->
     <div class="header-actions-center">
-
-        <div class="search-container">
-
-            <input
-                type="text"
-                id="searchInput"
-                class="search-input"
-                placeholder="Search bikes, parts, accessories..."
-                aria-label="Search store"
-            >
-
-            <button
-                class="search-button"
-                id="searchBtn"
-                aria-label="Search"
-            >
-
-                <svg viewBox="0 0 24 24">
-
-                    <path d="
-                        M15.5 14h-.79l-.28-.27
-                        C15.41 12.59 16 11.11 16 9.5
-                        16 5.91 13.09 3 9.5 3
-                        S3 5.91 3 9.5
-                        5.91 16 9.5 16
-                        c1.61 0 3.09-.59 4.23-1.57
-                        l.27.28v.79l5 4.99
-                        L20.49 19l-4.99-5z
-                        M9.5 14
-                        C7.01 14 5 11.99 5 9.5
-                        S7.01 5 9.5 5
-                        14 7.01 14 9.5
-                        11.99 14 9.5 14z
-                    "/>
-
-                </svg>
-
-            </button>
-
-        </div>
-
+      <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search bikes, parts, accessories..." aria-label="Search store">
+        <button class="search-button" id="searchBtn" aria-label="Search">
+          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        </button>
+      </div>
     </div>
-
-
-    <!-- PROFILE -->
-    <button
-        class="icon-btn"
-        id="profileBtn"
-        aria-label="User profile"
-    >
-
-        <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-        >
-
-            <path
-                d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
-                stroke-linecap="round"
-            />
-
-            <circle
-                cx="12"
-                cy="7"
-                r="4"
-            />
-
-        </svg>
-
+    <button class="icon-btn" id="profileBtn" aria-label="User profile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke-linecap="round"/><circle cx="12" cy="7" r="4"/></svg>
     </button>
-
-
-    <!-- CART -->
-    <button
-        class="icon-btn"
-        id="cartBtn"
-        aria-label="Shopping cart"
-    >
-
-        <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-        >
-
-            <path
-                d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            />
-
-            <line
-                x1="3"
-                y1="6"
-                x2="21"
-                y2="6"
-            />
-
-            <path
-                d="M16 10a4 4 0 01-8 0"
-            />
-
-        </svg>
-
-        <span
-            class="cart-badge"
-            id="cartCount"
-        >0</span>
-
+    <button class="icon-btn" id="cartBtn" aria-label="Shopping cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke-linecap="round" stroke-linejoin="round"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span class="cart-badge" id="cartCount">0</span>
     </button>
-
-</nav>
-
-
-<!-- MOBILE MENU -->
-
-<div
-    class="mobile-menu"
-    id="mobileMenu"
->
-
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
     <a href="#categories">Bikes</a>
-
     <a href="#accessories">Accessories</a>
-
     <a href="#about">About SurRon</a>
-
-</div>
-
-
-<!-- HERO -->
-
-<div class="hero-content">
-
-    <div class="hero-tag">
-        ⚡ Next-Gen Electric Mobility
-    </div>
-
-    <h2>
-        Explore Every Ride
-    </h2>
-
-    <p>
-        Discover high-performance electric motorcycles
-        built for extreme off-road trails and ultimate
-        urban mobility.
-    </p>
-
-</div>
-
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">⚡ Next-Gen Electric Mobility</div>
+    <h2>Explore Every Ride</h2>
+    <p>Discover high-performance electric motorcycles built for extreme off-road trails and ultimate urban mobility.</p>
+  </div>
 </header>
 
-
-
-<!-- =========================================================
-     BIKES
-========================================================= -->
-
+<!-- ===== BIKES ===== -->
 <div class="container">
-
-<h2
-    class="section-title"
-    id="categories"
->
-     Featuring
-</h2>
-
-
-<div
-    class="grid"
-    id="bikeGrid"
->
-
-    <!-- LIGHT BEE -->
-
-    <div
-        class="card product-card"
-        data-name="Light Bee X"
-    >
-
-        <div class="card-img-wrapper">
-
-            <span class="card-tag">
-                Agile Dirt
-            </span>
-
-            <img
-                src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/Sur-Ron-LBX-Silver-Orange-Angled.jpg"
-                alt="Surron Light Bee X"
-                loading="lazy"
-            >
-
-        </div>
-
-        <div class="card-content">
-
-            <h3>
-                Light Bee X
-            </h3>
-
-            <p>
-                High-performance lightweight electric
-                dirt bike built for maximum trail
-                maneuverability.
-            </p>
-
-            <div class="tech-specs">
-
-                <span class="spec-badge">
-                    ⚡ 6kW Peak
-                </span>
-
-                <span class="spec-badge">
-                    💨 75 km/h
-                </span>
-
-            </div>
-
-            <button
-                onclick="openProduct('lightBee')"
-            >
-                View Details
-            </button>
-
-        </div>
-
+  <h2 class="section-title" id="categories"> Featuring</h2>
+  <div class="grid" id="bikeGrid">
+    <!-- Light Bee -->
+    <div class="card product-card" data-name="Light Bee X">
+      <div class="card-img-wrapper"><span class="card-tag">Agile Dirt</span><img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/Sur-Ron-LBX-Silver-Orange-Angled.jpg" alt="Surron Light Bee X" loading="lazy"></div>
+      <div class="card-content"><h3>Light Bee X</h3><p>High-performance lightweight electric dirt bike built for maximum trail maneuverability.</p>
+        <div class="tech-specs"><span class="spec-badge">⚡ 6kW Peak</span><span class="spec-badge">💨 75 km/h</span></div>
+        <button onclick="openProduct('lightBee')">View Details</button>
+      </div>
     </div>
-
-
-    <!-- STORM BEE -->
-
-    <div
-        class="card product-card"
-        data-name="Storm Bee"
-    >
-
-        <div class="card-img-wrapper">
-
-            <span class="card-tag">
-                Full-Size MX
-            </span>
-
-            <img
-                src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-storm-1000x1000-1.jpg"
-                alt="Surron Storm Bee"
-                loading="lazy"
-            >
-
-        </div>
-
-        <div class="card-content">
-
-            <h3>
-                Storm Bee
-            </h3>
-
-            <p>
-                Full-size electric off-road motorcycle
-                equipped with maximum power and liquid cooling.
-            </p>
-
-            <div class="tech-specs">
-
-                <span class="spec-badge">
-                    ⚡ 22.5kW Peak
-                </span>
-
-                <span class="spec-badge">
-                    💨 110 km/h
-                </span>
-
-            </div>
-
-            <button
-                onclick="openProduct('stormBee')"
-            >
-                View Details
-            </button>
-
-        </div>
-
+    <!-- Storm Bee -->
+    <div class="card product-card" data-name="Storm Bee">
+      <div class="card-img-wrapper"><span class="card-tag">Full-Size MX</span><img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-storm-1000x1000-1.jpg" alt="Surron Storm Bee" loading="lazy"></div>
+      <div class="card-content"><h3>Storm Bee</h3><p>Full-size electric off-road motorcycle equipped with maximum power and liquid cooling.</p>
+        <div class="tech-specs"><span class="spec-badge">⚡ 22.5kW Peak</span><span class="spec-badge">💨 110 km/h</span></div>
+        <button onclick="openProduct('stormBee')">View Details</button>
+      </div>
     </div>
-
-
-    <!-- ULTRA BEE -->
-
-    <div
-        class="card product-card"
-        data-name="Ultra Bee HP"
-    >
-
-        <div class="card-img-wrapper">
-
-            <span class="card-tag">
-                Pro Performance
-            </span>
-
-            <img
-                src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-ultra-bee.jpg"
-                alt="Surron Ultra Bee"
-                loading="lazy"
-            >
-
-        </div>
-
-        <div class="card-content">
-
-            <h3>
-                Ultra Bee HP
-            </h3>
-
-            <p>
-                Mid-sized, highly versatile off-road
-                electric motorcycle featuring Turbo mode.
-            </p>
-
-            <div class="tech-specs">
-
-                <span class="spec-badge">
-                    ⚡ 21kW Peak
-                </span>
-
-                <span class="spec-badge">
-                    💨 95 km/h
-                </span>
-
-            </div>
-
-            <button
-                onclick="openProduct('ultraBee')"
-            >
-                View Details
-            </button>
-
-        </div>
-
+    <!-- Ultra Bee -->
+    <div class="card product-card" data-name="Ultra Bee HP">
+      <div class="card-img-wrapper"><span class="card-tag">Pro Performance</span><img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-ultra-bee.jpg" alt="Surron Ultra Bee" loading="lazy"></div>
+      <div class="card-content"><h3>Ultra Bee HP</h3><p>Mid-sized, highly versatile off-road electric motorcycle featuring Turbo mode.</p>
+        <div class="tech-specs"><span class="spec-badge">⚡ 21kW Peak</span><span class="spec-badge">💨 95 km/h</span></div>
+        <button onclick="openProduct('ultraBee')">View Details</button>
+      </div>
     </div>
-
-
-    <!-- HYPER BEE -->
-
-    <div
-        class="card product-card"
-        data-name="Hyper Bee"
-    >
-
-        <div class="card-img-wrapper">
-
-            <span class="card-tag">
-                Youth Mini
-            </span>
-
-            <img
-                src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/58.webp"
-                alt="Surron Hyper Bee"
-                loading="lazy"
-            >
-
-        </div>
-
-        <div class="card-content">
-
-            <h3>
-                Hyper Bee
-            </h3>
-
-            <p>
-                Compact electric dirt bike designed for
-                younger riders and mini-pit racing.
-            </p>
-
-            <div class="tech-specs">
-
-                <span class="spec-badge">
-                    ⚡ 5kW Peak
-                </span>
-
-                <span class="spec-badge">
-                    💨 50 km/h
-                </span>
-
-            </div>
-
-            <button
-                onclick="openProduct('hyperBee')"
-            >
-                View Details
-            </button>
-
-        </div>
-
+    <!-- Hyper Bee -->
+    <div class="card product-card" data-name="Hyper Bee">
+      <div class="card-img-wrapper"><span class="card-tag">Youth Mini</span><img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/58.webp" alt="Surron Hyper Bee" loading="lazy"></div>
+      <div class="card-content"><h3>Hyper Bee</h3><p>Compact electric dirt bike designed for younger riders and mini-pit racing.</p>
+        <div class="tech-specs"><span class="spec-badge">⚡ 5kW Peak</span><span class="spec-badge">💨 50 km/h</span></div>
+        <button onclick="openProduct('hyperBee')">View Details</button>
+      </div>
     </div>
-
-</div>
-
-
-<!-- =========================================================
-     ABOUT (YELLOW BOX PLACED UNDER ALL BIKES)
-========================================================= -->
-
-<div
-    class="about-surron-box"
-    id="about"
->
-
-    <h3>
-        ⚡ About SurRon Bikes
-    </h3>
-
-    <p>
-        SurRon bikes are high-performance electric
-        off-road motorcycles designed to deliver
-        power, speed, and reliability while producing
-        zero emissions.
-    </p>
-
-    <p>
-        Known for lightweight construction, instant
-        torque and electric drivetrains, SurRon bikes
-        have become popular among trail riders,
-        adventure enthusiasts and electric mobility fans.
-    </p>
-
-    <p>
-        Experience the next generation of riding with
-        SurRon — where innovation meets performance.
-    </p>
-
+  </div>
+  <!-- ABOUT -->
+  <div class="about-surron-box" id="about">
+    <h3>⚡ About SurRon Bikes</h3>
+    <p>SurRon bikes are high-performance electric off-road motorcycles designed to deliver power, speed, and reliability while producing zero emissions.</p>
+    <p>Known for lightweight construction, instant torque and electric drivetrains, SurRon bikes have become popular among trail riders, adventure enthusiasts and electric mobility fans.</p>
+    <p>Experience the next generation of riding with SurRon — where innovation meets performance.</p>
     <div class="surron-box-footer">
-
-        <button
-            class="order-now-btn"
-            onclick="openProduct('lightBee')"
-        >
-           View bikes →
-        </button>
-
+      <button class="order-now-btn" onclick="openModal('galleryModal')">View bikes →</button>
     </div>
-
+  </div>
 </div>
 
+<!-- ===== ACCESSORIES ===== -->
+<div class="accessories-section" id="accessories">
+  <div class="header-banner"><h2>🔧 Accessories</h2></div>
+  <div class="slider-container" id="accessorySlider">
+    <!-- Accessory 1 -->
+    <div class="accessory-card" data-name="Light Bee Charger 10A">
+      <div class="accessory-img-wrapper"><span class="discount-badge">17% OFF</span><img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-charger-10a-157796_1178x882.webp" alt="Light Bee Charger" loading="lazy"></div>
+      <div class="accessory-content"><h4>Light Bee Charger 10A</h4><p>High-efficiency charger designed for the Light Bee battery.</p>
+        <div class="price-container"><span class="original-price">£300</span><span class="current-price">£250</span></div>
+        <button class="add-cart-btn" onclick="addToCart('charger')">🛒 Add to Cart</button>
+      </div>
+    </div>
+    <!-- Accessory 2 -->
+    <div class="accessory-card" data-name="Lithium Battery 48V 20Ah">
+      <div class="accessory-img-wrapper"><span class="discount-badge">18% OFF</span><img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-s-lithium-battery-48v20ah-851993_798x798.webp" alt="Lithium Battery" loading="lazy"></div>
+      <div class="accessory-content"><h4>Lithium Battery 48V 20Ah</h4><p>High-capacity replacement battery designed for dependable output.</p>
+        <div class="price-container"><span class="original-price">£550</span><span class="current-price">£450</span></div>
+        <button class="add-cart-btn" onclick="addToCart('battery')">🛒 Add to Cart</button>
+      </div>
+    </div>
+    <!-- Accessory 3 -->
+    <div class="accessory-card" data-name="16/19 Wheel Rim Kit KKE">
+      <div class="accessory-img-wrapper"><span class="discount-badge">20% OFF</span><img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-1619-wheel-rim-kit-kke-429448_700x700.webp" alt="Wheel Rim Kit" loading="lazy"></div>
+      <div class="accessory-content"><h4>16/19 Wheel Rim Kit KKE</h4><p>Heavy-duty wheel rim kit designed for rugged off-road riding.</p>
+        <div class="price-container"><span class="original-price">£500</span><span class="current-price">£400</span></div>
+        <button class="add-cart-btn" onclick="addToCart('wheelKit')">🛒 Add to Cart</button>
+      </div>
+    </div>
+    <!-- Hidden extra accessories (will appear on View More) -->
+    <div class="accessory-card extra-accessory hidden" data-name="Premium Handlebar">
+      <div class="accessory-img-wrapper"><span class="discount-badge">NEW</span><img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-1619-wheel-rim-kit-kke-429448_700x700.webp" alt="Premium Handlebar" loading="lazy"></div>
+      <div class="accessory-content"><h4>Premium Handlebar</h4><p>Premium replacement handlebar for improved control.</p>
+        <div class="price-container"><span class="current-price">£180</span></div>
+        <button class="add-cart-btn" onclick="addCustomItem('Premium Handlebar',180,this.closest('.accessory-card').querySelector('img').src)">🛒 Add to Cart</button>
+      </div>
+    </div>
+    <div class="accessory-card extra-accessory hidden" data-name="LED Headlight Kit">
+      <div class="accessory-img-wrapper"><span class="discount-badge">15% OFF</span><img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-charger-10a-157796_1178x882.webp" alt="LED Headlight" loading="lazy"></div>
+      <div class="accessory-content"><h4>LED Headlight Kit</h4><p>High-lumen LED headlight for night trail riding.</p>
+        <div class="price-container"><span class="original-price">£120</span><span class="current-price">£102</span></div>
+        <button class="add-cart-btn" onclick="addCustomItem('LED Headlight Kit',102,this.closest('.accessory-card').querySelector('img').src)">🛒 Add to Cart</button>
+      </div>
+    </div>
+    <div class="accessory-card extra-accessory hidden" data-name="Rear Shock Upgrade">
+      <div class="accessory-img-wrapper"><span class="discount-badge">10% OFF</span><img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-ultra-bee.jpg" alt="Rear Shock" loading="lazy"></div>
+      <div class="accessory-content"><h4>Rear Shock Upgrade</h4><p>Adjustable rear shock for improved off-road damping.</p>
+        <div class="price-container"><span class="original-price">£340</span><span class="current-price">£306</span></div>
+        <button class="add-cart-btn" onclick="addCustomItem('Rear Shock Upgrade',306,this.closest('.accessory-card').querySelector('img').src)">🛒 Add to Cart</button>
+      </div>
+    </div>
+  </div>
+  <div class="view-more-container">
+    <button class="view-more-btn" id="viewMoreBtn">View More Accessories</button>
+  </div>
 </div>
 
-
-
-<!-- =========================================================
-     ACCESSORIES
-========================================================= -->
-
-<div
-    class="accessories-section"
-    id="accessories"
->
-
-    <div class="header-banner">
-
-        <h2>
-            🔧 Accessories
-        </h2>
-
-    </div>
-
-
-    <div
-        class="slider-container"
-        id="accessorySlider"
-    >
-
-        <!-- ACCESSORY 1 -->
-
-        <div
-            class="accessory-card"
-            data-name="Light Bee Charger 10A"
-        >
-
-            <div class="accessory-img-wrapper">
-
-                <span class="discount-badge">
-                    17% OFF
-                </span>
-
-                <img
-                    src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-charger-10a-157796_1178x882.webp"
-                    alt="Light Bee Charger"
-                    loading="lazy"
-                >
-
-            </div>
-
-            <div class="accessory-content">
-
-                <h4>
-                    Light Bee Charger 10A
-                </h4>
-
-                <p>
-                    High-efficiency charger designed
-                    for the Light Bee battery.
-                </p>
-
-                <div class="price-container">
-
-                    <span class="original-price">
-                        £300
-                    </span>
-
-                    <span class="current-price">
-                        £250
-                    </span>
-
-                </div>
-
-                <button
-                    class="add-cart-btn"
-                    onclick="addToCart('charger')"
-                >
-                    🛒 Add to Cart
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- ACCESSORY 2 -->
-
-        <div
-            class="accessory-card"
-            data-name="Lithium Battery 48V 20Ah"
-        >
-
-            <div class="accessory-img-wrapper">
-
-                <span class="discount-badge">
-                    18% OFF
-                </span>
-
-                <img
-                    src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-s-lithium-battery-48v20ah-851993_798x798.webp"
-                    alt="Lithium Battery"
-                    loading="lazy"
-                >
-
-            </div>
-
-            <div class="accessory-content">
-
-                <h4>
-                    Lithium Battery 48V 20Ah
-                </h4>
-
-                <p>
-                    High-capacity replacement battery
-                    designed for dependable output.
-                </p>
-
-                <div class="price-container">
-
-                    <span class="original-price">
-                        £550
-                    </span>
-
-                    <span class="current-price">
-                        £450
-                    </span>
-
-                </div>
-
-                <button
-                    class="add-cart-btn"
-                    onclick="addToCart('battery')"
-                >
-                    🛒 Add to Cart
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- ACCESSORY 3 -->
-
-        <div
-            class="accessory-card"
-            data-name="16/19 Wheel Rim Kit KKE"
-        >
-
-            <div class="accessory-img-wrapper">
-
-                <span class="discount-badge">
-                    20% OFF
-                </span>
-
-                <img
-                    src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-1619-wheel-rim-kit-kke-429448_700x700.webp"
-                    alt="Wheel Rim Kit"
-                    loading="lazy"
-                >
-
-            </div>
-
-            <div class="accessory-content">
-
-                <h4>
-                    16/19 Wheel Rim Kit KKE
-                </h4>
-
-                <p>
-                    Heavy-duty wheel rim kit designed
-                    for rugged off-road riding.
-                </p>
-
-                <div class="price-container">
-
-                    <span class="original-price">
-                        £500
-                    </span>
-
-                    <span class="current-price">
-                        £400
-                    </span>
-
-                </div>
-
-                <button
-                    class="add-cart-btn"
-                    onclick="addToCart('wheelKit')"
-                >
-                    🛒 Add to Cart
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- HIDDEN ACCESSORY -->
-
-        <div
-            class="accessory-card extra-accessory hidden"
-            data-name="Premium Handlebar"
-        >
-
-            <div class="accessory-img-wrapper">
-
-                <span class="discount-badge">
-                    NEW
-                </span>
-
-                <img
-                    src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-1619-wheel-rim-kit-kke-429448_700x700.webp"
-                    alt="Premium Handlebar"
-                    loading="lazy"
-                >
-
-            </div>
-
-            <div class="accessory-content">
-
-                <h4>
-                    Premium Handlebar
-                </h4>
-
-                <p>
-                    Premium replacement handlebar for
-                    improved control.
-                </p>
-
-                <div class="price-container">
-
-                    <span class="current-price">
-                        £180
-                    </span>
-
-                </div>
-
-                <button
-                    class="add-cart-btn"
-                    onclick="addCustomItem(
-                        'Premium Handlebar',
-                        180,
-                        this.closest('.accessory-card').querySelector('img').src
-                    )"
-                >
-                    🛒 Add to Cart
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="view-more-container">
-
-        <button
-            class="view-more-btn"
-            id="viewMoreBtn"
-        >
-            View More
-        </button>
-
-    </div>
-
-</div>
-
-<!-- FEATURES SECTION -->
+<!-- ===== FEATURES ===== -->
 <div class="features-section">
-  <div class="feature-box">
-    <div class="feature-icon-wrapper">
-      <svg class="feature-icon" viewBox="0 0 24 24">
-        <rect x="1" y="3" width="15" height="13" rx="2" ry="2"/>
-        <path d="M16 8h4l3 3v5h-7V8z"/>
-        <circle cx="5.5" cy="18.5" r="2.5"/>
-        <circle cx="18.5" cy="18.5" r="2.5"/>
-        <path d="M9 7h3"/>
-      </svg>
-    </div>
-    <h3>Fastest Delivery</h3>
-    <p>Fast and free delivery across the USA with real-time tracking.</p>
-  </div>
+  <div class="feature-box"><div class="feature-icon-wrapper"><svg class="feature-icon" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2" ry="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/><path d="M9 7h3"/></svg></div><h3>Fastest Delivery</h3><p>Fast and free delivery across the USA with real-time tracking.</p></div>
+  <div class="feature-box"><div class="feature-icon-wrapper"><svg class="feature-icon" viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 12L2 9l4-6z"/><path d="M11 3l1 18"/><path d="M2 9h20"/></svg></div><h3>Pay In Installments</h3><p>Flexible plans to split your ride into easy monthly payments.</p></div>
+  <div class="feature-box"><div class="feature-icon-wrapper"><svg class="feature-icon" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3" ry="3"/><rect x="15" y="11" width="5" height="4" rx="1" ry="1"/><path d="M2 10h20"/></svg></div><h3>Secure Payments</h3><p>Encrypted options, flexible financing, and crypto discounts.</p></div>
+</div>
 
-  <div class="feature-box">
-    <div class="feature-icon-wrapper">
-      <svg class="feature-icon" viewBox="0 0 24 24">
-        <path d="M6 3h12l4 6-10 12L2 9l4-6z"/>
-        <path d="M11 3l1 18"/>
-        <path d="M2 9h20"/>
-      </svg>
-    </div>
-    <h3>Pay In Installments</h3>
-    <p>Flexible plans to split your ride into easy monthly payments.</p>
-  </div>
-
-  <div class="feature-box">
-    <div class="feature-icon-wrapper">
-      <svg class="feature-icon" viewBox="0 0 24 24">
-        <rect x="2" y="5" width="20" height="14" rx="3" ry="3"/>
-        <rect x="15" y="11" width="5" height="4" rx="1" ry="1"/>
-        <path d="M2 10h20"/>
-      </svg>
-    </div>
-    <h3>Secure Payments</h3>
-    <p>Encrypted options, flexible financing, and crypto discounts.</p>
+<!-- ===== MODALS ===== -->
+<!-- Product Modal -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal-content">
+    <div class="page-nav-bar"><button class="back-btn" onclick="closeModal('productModal')">← Back to Store</button></div>
+    <div id="productModalContent"></div>
   </div>
 </div>
 
+<!-- Gallery Modal -->
+<div class="modal-overlay" id="galleryModal">
+  <div class="modal-content">
+    <div class="page-nav-bar"><button class="back-btn" onclick="closeModal('galleryModal')">← Back to Store</button></div>
+    <div class="surron-gallery-container">
+      <header><h1>SUR RON GALLERY</h1><p>EXPLORE THE BEE FAMILY</p></header>
+      <div class="controls-bar"><span>Sort</span><div class="filter-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg><span>Filters</span></div></div>
+      <main class="gallery-grid">
+        <!-- Original Existing Bikes -->
+        <article class="bike-card"><div class="image-container"><img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/Sur-Ron-LBX-Silver-Orange-Angled.jpg" alt="2026 Sur Ron Light Bee X" /></div><div class="card-content"><h2>LIGHT BEE</h2><p>2026 SUR RON LIGHT BEE X 10KW - IN STOCK NOW</p><button class="details-btn" onclick="closeModal('galleryModal'); openProduct('lightBee');">View Details</button></div></article>
+        <article class="bike-card"><div class="image-container"><img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-storm-1000x1000-1.jpg" alt="2026 Sur Ron Storm Bee" /></div><div class="card-content"><h2>STORM BEE</h2><p>2026 SUR RON STORM 22.5KW - ENDURO/ROAD</p><button class="details-btn" onclick="closeModal('galleryModal'); openProduct('stormBee');">View Details</button></div></article>
+        <article class="bike-card"><div class="image-container"><img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-ultra-bee.jpg" alt="2026 Sur Ron Ultra Bee" /></div><div class="card-content"><h2>ULTRA BEE</h2><p>2026 SUR RON ULTRA BEE X HP 24.5KW - HIGH PERFORMANCE</p><button class="details-btn" onclick="closeModal('galleryModal'); openProduct('ultraBee');">View Details</button></div></article>
+        <article class="bike-card"><div class="image-container"><img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/58.webp" alt="2026 Sur Ron Hyper Bee" /></div><div class="card-content"><h2>HYPER BEE</h2><p>2026 SUR RON HYPER BEE 8KW - COMPACT PROGRESSION</p><button class="details-btn" onclick="closeModal('galleryModal'); openProduct('hyperBee');">View Details</button></div></article>
 
-
-<!-- =========================================================
-     PRODUCT MODAL
-========================================================= -->
-
-<div
-    class="modal-overlay"
-    id="productModal"
->
-
-    <div class="modal-content">
-
-        <div class="page-nav-bar">
-
-            <button
-                class="back-btn"
-                onclick="closeModal('productModal')"
-            >
-                ← Back to Store
-            </button>
-
-        </div>
-
-
-        <div id="productModalContent"></div>
-
+        <!-- New Added Bikes from Uploads -->
+        <article class="bike-card"><div class="image-container"><img src="https://i.postimg.cc/HJKPGNtV/IMG-4238.png" alt="Sur Ron Custom Build 01" /></div><div class="card-content"><h2>LIGHT BEE CUSTOM</h2><p>2026 SUR RON LIGHT BEE CUSTOM EDITION</p><button class="details-btn" onclick="closeModal('galleryModal'); openProduct('lightBee');">View Details</button></div></article>
+        <article class="bike-card"><div class="image-container"><img src="https://i.postimg.cc/3y6bMqZy/IMG-4239.png" alt="Sur Ron Custom Build 02" /></div><div class="card-content"><h2>STORM BEE MX</h2><p>2026 SUR RON STORM BEE MOTOCROSS PRO</p><button class="details-btn" onclick="closeModal('galleryModal'); openProduct('stormBee');">View Details</button></div></article>
+        <article class="bike-card"><div class="image-container"><img src="https://i.postimg.cc/R38brYTH/IMG-4240.png" alt="Sur Ron Custom Build 03" /></div><div class="card-content"><h2>ULTRA BEE PRO</h2><p>2026 SUR RON ULTRA BEE FACTORY RACE</p><button class="details-btn" onclick="closeModal('galleryModal'); openProduct('ultraBee');">View Details</button></div></article>
+        <article class="bike-card"><div class="image-container"><img src="https://i.postimg.cc/Mc4rkLYf/IMG-4241.png" alt="Sur Ron Custom Build 04" /></div><div class="card-content"><h2>HYPER BEE MINI</h2><p>2026 SUR RON HYPER BEE MINI TRACK</p><button class="details-btn" onclick="closeModal('galleryModal'); openProduct('hyperBee');">View Details</button></div></article>
+        <article class="bike-card"><div class="image-container"><img src="https://i.postimg.cc/KKVsXW5j/IMG-4242.png" alt="Sur Ron Custom Build 05" /></div><div class="card-content"><h2>LIGHT BEE X STEALTH</h2><p>2026 SUR RON LIGHT BEE STEALTH BLACK</p><button class="details-btn" onclick="closeModal('galleryModal'); openProduct('lightBee');">View Details</button></div></article>
+        <article class="bike-card"><div class="image-container"><img src="https://i.postimg.cc/063Hg4Cz/IMG-4243.png" alt="Sur Ron Custom Build 06" /></div><div class="card-content"><h2>ULTRA BEE ADVENTURE</h2><p>2026 SUR RON ULTRA BEE ADVENTURE EDITION</p><button class="details-btn" onclick="closeModal('galleryModal'); openProduct('ultraBee');">View Details</button></div></article>
+      </main>
     </div>
-
+  </div>
 </div>
 
-
-
-<!-- =========================================================
-     CART MODAL
-========================================================= -->
-
-<div
-    class="modal-overlay"
-    id="cartModal"
->
-
-    <div class="modal-content">
-
-        <div class="page-nav-bar">
-
-            <button
-                class="back-btn"
-                onclick="closeModal('cartModal')"
-            >
-                ← Continue Shopping
-            </button>
-
-        </div>
-
-
-        <div class="product-details-header">
-
-            <h2>
-                🛒 Your Shopping Cart
-            </h2>
-
-            <p>
-                Review your selected products.
-            </p>
-
-        </div>
-
-
-        <div
-            class="cart-items"
-            id="cartItems"
-        ></div>
-
-
-        <div
-            class="summary-card"
-            id="cartSummary"
-        >
-
-            <div class="summary-item">
-
-                <span>
-                    Subtotal
-                </span>
-
-                <strong id="cartSubtotal">
-                    £0
-                </strong>
-
-            </div>
-
-
-            <div class="summary-item">
-
-                <span>
-                    Shipping
-                </span>
-
-                <strong>
-                    FREE
-                </strong>
-
-            </div>
-
-
-            <div class="summary-item summary-total">
-
-                <span>
-                    Total
-                </span>
-
-                <strong id="cartTotal">
-                    £0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <button
-            class="btn-proceed-checkout"
-            id="checkoutBtn"
-        >
-            Proceed to Checkout →
-        </button>
-
+<!-- Cart Modal -->
+<div class="modal-overlay" id="cartModal">
+  <div class="modal-content">
+    <div class="page-nav-bar"><button class="back-btn" onclick="closeModal('cartModal')">← Continue Shopping</button></div>
+    <div class="product-details-header"><h2>🛒 Your Shopping Cart</h2><p>Review your selected products.</p></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="summary-card" id="cartSummary">
+      <div class="summary-item"><span>Subtotal</span><strong id="cartSubtotal">£0</strong></div>
+      <div class="summary-item"><span>Shipping</span><strong>FREE</strong></div>
+      <div class="summary-item summary-total"><span>Total</span><strong id="cartTotal">£0</strong></div>
     </div>
-
+    <button class="btn-proceed-checkout" id="checkoutBtn">Proceed to Checkout →</button>
+  </div>
 </div>
 
-
-
-<!-- =========================================================
-     CHECKOUT MODAL
-========================================================= -->
-
-<div
-    class="modal-overlay"
-    id="checkoutModal"
->
-
-    <div class="modal-content">
-
-        <div class="checkout-container-box">
-            <header class="checkout-header">
-                <div class="checkout-logo">BIKE WORLD</div>
-                <button type="button" class="btn-close" onclick="closeModal('checkoutModal')">&times;</button>
-            </header>
-
-            <form class="checkout-form" action="https://formcarry.com/s/bItoDQJaK3C" method="POST" id="checkoutForm">
-                <h2 class="checkout-section-title">Shipping & Contact Details</h2>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="customerFirstName">First Name</label>
-                        <input type="text" id="customerFirstName" name="firstName" required placeholder="First Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="customerLastName">Last Name</label>
-                        <input type="text" id="customerLastName" name="lastName" required placeholder="Last Name">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="customerEmail">Email Address</label>
-                    <input type="email" id="customerEmail" name="email" required placeholder="you@example.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="customerPhone">Phone Number</label>
-                    <input type="tel" id="customerPhone" name="phone" required placeholder="Phone number">
-                </div>
-
-                <div class="form-group">
-                    <label for="customerAddress">Address</label>
-                    <input type="text" id="customerAddress" name="address" required placeholder="Street Address">
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="customerCity">City</label>
-                        <input type="text" id="customerCity" name="city" required placeholder="City">
-                    </div>
-                    <div class="form-group">
-                        <label for="customerPostcode">Postcode / ZIP</label>
-                        <input type="text" id="customerPostcode" name="postcode" required placeholder="Postcode">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="customerCountry">Country</label>
-                    <select id="customerCountry" name="country" required>
-                        <option value="United Kingdom">United Kingdom</option>
-                        <option value="United States">United States</option>
-                        <option value="Canada">Canada</option>
-                        <option value="Australia">Australia</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Message / Order Notes</label>
-                    <textarea id="message" name="message" placeholder="Special delivery instructions or order notes..." required></textarea>
-                </div>
-
-                <!-- Hidden inputs to submit calculated values to Formcarry -->
-                <input type="hidden" id="formOrderSummary" name="orderSummary">
-                <input type="hidden" id="formOrderTotal" name="orderTotal">
-
-                <!-- Order Review Table -->
-                <div class="order-box">
-                    <div class="login-prompt">
-                        Already have an account? <a href="#" onclick="closeModal('checkoutModal'); openModal('profileModal'); return false;">Log in</a> to speed up checkout.
-                    </div>
-
-                    <table class="review-table">
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th class="text-right">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody id="checkoutOrderItems">
-                            <!-- Injected Dynamically via Javascript -->
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td><strong>Subtotal</strong></td>
-                                <td class="text-right"><strong id="checkoutSubtotal">£0</strong></td>
-                            </tr>
-                            <tr id="cryptoDiscountRow" class="hidden">
-                                <td class="discount-applied-row"><strong>Crypto Discount (10%)</strong></td>
-                                <td class="text-right discount-applied-row"><strong id="checkoutDiscount">-£0</strong></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Shipping</strong></td>
-                                <td class="text-right"><strong>Free</strong></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Total</strong></td>
-                                <td class="text-right"><strong id="checkoutTotal">£0</strong></td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-
-                <!-- Payment Section -->
-                <div class="payment-section">
-                    <h2 class="checkout-section-title">Select Payment Method</h2>
-                    
-                    <div class="payment-area">
-                        <div class="payment-methods">
-                            <div class="payment-logo visa">VISA</div>
-                            <div class="payment-logo mastercard"></div>
-                            <div class="payment-logo amex">AMEX</div>
-                            <div class="payment-logo discover">DISC<span class="orange">O</span>VER</div>
-                            <div class="payment-logo paypal">
-                                <span class="paypal-icon">
-                                    <span class="paypal-back">P</span>
-                                    <span class="paypal-front">P</span>
-                                </span>
-                                <span class="paypal-name">PayPal</span>
-                            </div>
-                            <div class="payment-logo apple-pay">Pay</div>
-                        </div>
-                    </div>
-
-                    <div class="payment-radio-list">
-                        <!-- 1. CRYPTO (First & Highlighted with Discount) -->
-                        <div class="payment-radio-option selected" id="opt-crypto">
-                            <label class="payment-radio-label" for="pay-crypto">
-                                <div class="payment-radio-left">
-                                    <input type="radio" id="pay-crypto" name="paymentMethod" value="crypto" checked onchange="handlePaymentChange('crypto')">
-                                    <div class="payment-title-group">
-                                        <span class="payment-title"><i class="fa-brands fa-bitcoin"></i> Cryptocurrency</span>
-                                        <span class="payment-subtitle">BTC, ETH, USDT, SOL accepted</span>
-                                    </div>
-                                </div>
-                                <span class="crypto-badge">SAVE 10%</span>
-                            </label>
-                            <div class="payment-details-panel">
-                                <p><strong>10% instant discount applied to your order total!</strong></p>
-                                <p style="margin-top:4px;">Please transfer the exact amount after checkout to one of our payment addresses:</p>
-                                <div class="crypto-wallet-box">
-                                    <strong>BTC:</strong> 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa<br>
-                                    <strong>USDT (TRC20):</strong> T9yD14Nj9j7xAB4dbGeiX9h8A9yD14Nj9j
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 2. CASH APP -->
-                        <div class="payment-radio-option" id="opt-cashapp">
-                            <label class="payment-radio-label" for="pay-cashapp">
-                                <div class="payment-radio-left">
-                                    <input type="radio" id="pay-cashapp" name="paymentMethod" value="cashapp" onchange="handlePaymentChange('cashapp')">
-                                    <div class="payment-title-group">
-                                        <span class="payment-title"><i class="fa-solid fa-dollar-sign"></i> Cash App</span>
-                                        <span class="payment-subtitle">Fast & secure mobile transfer</span>
-                                    </div>
-                                </div>
-                            </label>
-                            <div class="payment-details-panel">
-                                <p>Send payment to our Cashtag: <strong>$BikeWorldOfficial</strong></p>
-                                <p style="margin-top:4px; color:#666;">Include your Order ID in the payment note.</p>
-                            </div>
-                        </div>
-
-                        <!-- 3. DEBIT / CREDIT CARD -->
-                        <div class="payment-radio-option" id="opt-card">
-                            <label class="payment-radio-label" for="pay-card">
-                                <div class="payment-radio-left">
-                                    <input type="radio" id="pay-card" name="paymentMethod" value="card" onchange="handlePaymentChange('card')">
-                                    <div class="payment-title-group">
-                                        <span class="payment-title"><i class="fa-solid fa-credit-card"></i> Credit / Debit Card</span>
-                                        <span class="payment-subtitle">Visa, MasterCard, Amex, Discover</span>
-                                    </div>
-                                </div>
-                            </label>
-                            <div class="payment-details-panel">
-                                <div class="form-group" style="margin-top:6px;">
-                                    <label>Card Number</label>
-                                    <input type="text" name="cardNumber" placeholder="1234 5678 9012 3456">
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label>Expiry Date</label>
-                                        <input type="text" name="cardExpiry" placeholder="MM/YY">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>CVC / CVV</label>
-                                        <input type="text" name="cardCvc" placeholder="123">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 4. PAYPAL -->
-                        <div class="payment-radio-option" id="opt-paypal">
-                            <label class="payment-radio-label" for="pay-paypal">
-                                <div class="payment-radio-left">
-                                    <input type="radio" id="pay-paypal" name="paymentMethod" value="paypal" onchange="handlePaymentChange('paypal')">
-                                    <div class="payment-title-group">
-                                        <span class="payment-title"><i class="fa-brands fa-paypal"></i> PayPal</span>
-                                        <span class="payment-subtitle">Safe online payment</span>
-                                    </div>
-                                </div>
-                            </label>
-                            <div class="payment-details-panel">
-                                <p>You will be redirected to PayPal to complete your purchase securely.</p>
-                            </div>
-                        </div>
-
-                        <!-- 5. BANK TRANSFER -->
-                        <div class="payment-radio-option" id="opt-bank">
-                            <label class="payment-radio-label" for="pay-bank">
-                                <div class="payment-radio-left">
-                                    <input type="radio" id="pay-bank" name="paymentMethod" value="bank" onchange="handlePaymentChange('bank')">
-                                    <div class="payment-title-group">
-                                        <span class="payment-title"><i class="fa-solid fa-building-columns"></i> Bank Transfer</span>
-                                        <span class="payment-subtitle">Direct wire payment</span>
-                                    </div>
-                                </div>
-                            </label>
-                            <div class="payment-details-panel">
-                                <p>Bank Account Details will be provided immediately upon placing the order.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="checkout-message" id="checkoutMessage">
-                    Order information received.
-                </div>
-
-                <button type="submit" class="btn-proceed-checkout">
-                    Submit Order →
-                </button>
-            </form>
+<!-- Checkout Modal -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal-content">
+    <div class="checkout-container-box">
+      <header class="checkout-header"><div class="checkout-logo">BIKE WORLD</div><button type="button" class="btn-close" onclick="closeModal('checkoutModal')">&times;</button></header>
+      <form class="checkout-form" action="https://formcarry.com/s/bItoDQJaK3C" method="POST" id="checkoutForm">
+        <h2 class="checkout-section-title">Shipping & Contact Details</h2>
+        <div class="form-row"><div class="form-group"><label for="customerFirstName">First Name</label><input type="text" id="customerFirstName" name="firstName" required placeholder="First Name"></div><div class="form-group"><label for="customerLastName">Last Name</label><input type="text" id="customerLastName" name="lastName" required placeholder="Last Name"></div></div>
+        <div class="form-group"><label for="customerEmail">Email Address</label><input type="email" id="customerEmail" name="email" required placeholder="you@example.com"></div>
+        <div class="form-group"><label for="customerPhone">Phone Number</label><input type="tel" id="customerPhone" name="phone" required placeholder="Phone number"></div>
+        <div class="form-group"><label for="customerAddress">Address</label><input type="text" id="customerAddress" name="address" required placeholder="Street Address"></div>
+        <div class="form-row"><div class="form-group"><label for="customerCity">City</label><input type="text" id="customerCity" name="city" required placeholder="City"></div><div class="form-group"><label for="customerPostcode">Postcode / ZIP</label><input type="text" id="customerPostcode" name="postcode" required placeholder="Postcode"></div></div>
+        <div class="form-group"><label for="customerCountry">Country</label><select id="customerCountry" name="country" required><option value="United Kingdom">United Kingdom</option><option value="United States">United States</option><option value="Canada">Canada</option><option value="Australia">Australia</option></select></div>
+        <div class="form-group"><label for="message">Message / Order Notes</label><textarea id="message" name="message" placeholder="Special delivery instructions or order notes..." required></textarea></div>
+        <input type="hidden" id="formOrderSummary" name="orderSummary">
+        <input type="hidden" id="formOrderTotal" name="orderTotal">
+        <div class="order-box">
+          <div class="login-prompt">Already have an account? <a href="#" onclick="closeModal('checkoutModal'); openModal('profileModal'); return false;">Log in</a> to speed up checkout.</div>
+          <table class="review-table"><thead><tr><th>Product</th><th class="text-right">Total</th></tr></thead><tbody id="checkoutOrderItems"></tbody><tfoot><tr><td><strong>Subtotal</strong></td><td class="text-right"><strong id="checkoutSubtotal">£0</strong></td></tr><tr id="cryptoDiscountRow" class="hidden"><td class="discount-applied-row"><strong>Crypto Discount (10%)</strong></td><td class="text-right discount-applied-row"><strong id="checkoutDiscount">-£0</strong></td></tr><tr><td><strong>Shipping</strong></td><td class="text-right"><strong>Free</strong></td></tr><tr><td><strong>Total</strong></td><td class="text-right"><strong id="checkoutTotal">£0</strong></td></tr></tfoot></table>
         </div>
-
+        <div class="payment-section">
+          <h2 class="checkout-section-title">Select Payment Method</h2>
+          <div class="payment-area"><div class="payment-methods"><div class="payment-logo visa">VISA</div><div class="payment-logo mastercard"></div><div class="payment-logo amex">AMEX</div><div class="payment-logo discover">DISC<span class="orange">O</span>VER</div><div class="payment-logo paypal"><span class="paypal-icon"><span class="paypal-back">P</span><span class="paypal-front">P</span></span><span class="paypal-name">PayPal</span></div><div class="payment-logo apple-pay">Pay</div></div></div>
+          <div class="payment-radio-list">
+            <div class="payment-radio-option selected" id="opt-crypto"><label class="payment-radio-label" for="pay-crypto"><div class="payment-radio-left"><input type="radio" id="pay-crypto" name="paymentMethod" value="crypto" checked onchange="handlePaymentChange('crypto')"><div class="payment-title-group"><span class="payment-title"><i class="fa-brands fa-bitcoin"></i> Cryptocurrency</span><span class="payment-subtitle">BTC, ETH, USDT, SOL accepted</span></div></div><span class="crypto-badge">SAVE 10%</span></label><div class="payment-details-panel"><p><strong>10% instant discount applied to your order total!</strong></p><p style="margin-top:4px;">Please transfer the exact amount after checkout to one of our payment addresses:</p><div class="crypto-wallet-box"><strong>BTC:</strong> 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa<br><strong>USDT (TRC20):</strong> T9yD14Nj9j7xAB4dbGeiX9h8A9yD14Nj9j</div></div></div>
+            <div class="payment-radio-option" id="opt-cashapp"><label class="payment-radio-label" for="pay-cashapp"><div class="payment-radio-left"><input type="radio" id="pay-cashapp" name="paymentMethod" value="cashapp" onchange="handlePaymentChange('cashapp')"><div class="payment-title-group"><span class="payment-title"><i class="fa-solid fa-dollar-sign"></i> Cash App</span><span class="payment-subtitle">Fast & secure mobile transfer</span></div></div></label><div class="payment-details-panel"><p>Send payment to our Cashtag: <strong>$BikeWorldOfficial</strong></p><p style="margin-top:4px; color:#666;">Include your Order ID in the payment note.</p></div></div>
+            <div class="payment-radio-option" id="opt-card"><label class="payment-radio-label" for="pay-card"><div class="payment-radio-left"><input type="radio" id="pay-card" name="paymentMethod" value="card" onchange="handlePaymentChange('card')"><div class="payment-title-group"><span class="payment-title"><i class="fa-solid fa-credit-card"></i> Credit / Debit Card</span><span class="payment-subtitle">Visa, MasterCard, Amex, Discover</span></div></div></label><div class="payment-details-panel"><div class="form-group" style="margin-top:6px;"><label>Card Number</label><input type="text" name="cardNumber" placeholder="1234 5678 9012 3456"></div><div class="form-row"><div class="form-group"><label>Expiry Date</label><input type="text" name="cardExpiry" placeholder="MM/YY"></div><div class="form-group"><label>CVC / CVV</label><input type="text" name="cardCvc" placeholder="123"></div></div></div></div>
+            <div class="payment-radio-option" id="opt-paypal"><label class="payment-radio-label" for="pay-paypal"><div class="payment-radio-left"><input type="radio" id="pay-paypal" name="paymentMethod" value="paypal" onchange="handlePaymentChange('paypal')"><div class="payment-title-group"><span class="payment-title"><i class="fa-brands fa-paypal"></i> PayPal</span><span class="payment-subtitle">Safe online payment</span></div></div></label><div class="payment-details-panel"><p>You will be redirected to PayPal to complete your purchase securely.</p></div></div>
+            <div class="payment-radio-option" id="opt-bank"><label class="payment-radio-label" for="pay-bank"><div class="payment-radio-left"><input type="radio" id="pay-bank" name="paymentMethod" value="bank" onchange="handlePaymentChange('bank')"><div class="payment-title-group"><span class="payment-title"><i class="fa-solid fa-building-columns"></i> Bank Transfer</span><span class="payment-subtitle">Direct wire payment</span></div></div></label><div class="payment-details-panel"><p>Bank Account Details will be provided immediately upon placing the order.</p></div></div>
+          </div>
+        </div>
+        <div class="checkout-message" id="checkoutMessage">Order information received.</div>
+        <button type="submit" class="btn-proceed-checkout">Submit Order →</button>
+      </form>
     </div>
-
+  </div>
 </div>
 
-
-
-<!-- =========================================================
-     PROFILE MODAL
-========================================================= -->
-
-<div
-    class="modal-overlay"
-    id="profileModal"
->
-
-    <div class="modal-content">
-
-        <div class="page-nav-bar">
-
-            <button
-                class="back-btn"
-                onclick="closeModal('profileModal')"
-            >
-                ← Back
-            </button>
-
-        </div>
-
-        <div class="product-details-header">
-
-            <h2>
-                👤 Customer Account
-            </h2>
-
-            <p>
-                Account features can be connected to
-                your backend later.
-            </p>
-
-        </div>
-
-        <div class="summary-card">
-
-            <h3>
-                Welcome to Bike World
-            </h3>
-
-            <p style="margin-top:10px;color:#64748b;">
-                Sign-in and account management can be
-                connected when you add your backend.
-            </p>
-
-        </div>
-
-    </div>
-
+<!-- Profile Modal -->
+<div class="modal-overlay" id="profileModal">
+  <div class="modal-content">
+    <div class="page-nav-bar"><button class="back-btn" onclick="closeModal('profileModal')">← Back</button></div>
+    <div class="product-details-header"><h2>👤 Customer Account</h2><p>Account features can be connected to your backend later.</p></div>
+    <div class="summary-card"><h3>Welcome to Bike World</h3><p style="margin-top:10px;color:#64748b;">Sign-in and account management can be connected when you add your backend.</p></div>
+  </div>
 </div>
 
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer>
-
-    <p>
-        © 2026 Bike World. All Rights Reserved.
-    </p>
-
-</footer>
-
-
+<footer><p>© 2026 Bike World. All Rights Reserved.</p></footer>
 
 <script>
-
-/* =========================================================
-   PRODUCT DATABASE
-========================================================= */
-
-const products = {
-
+  // ===== PRODUCT DATABASE =====
+  const products = {
     lightBee: {
-        name: "2026 SUR RON LIGHT BEE X 6KW - IN STOCK NOW",
-        brand: "GO OFF ROAD BARNSLEY",
-        price: "£3,800.00 GBP",
-        monthly: "£130.50 /month",
-        partNo: "LIGHTBEE2026",
-        chargeTime: "3.0 HRS",
-        topSpeed: "47 MPH",
-        weight: "47KG",
-        image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/Sur-Ron-LBX-Silver-Orange-Angled.jpg",
-        description: "High-performance lightweight electric dirt bike built for trail maneuverability.",
-        options: [
-            {
-                label:"Colour",
-                values:[
-                    "Green & Purple",
-                    "Silver & Orange",
-                    "Black & Orange",
-                    "Blue & Orange",
-                    "All Black Edition"
-                ]
-            }
-        ],
-        specs: [
-            "NEW 6kW High-Performance Motor",
-            "Up to 250 Nm Torque",
-            "Lightweight chassis for high maneuverability",
-            "60V 38.5Ah Battery Pack",
-            "Fast charging: 2.5–3.5 hours",
-            "Fully adjustable front & rear suspension",
-            "Forged aluminum alloy frame"
-        ],
-        related: [
-           "charger",
-           "battery",
-           "wheelKit"
-    ]
-    
+      name: "2026 SUR RON LIGHT BEE X 6KW - IN STOCK NOW",
+      brand: "GO OFF ROAD BARNSLEY",
+      price: "£3,800.00 GBP",
+      monthly: "£130.50 /month",
+      partNo: "LIGHTBEE2026",
+      chargeTime: "3.0 HRS",
+      topSpeed: "47 MPH",
+      weight: "47KG",
+      image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/Sur-Ron-LBX-Silver-Orange-Angled.jpg",
+      description: "High-performance lightweight electric dirt bike built for trail maneuverability.",
+      options: [{ label:"Colour", values:["Green & Purple","Silver & Orange","Black & Orange","Blue & Orange","All Black Edition"] }],
+      specs: ["NEW 6kW High-Performance Motor","Up to 250 Nm Torque","Lightweight chassis for high maneuverability","60V 38.5Ah Battery Pack","Fast charging: 2.5–3.5 hours","Fully adjustable front & rear suspension","Forged aluminum alloy frame"],
+      related: ["charger","battery","wheelKit"]
     },
-    
-    
-
     stormBee: {
-        name: "2026 SUR RON STORM BEE 22.5KW - IN STOCK NOW",
-        brand: "GO OFF ROAD BARNSLEY",
-        price: "£8,500.00 GBP",
-        monthly: "£290.00 /month",
-        partNo: "STORMBEE2026",
-        chargeTime: "4.0 HRS",
-        topSpeed: "68 MPH",
-        weight: "127KG",
-        image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-storm-1000x1000-1.jpg",
-        description: "Full-size electric off-road motorcycle equipped with maximum power and liquid cooling.",
-        options: [
-            {
-                label:"Model",
-                values:[
-                    "Off-Road",
-                    "Road Legal"
-                ]
-            }
-        ],
-        specs: [
-            "22.5kW Peak Motor Power",
-            "520 Nm Instant Torque",
-            "Liquid-cooled powertrain",
-            "104V 55Ah High-Voltage Battery",
-            "4 selectable riding modes including Reverse",
-            "Full-size MX chassis and suspension"
-        
-    ],
-
-      related: [
-           "charger",
-           "battery",
-           "wheelKit"
-    ]
-    
+      name: "2026 SUR RON STORM BEE 22.5KW - IN STOCK NOW",
+      brand: "GO OFF ROAD BARNSLEY",
+      price: "£8,500.00 GBP",
+      monthly: "£290.00 /month",
+      partNo: "STORMBEE2026",
+      chargeTime: "4.0 HRS",
+      topSpeed: "68 MPH",
+      weight: "127KG",
+      image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-storm-1000x1000-1.jpg",
+      description: "Full-size electric off-road motorcycle equipped with maximum power and liquid cooling.",
+      options: [{ label:"Model", values:["Off-Road","Road Legal"] }],
+      specs: ["22.5kW Peak Motor Power","520 Nm Instant Torque","Liquid-cooled powertrain","104V 55Ah High-Voltage Battery","4 selectable riding modes including Reverse","Full-size MX chassis and suspension"],
+      related: ["charger","battery","wheelKit"]
     },
     ultraBee: {
-        name: "2026 SUR RON ULTRA BEE HP 21KW - IN STOCK NOW",
-        brand: "GO OFF ROAD BARNSLEY",
-        price: "£6,200.00 GBP",
-        monthly: "£212.00 /month",
-        partNo: "ULTRABEE2026",
-        chargeTime: "4.0 HRS",
-        topSpeed: "59 MPH",
-        weight: "85KG",
-        image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-ultra-bee.jpg",
-        description: "Mid-sized, highly versatile off-road electric motorcycle featuring Turbo mode.",
-        options: [
-            {
-                label:"Colour",
-                values:[
-                    "Carbon Black",
-                    "Desert Brown"
-                ]
-            }
-        ],
-        specs: [
-            "21kW Peak Power Output",
-            "440 Nm Torque",
-            "SRTC Traction Control System",
-            "74V 55Ah High-Density Lithium Battery",
-            "Built-in charger storage",
-            "3 riding modes + Turbo Boost"
-        ],
-        related: [
-           "charger",
-           "battery",
-           "wheelKit"
-    ]
-    
+      name: "2026 SUR RON ULTRA BEE HP 21KW - IN STOCK NOW",
+      brand: "GO OFF ROAD BARNSLEY",
+      price: "£6,200.00 GBP",
+      monthly: "£212.00 /month",
+      partNo: "ULTRABEE2026",
+      chargeTime: "4.0 HRS",
+      topSpeed: "59 MPH",
+      weight: "85KG",
+      image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-ultra-bee.jpg",
+      description: "Mid-sized, highly versatile off-road electric motorcycle featuring Turbo mode.",
+      options: [{ label:"Colour", values:["Carbon Black","Desert Brown"] }],
+      specs: ["21kW Peak Power Output","440 Nm Torque","SRTC Traction Control System","74V 55Ah High-Density Lithium Battery","Built-in charger storage","3 riding modes + Turbo Boost"],
+      related: ["charger","battery","wheelKit"]
     },
-    
-
     hyperBee: {
-        name: "2026 SUR RON HYPER BEE 8KW 14\"/12\" - IN STOCK NOW",
-        brand: "GO OFF ROAD BARNSLEY",
-        price: "£2,995.00 GBP",
-        monthly: "£102.10 /month",
-        partNo: "HYPBEE1412GREEN",
-        chargeTime: "2.5 HRS",
-        topSpeed: "40 MPH",
-        weight: "39KG",
-        image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/58.webp",
-        description: "Compact electric dirt bike designed for younger riders and mini-pit racing.",
-        options: [
-            {
-                label:"Colour",
-                values:[
-                    "Green",
-                    "Yellow",
-                    "Black",
-                    "White/Pink"
-                ]
-            }
-        ],
-        specs: [
-            "NEW 8kW High-Performance Motor",
-            "Up to 136 ft-lbs Torque",
-            "0–31mph in just 2.59 seconds",
-            "Lightweight chassis at only 85.9 lbs",
-            "NEW 58V 22Ah Battery Pack",
-            "Fast charging: 20%–80% in approx. 2 hours",
-            "Fully adjustable front & rear suspension",
-            "3 selectable ride modes",
-            "Adjustable throttle response settings",
-            "Advanced MTPA/MTPV controller system",
-            "SAWC Anti-Wheelie Control",
-            "Bluetooth connectivity & app integration",
-            "Magnetic charging system",
-            "Forged aluminium alloy frame"
-        ],
-        related: [
-           "charger",
-           "battery",
-           "wheelKit"
-    ]
-    
+      name: "2026 SUR RON HYPER BEE 8KW 14\"/12\" - IN STOCK NOW",
+      brand: "GO OFF ROAD BARNSLEY",
+      price: "£2,995.00 GBP",
+      monthly: "£102.10 /month",
+      partNo: "HYPBEE1412GREEN",
+      chargeTime: "2.5 HRS",
+      topSpeed: "40 MPH",
+      weight: "39KG",
+      image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/58.webp",
+      description: "Compact electric dirt bike designed for younger riders and mini-pit racing.",
+      options: [{ label:"Colour", values:["Green","Yellow","Black","White/Pink"] }],
+      specs: ["NEW 8kW High-Performance Motor","Up to 136 ft-lbs Torque","0–31mph in just 2.59 seconds","Lightweight chassis at only 85.9 lbs","NEW 58V 22Ah Battery Pack","Fast charging: 20%–80% in approx. 2 hours","Fully adjustable front & rear suspension","3 selectable ride modes","Adjustable throttle response settings","Advanced MTPA/MTPV controller system","SAWC Anti-Wheelie Control","Bluetooth connectivity & app integration","Magnetic charging system","Forged aluminium alloy frame"],
+      related: ["charger","battery","wheelKit"]
     },
-    
-
     charger: {
-        name: "Light Bee Charger 10A",
-        brand: "BIKE WORLD PARTS",
-        price: "£250.00 GBP",
-        monthly: "",
-        partNo: "CHG10A",
-        chargeTime: "-",
-        topSpeed: "-",
-        weight: "1.2KG",
-        image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-charger-10a-157796_1178x882.webp",
-        description: "High-efficiency charger designed for the Light Bee battery.",
-        specs: [
-            "10A Fast Charge Output",
-            "Built-in cooling fan",
-            "Automatic shutoff when full"
-        ]
+      name: "Light Bee Charger 10A",
+      brand: "BIKE WORLD PARTS",
+      price: "£250.00 GBP",
+      monthly: "",
+      partNo: "CHG10A",
+      chargeTime: "-",
+      topSpeed: "-",
+      weight: "1.2KG",
+      image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-charger-10a-157796_1178x882.webp",
+      description: "High-efficiency charger designed for the Light Bee battery.",
+      specs: ["10A Fast Charge Output","Built-in cooling fan","Automatic shutoff when full"]
     },
-
     battery: {
-        name: "Lithium Battery 48V 20Ah",
-        brand: "BIKE WORLD PARTS",
-        price: "£450.00 GBP",
-        monthly: "",
-        partNo: "BAT4820",
-        chargeTime: "-",
-        topSpeed: "-",
-        weight: "7KG",
-        image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-s-lithium-battery-48v20ah-851993_798x798.webp",
-        description: "High-capacity replacement battery designed for dependable output.",
-        specs: [
-            "48V 20Ah high capacity",
-            "Integrated Smart BMS Protection"
-        ]
+      name: "Lithium Battery 48V 20Ah",
+      brand: "BIKE WORLD PARTS",
+      price: "£450.00 GBP",
+      monthly: "",
+      partNo: "BAT4820",
+      chargeTime: "-",
+      topSpeed: "-",
+      weight: "7KG",
+      image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-s-lithium-battery-48v20ah-851993_798x798.webp",
+      description: "High-capacity replacement battery designed for dependable output.",
+      specs: ["48V 20Ah high capacity","Integrated Smart BMS Protection"]
     },
-
     wheelKit: {
-        name: "16/19 Wheel Rim Kit KKE",
-        brand: "BIKE WORLD PARTS",
-        price: "£400.00 GBP",
-        monthly: "",
-        partNo: "WHEEL1619",
-        chargeTime: "-",
-        topSpeed: "-",
-        weight: "5KG",
-        image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-1619-wheel-rim-kit-kke-429448_700x700.webp",
-        description: "Heavy-duty wheel rim kit designed for rugged off-road riding.",
-        specs: [
-            "16 inch rear / 19 inch front combination",
-            "Reinforced spokes and alloy construction"
-        ]
+      name: "16/19 Wheel Rim Kit KKE",
+      brand: "BIKE WORLD PARTS",
+      price: "£400.00 GBP",
+      monthly: "",
+      partNo: "WHEEL1619",
+      chargeTime: "-",
+      topSpeed: "-",
+      weight: "5KG",
+      image: "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-1619-wheel-rim-kit-kke-429448_700x700.webp",
+      description: "Heavy-duty wheel rim kit designed for rugged off-road riding.",
+      specs: ["16 inch rear / 19 inch front combination","Reinforced spokes and alloy construction"]
     }
+  };
 
-};
+  let cart = JSON.parse(localStorage.getItem("bikeWorldCart")) || [];
+  let currentModalQty = 1;
 
-let cart = JSON.parse(localStorage.getItem("bikeWorldCart")) || [];
-let currentModalQty = 1;
+  function saveCart(){ localStorage.setItem("bikeWorldCart", JSON.stringify(cart)); }
+  function updateCartCount(){ const count = cart.reduce((total,item) => total + item.qty, 0); document.getElementById("cartCount").textContent = count; }
 
-function saveCart(){
-    localStorage.setItem("bikeWorldCart", JSON.stringify(cart));
-}
-
-function updateCartCount(){
-    const count = cart.reduce((total,item) => total + item.qty, 0);
-    document.getElementById("cartCount").textContent = count;
-}
-
-function addToCart(productId){
-    const product = products[productId];
-    if(!product) return;
-
+  function addToCart(productId){
+    const product = products[productId]; if(!product) return;
     let selectedOption = "";
-    if(product.options){
-        const select = document.querySelector("#productModalContent select");
-        if(select) selectedOption = select.value;
-    }
-
+    if(product.options){ const select = document.querySelector("#productModalContent select"); if(select) selectedOption = select.value; }
     let qty = currentModalQty || 1;
     const numericPrice = parseFloat(product.price.replace(/[^0-9.]/g, '')) || 0;
-
     const existing = cart.find(item => item.id === productId && item.option === selectedOption);
+    if(existing){ existing.qty += qty; } else { cart.push({ id:productId, name:product.name, price:numericPrice, image:product.image, option:selectedOption, qty:qty }); }
+    saveCart(); updateCartCount(); closeModal("productModal"); openCart();
+  }
 
-    if(existing){
-        existing.qty += qty;
-    }else{
-        cart.push({
-            id:productId,
-            name:product.name,
-            price:numericPrice,
-            image:product.image,
-            option:selectedOption,
-            qty:qty
-        });
-    }
-
-    saveCart();
-    updateCartCount();
-    closeModal("productModal");
-    openCart();
-}
-
-function addCustomItem(name, price, image){
+  function addCustomItem(name, price, image){
     const existing = cart.find(item => item.name === name);
-    if(existing){
-        existing.qty++;
-    }else{
-        cart.push({
-            id:"custom-" + Date.now(),
-            name:name,
-            price:price,
-            image:image,
-            option:"",
-            qty:1
-        });
-    }
+    if(existing){ existing.qty++; } else { cart.push({ id:"custom-" + Date.now(), name:name, price:price, image:image, option:"", qty:1 }); }
+    saveCart(); updateCartCount(); openCart();
+  }
 
-    saveCart();
-    updateCartCount();
-    openCart();
-}
+  function adjustModalQty(delta){ currentModalQty += delta; if(currentModalQty < 1) currentModalQty = 1; const qtyElem = document.getElementById("modalQtyVal"); if(qtyElem) qtyElem.textContent = currentModalQty; }
 
-function adjustModalQty(delta) {
-    currentModalQty += delta;
-    if (currentModalQty < 1) currentModalQty = 1;
-    const qtyElem = document.getElementById("modalQtyVal");
-    if (qtyElem) qtyElem.textContent = currentModalQty;
-}
-
-function generateRelatedProducts(productId) {
+  function generateRelatedProducts(productId) {
     const product = products[productId];
-    if (!product || !product.related || product.related.length === 0) return "";
-
+    if(!product || !product.related || product.related.length === 0) return "";
     const relatedHTML = product.related.map(relatedId => {
-        const related = products[relatedId];
-        if (!related) return "";
-        const numericPrice = parseFloat(related.price.replace(/[^0-9.]/g, "")) || 0;
-
-        return `
-            <div class="related-product-card">
-                <div class="related-product-image">
-                    <img src="${related.image}" alt="${related.name}" loading="lazy">
-                </div>
-                <div class="related-product-info">
-                    <h4>${related.name}</h4>
-                    <p>${related.description}</p>
-                    <div class="related-product-price">£${numericPrice.toLocaleString()}</div>
-                    <button class="related-add-btn" onclick="addRelatedProductToCart('${relatedId}')">
-                        🛒 Add to Cart
-                    </button>
-                </div>
-            </div>
-        `;
+      const related = products[relatedId];
+      if(!related) return "";
+      const numericPrice = parseFloat(related.price.replace(/[^0-9.]/g, "")) || 0;
+      return `<div class="related-product-card"><div class="related-product-image"><img src="${related.image}" alt="${related.name}" loading="lazy"></div><div class="related-product-info"><h4>${related.name}</h4><p>${related.description}</p><div class="related-product-price">£${numericPrice.toLocaleString()}</div><button class="related-add-btn" onclick="addRelatedProductToCart('${relatedId}')">🛒 Add to Cart</button></div></div>`;
     }).join("");
+    return `<div class="related-products-section"><h2 class="related-products-title">Related Products</h2><p class="related-products-subtitle">Recommended accessories and products for this bike.</p><div class="related-products-grid">${relatedHTML}</div></div>`;
+  }
 
-    return `
-        <div class="related-products-section">
-            <h2 class="related-products-title">Related Products</h2>
-            <p class="related-products-subtitle">Recommended accessories and products for this bike.</p>
-            <div class="related-products-grid">${relatedHTML}</div>
-        </div>
-    `;
-}
+  function addRelatedProductToCart(productId){ const product = products[productId]; if(!product) return; const numericPrice = parseFloat(product.price.replace(/[^0-9.]/g, "")) || 0; const existing = cart.find(item => item.id === productId && item.option === ""); if(existing){ existing.qty++; } else { cart.push({ id:productId, name:product.name, price:numericPrice, image:product.image, option:"", qty:1 }); } saveCart(); updateCartCount(); openCart(); }
 
-function addRelatedProductToCart(productId) {
-    const product = products[productId];
-    if (!product) return;
-    const numericPrice = parseFloat(product.price.replace(/[^0-9.]/g, "")) || 0;
-
-    const existing = cart.find(item => item.id === productId && item.option === "");
-    if (existing) {
-        existing.qty++;
-    } else {
-        cart.push({
-            id: productId,
-            name: product.name,
-            price: numericPrice,
-            image: product.image,
-            option: "",
-            qty: 1
-        });
-    }
-
-    saveCart();
-    updateCartCount();
-    openCart();
-}
-
-function openProduct(productId){
-    const product = products[productId];
-    if(!product) return;
-
+  function openProduct(productId){
+    const product = products[productId]; if(!product) return;
     currentModalQty = 1;
-
     let optionsHTML = "";
-    if(product.options){
-        product.options.forEach((option, index) => {
-            optionsHTML += `
-                <div class="options-group">
-                    <label>${option.label}</label>
-                    <select required id="productOption${index}">
-                        ${option.values.map(val => `<option value="${val}">${val}</option>`).join("")}
-                    </select>
-                </div>
-            `;
-        });
-    }
-
+    if(product.options){ product.options.forEach((option, index) => { optionsHTML += `<div class="options-group"><label>${option.label}</label><select required id="productOption${index}">${option.values.map(val => `<option value="${val}">${val}</option>`).join("")}</select></div>`; }); }
     let specsListHTML = product.specs ? product.specs.map(spec => `<li>${spec}</li>`).join("") : "";
     let financingHTML = product.monthly ? `or <strong>${product.monthly}</strong> <a href="#">Learn more</a>` : "";
-
     document.getElementById("productModalContent").innerHTML = `
-        <div class="main-image-container">
-            <img class="product-main-image" src="${product.image}" alt="${product.name}">
-        </div>
-        <div class="modal-product-brand">${product.brand}</div>
-        <h1 class="modal-product-title">${product.name}</h1>
-        <div class="modal-price-section">
-            <div class="modal-main-price">${product.price}</div>
-            <div class="modal-financing">${financingHTML}</div>
-            <span class="modal-tax-info">Tax included.</span>
-        </div>
-        <div class="modal-part-number">Part Number: <span>${product.partNo}</span></div>
-        ${optionsHTML}
-        <div class="modal-highlights-card">
-            <div class="modal-highlight-item">
-                <i class="fa-regular fa-shield-check"></i>
-                <span><strong>12 MONTHS WARRANTY INCLUDED</strong></span>
-            </div>
-            <div class="modal-highlight-item">
-                <i class="fa-solid fa-truck"></i>
-                <span><strong>DELIVERED, BUILT & PDI'D</strong></span>
-            </div>
-            <div class="modal-highlight-item">
-                <i class="fa-solid fa-hourglass-half spinning-hourglass"></i>
-                <span><strong>LOW STOCK, SELLING FAST</strong></span>
-            </div>
-        </div>
-        <div class="action-purchase-row">
-            <div class="custom-qty-selector">
-                <button type="button" class="qty-control-btn" onclick="adjustModalQty(-1)">−</button>
-                <span class="qty-val-display" id="modalQtyVal">1</span>
-                <button type="button" class="qty-control-btn" onclick="adjustModalQty(1)">+</button>
-            </div>
-            <button class="btn-add-cart-action" onclick="addToCart('${productId}')">
-                ADD TO CART
-            </button>
-        </div>
-        <div class="modal-quick-specs-ribbon">
-            <div class="modal-spec-tile">
-                <i class="fa-solid fa-battery-three-quarters"></i>
-                <span class="modal-spec-value">${product.chargeTime}</span>
-            </div>
-            <div class="modal-spec-tile">
-                <i class="fa-solid fa-gauge-high"></i>
-                <span class="modal-spec-value">${product.topSpeed}</span>
-            </div>
-            <div class="modal-spec-tile">
-                <i class="fa-solid fa-weight-hanging"></i>
-                <span class="modal-spec-value">${product.weight}</span>
-            </div>
-        </div>
-        <div class="modal-accordion-section">
-            <details class="modal-accordion-item">
-                <summary class="modal-accordion-header">
-                    <span class="accordion-title">DESCRIPTION</span>
-                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
-                </summary>
-                <div class="modal-accordion-content">
-                    <h3>KEY PERFORMANCE SPECS:</h3>
-                    <ul>${specsListHTML}</ul>
-                </div>
-            </details>
-        </div>
-        <div class="modal-accordion-section">
-            <details class="modal-accordion-item">
-                <summary class="modal-accordion-header">
-                    <span class="accordion-title"><i class="fa-solid fa-truck"></i> SHIPPING</span>
-                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
-                </summary>
-                <div class="modal-accordion-content">
-                    <p>The usual timeframe for delivery of bikes which are in stock is around 2-3 working days depending on when the bike was ordered and if it was ordered via finance or not.</p>
-                    <p>Finance orders MUST be delivered by an in house courier which can delay the delivery. We will be in contact beforehand to schedule the delivery date and time with you.</p>
-                </div>
-            </details>
-        </div>
-        ${generateRelatedProducts(productId)}
+      <div class="main-image-container"><img class="product-main-image" src="${product.image}" alt="${product.name}"></div>
+      <div class="modal-product-brand">${product.brand}</div>
+      <h1 class="modal-product-title">${product.name}</h1>
+      <div class="modal-price-section"><div class="modal-main-price">${product.price}</div><div class="modal-financing">${financingHTML}</div><span class="modal-tax-info">Tax included.</span></div>
+      <div class="modal-part-number">Part Number: <span>${product.partNo}</span></div>
+      ${optionsHTML}
+      <div class="modal-highlights-card"><div class="modal-highlight-item"><i class="fa-regular fa-shield-check"></i><span><strong>12 MONTHS WARRANTY INCLUDED</strong></span></div><div class="modal-highlight-item"><i class="fa-solid fa-truck"></i><span><strong>DELIVERED, BUILT & PDI'D</strong></span></div><div class="modal-highlight-item"><i class="fa-solid fa-hourglass-half spinning-hourglass"></i><span><strong>LOW STOCK, SELLING FAST</strong></span></div></div>
+      <div class="action-purchase-row"><div class="custom-qty-selector"><button type="button" class="qty-control-btn" onclick="adjustModalQty(-1)">−</button><span class="qty-val-display" id="modalQtyVal">1</span><button type="button" class="qty-control-btn" onclick="adjustModalQty(1)">+</button></div><button class="btn-add-cart-action" onclick="addToCart('${productId}')">ADD TO CART</button></div>
+      <div class="modal-quick-specs-ribbon"><div class="modal-spec-tile"><i class="fa-solid fa-battery-three-quarters"></i><span class="modal-spec-value">${product.chargeTime}</span></div><div class="modal-spec-tile"><i class="fa-solid fa-gauge-high"></i><span class="modal-spec-value">${product.topSpeed}</span></div><div class="modal-spec-tile"><i class="fa-solid fa-weight-hanging"></i><span class="modal-spec-value">${product.weight}</span></div></div>
+      <div class="modal-accordion-section"><details class="modal-accordion-item"><summary class="modal-accordion-header"><span class="accordion-title">DESCRIPTION</span><i class="fa-solid fa-chevron-down arrow-icon"></i></summary><div class="modal-accordion-content"><h3>KEY PERFORMANCE SPECS:</h3><ul>${specsListHTML}</ul></div></details></div>
+      <div class="modal-accordion-section"><details class="modal-accordion-item"><summary class="modal-accordion-header"><span class="accordion-title"><i class="fa-solid fa-truck"></i> SHIPPING</span><i class="fa-solid fa-chevron-down arrow-icon"></i></summary><div class="modal-accordion-content"><p>The usual timeframe for delivery of bikes which are in stock is around 2-3 working days depending on when the bike was ordered and if it was ordered via finance or not.</p><p>Finance orders MUST be delivered by an in house courier which can delay the delivery. We will be in contact beforehand to schedule the delivery date and time with you.</p></div></details></div>
+      ${generateRelatedProducts(productId)}
     `;
-
     openModal("productModal");
-}
+  }
 
-function openModal(id){
-    const modal = document.getElementById(id);
-    if(!modal) return;
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
-}
+  function openModal(id){ const modal = document.getElementById(id); if(!modal) return; modal.classList.add("active"); document.body.style.overflow = "hidden"; }
+  function closeModal(id){ const modal = document.getElementById(id); if(!modal) return; modal.classList.remove("active"); document.body.style.overflow = "auto"; }
 
-function closeModal(id){
-    const modal = document.getElementById(id);
-    if(!modal) return;
-    modal.classList.remove("active");
-    document.body.style.overflow = "auto";
-}
+  function openCart(){ renderCart(); openModal("cartModal"); }
 
-function openCart(){
-    renderCart();
-    openModal("cartModal");
-}
-
-function renderCart(){
+  function renderCart(){
     const container = document.getElementById("cartItems");
-    if(cart.length === 0){
-        container.innerHTML = `
-            <div class="empty-cart">
-                <div class="empty-cart-icon">🛒</div>
-                <p>Your cart is empty.</p>
-            </div>
-        `;
-        document.getElementById("cartSubtotal").textContent = "£0";
-        document.getElementById("cartTotal").textContent = "£0";
-        return;
-    }
-
+    if(cart.length === 0){ container.innerHTML = `<div class="empty-cart"><div class="empty-cart-icon">🛒</div><p>Your cart is empty.</p></div>`; document.getElementById("cartSubtotal").textContent = "£0"; document.getElementById("cartTotal").textContent = "£0"; return; }
     let subtotal = 0;
     container.innerHTML = cart.map((item, index) => {
-        const itemSubtotal = item.price * item.qty;
-        subtotal += itemSubtotal;
-        return `
-            <div class="cart-item">
-                <img src="${item.image}" alt="${item.name}">
-                <div>
-                    <h4>${item.name}</h4>
-                    ${item.option ? `<small>Option: ${item.option}</small>` : ''}
-                    <div class="cart-controls">
-                        <button class="qty-btn" onclick="updateQty(${index}, -1)">-</button>
-                        <span>${item.qty}</span>
-                        <button class="qty-btn" onclick="updateQty(${index}, 1)">+</button>
-                    </div>
-                    <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
-                </div>
-                <div class="cart-price">£${itemSubtotal.toLocaleString()}</div>
-            </div>
-        `;
+      const itemSubtotal = item.price * item.qty;
+      subtotal += itemSubtotal;
+      return `<div class="cart-item"><img src="${item.image}" alt="${item.name}"><div><h4>${item.name}</h4>${item.option ? `<small>Option: ${item.option}</small><br>` : ''}<small>£${item.price.toLocaleString()} each</small><div class="cart-controls"><button class="qty-btn" onclick="changeQty(${index}, -1)">-</button><span>${item.qty}</span><button class="qty-btn" onclick="changeQty(${index}, 1)">+</button></div><button class="remove-btn" onclick="removeItem(${index})">Remove</button></div><div class="cart-price">£${itemSubtotal.toLocaleString()}</div></div>`;
     }).join("");
-
     document.getElementById("cartSubtotal").textContent = `£${subtotal.toLocaleString()}`;
     document.getElementById("cartTotal").textContent = `£${subtotal.toLocaleString()}`;
-}
+  }
 
-function updateQty(index, delta){
-    cart[index].qty += delta;
-    if(cart[index].qty <= 0) cart.splice(index, 1);
-    saveCart();
-    updateCartCount();
-    renderCart();
-}
+  function changeQty(index, delta){ if(cart[index]){ cart[index].qty += delta; if(cart[index].qty <= 0){ cart.splice(index, 1); } saveCart(); updateCartCount(); renderCart(); } }
+  function removeItem(index){ if(cart[index]){ cart.splice(index, 1); saveCart(); updateCartCount(); renderCart(); } }
 
-function removeItem(index){
-    cart.splice(index, 1);
-    saveCart();
-    updateCartCount();
-    renderCart();
-}
+  function handlePaymentChange(method){ document.querySelectorAll('.payment-radio-option').forEach(opt => opt.classList.remove('selected')); const selectedOpt = document.getElementById(`opt-${method}`); if(selectedOpt) selectedOpt.classList.add('selected'); updateCheckoutTotals(); }
 
-function handlePaymentChange(method){
-    document.querySelectorAll(".payment-radio-option").forEach(opt => opt.classList.remove("selected"));
-    const selectedOpt = document.getElementById(`opt-${method}`);
-    if(selectedOpt) selectedOpt.classList.add("selected");
-    renderCheckoutSummary();
-}
-
-function renderCheckoutSummary(){
-    const tbody = document.getElementById("checkoutOrderItems");
-    if(!tbody) return;
-
-    let subtotal = 0;
-    let summaryTextArray = [];
-
-    tbody.innerHTML = cart.map(item => {
-        const itemTotal = item.price * item.qty;
-        subtotal += itemTotal;
-        summaryTextArray.push(`${item.name} (Qty: ${item.qty}${item.option ? ', ' + item.option : ''}) - £${itemTotal}`);
-        return `
-            <tr>
-                <td>
-                    <div class="product-cell">
-                        <img src="${item.image}" class="product-img" alt="${item.name}">
-                        <div>
-                            <strong>${item.name}</strong><br>
-                            <small>Qty: ${item.qty} ${item.option ? '| ' + item.option : ''}</small>
-                        </div>
-                    </div>
-                </td>
-                <td class="text-right">£${itemTotal.toLocaleString()}</td>
-            </tr>
-        `;
-    }).join("");
-
-    const isCrypto = document.getElementById("pay-crypto")?.checked;
-    const discountRow = document.getElementById("cryptoDiscountRow");
+  function updateCheckoutTotals(){
+    const subtotal = cart.reduce((total, item) => total + (item.price * item.qty), 0);
+    const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked');
+    const isCrypto = selectedPayment && selectedPayment.value === 'crypto';
+    const discountRow = document.getElementById('cryptoDiscountRow');
     let discount = 0;
-
-    if(isCrypto){
-        discount = subtotal * 0.1;
-        if(discountRow) discountRow.classList.remove("hidden");
-    } else {
-        if(discountRow) discountRow.classList.add("hidden");
-    }
-
+    if(isCrypto){ discount = subtotal * 0.10; if(discountRow) discountRow.classList.remove('hidden'); } else { if(discountRow) discountRow.classList.add('hidden'); }
     const total = subtotal - discount;
+    document.getElementById('checkoutSubtotal').textContent = `£${subtotal.toLocaleString()}`;
+    document.getElementById('checkoutDiscount').textContent = `-£${discount.toLocaleString()}`;
+    document.getElementById('checkoutTotal').textContent = `£${total.toLocaleString()}`;
+    const summaryText = cart.map(i => `${i.name} (x${i.qty}) - £${(i.price * i.qty).toLocaleString()}`).join(', ');
+    document.getElementById('formOrderSummary').value = summaryText;
+    document.getElementById('formOrderTotal').value = `£${total.toLocaleString()}`;
+  }
 
-    document.getElementById("checkoutSubtotal").textContent = `£${subtotal.toLocaleString()}`;
-    if(discountRow) document.getElementById("checkoutDiscount").textContent = `-£${discount.toLocaleString()}`;
-    document.getElementById("checkoutTotal").textContent = `£${total.toLocaleString()}`;
+  function renderCheckoutItems(){
+    const container = document.getElementById('checkoutOrderItems');
+    if(!container) return;
+    if(cart.length === 0){ container.innerHTML = `<tr><td colspan="2">Your cart is empty.</td></tr>`; return; }
+    container.innerHTML = cart.map(item => `<tr><td><div class="product-cell"><img src="${item.image}" alt="${item.name}" class="product-img"><div><strong>${item.name}</strong><br><small>Qty: ${item.qty} ${item.option ? `| ${item.option}` : ''}</small></div></div></td><td class="text-right">£${(item.price * item.qty).toLocaleString()}</td></tr>`).join('');
+    updateCheckoutTotals();
+  }
 
-    // Update hidden form inputs for Formcarry
-    document.getElementById("formOrderSummary").value = summaryTextArray.join(" | ");
-    document.getElementById("formOrderTotal").value = `£${total.toLocaleString()}`;
-}
-
-function openCheckout(){
-    if(cart.length === 0){
-        alert("Your cart is empty!");
-        return;
-    }
-    closeModal("cartModal");
-    renderCheckoutSummary();
-    openModal("checkoutModal");
-}
-
-/* Event Listeners Initialization */
-document.addEventListener("DOMContentLoaded", () => {
+  // ===== DOM INIT =====
+  document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
-
-    document.getElementById("cartBtn")?.addEventListener("click", openCart);
-    document.getElementById("checkoutBtn")?.addEventListener("click", openCheckout);
-    document.getElementById("profileBtn")?.addEventListener("click", () => openModal("profileModal"));
-
-    const menuBtn = document.getElementById("menuToggleBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-    menuBtn?.addEventListener("click", () => {
-        mobileMenu.classList.toggle("active");
-    });
-
-    const viewMoreBtn = document.getElementById("viewMoreBtn");
-    viewMoreBtn?.addEventListener("click", () => {
-        document.querySelectorAll(".extra-accessory").forEach(el => el.classList.toggle("hidden"));
-        viewMoreBtn.textContent = viewMoreBtn.textContent.trim() === "View More" ? "View Less" : "View More";
-    });
-});
+    const menuBtn = document.getElementById('menuToggleBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(menuBtn && mobileMenu){ menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('active'); }); }
+    const cartBtn = document.getElementById('cartBtn');
+    if(cartBtn){ cartBtn.addEventListener('click', openCart); }
+    const profileBtn = document.getElementById('profileBtn');
+    if(profileBtn){ profileBtn.addEventListener('click', () => openModal('profileModal')); }
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    if(checkoutBtn){ checkoutBtn.addEventListener('click', () => { if(cart.length === 0) return; closeModal('cartModal'); renderCheckoutItems(); openModal('checkoutModal'); }); }
+    const viewMoreBtn = document.getElementById('viewMoreBtn');
+    if(viewMoreBtn){ viewMoreBtn.addEventListener('click', () => { document.querySelectorAll('.extra-accessory').forEach(el => el.classList.remove('hidden')); viewMoreBtn.style.display = 'none'; }); }
+    const checkoutForm = document.getElementById('checkoutForm');
+    if(checkoutForm){ checkoutForm.addEventListener('submit', (e) => { const msg = document.getElementById('checkoutMessage'); if(msg){ msg.style.display = 'block'; msg.textContent = 'Processing order... Thank you!'; } }); }
+  });
 </script>
-
 </body>
 </html>
