@@ -742,22 +742,8 @@
     .text-right { text-align:right; }
     .payment-section { margin-top:25px; border:1px solid #e0e0e0; background:#fafafa; padding:15px; border-radius:6px; }
     .payment-area { width:100%; background:#414754; padding:12px 10px; display:flex; justify-content:center; border-radius:6px; margin-bottom:15px; }
-    .payment-methods { display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap; }
-    .payment-logo { width:65px; height:42px; border-radius:4px; display:flex; align-items:center; justify-content:center; overflow:hidden; font-family:Arial, Helvetica, sans-serif; box-shadow:0 1px 2px rgba(0,0,0,0.25), inset 0 0 0 1px rgba(0,0,0,0.08); }
-    .visa { background:#1769aa; color:white; font-size:18px; font-weight:900; font-style:italic; letter-spacing:-1px; }
-    .mastercard { background:#202020; position:relative; }
-    .mastercard::before, .mastercard::after { content:""; position:absolute; width:26px; height:26px; border-radius:50%; top:8px; }
-    .mastercard::before { background:#eb001b; left:15px; }
-    .mastercard::after { background:#f79e1b; left:26px; }
-    .amex { background:#159bd3; color:white; border:1px solid #67c9eb; font-size:12px; font-weight:900; letter-spacing:-0.5px; }
-    .discover { background:#ffffff; color:#252525; border:1px solid #d2d2d2; font-size:10px; font-weight:700; letter-spacing:-0.5px; }
-    .discover .orange { color:#f47c20; font-size:13px; margin-left:-1px; margin-right:-1px; }
-    .paypal { background:#ffffff; display:flex; gap:2px; }
-    .paypal-icon { position:relative; width:18px; height:28px; font-family:Arial, sans-serif; font-size:28px; font-weight:900; font-style:italic; }
-    .paypal-back { position:absolute; left:3px; top:-2px; color:#003087; }
-    .paypal-front { position:absolute; left:0; top:1px; color:#009cde; }
-    .paypal-name { font-size:10px; font-weight:700; font-style:italic; color:#003087; }
-    .apple-pay { background:#ffffff; color:#111111; border:1px solid #d2d2d2; font-size:13px; font-weight:700; }
+    .payment-methods { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; }
+    .payment-logo { width:40px; height:55px; object-fit:contain; border-radius:8px; display:block; }
     .payment-radio-list { display:flex; flex-direction:column; gap:10px; margin-top:10px; }
     .payment-radio-option { border:2px solid #e2e8f0; border-radius:8px; background:#ffffff; transition:all 0.2s ease; overflow:hidden; }
     .payment-radio-option:hover { border-color:#cbd5e1; }
@@ -1048,7 +1034,34 @@
         </div>
         <div class="payment-section">
           <h2 class="checkout-section-title">Select Payment Method</h2>
-          <div class="payment-area"><div class="payment-methods"><div class="payment-logo visa">VISA</div><div class="payment-logo mastercard"></div><div class="payment-logo amex">AMEX</div><div class="payment-logo discover">DISC<span class="orange">O</span>VER</div><div class="payment-logo paypal"><span class="paypal-icon"><span class="paypal-back">P</span><span class="paypal-front">P</span></span><span class="paypal-name">PayPal</span></div><div class="payment-logo apple-pay">Pay</div></div></div>
+          <!-- REPLACED PAYMENT LOGOS SECTION -->
+          <div class="payment-area">
+            <div class="payment-methods">
+              <!-- Visa -->
+              <img class="payment-logo" src="https://i.postimg.cc/HJM7LzKG/IMG-4254.png" alt="Visa">
+              <!-- Image 4255 -->
+              <img class="payment-logo" src="https://i.postimg.cc/McBjG5L3/IMG-4255.png" alt="Payment method">
+              <!-- Mastercard -->
+              <img class="payment-logo" src="https://i.postimg.cc/v1n6mhKS/IMG-4256.png" alt="Mastercard">
+                <!-- Maestro -->
+    <img
+        class="payment-logo"
+        src="https://i.postimg.cc/mc9FrjnX/IMG-4257.png"
+        alt="Maestro">
+
+    <!-- PayPal -->
+    <img
+        class="payment-logo"
+        src="https://i.postimg.cc/McBjG5LF/IMG-4258.png"
+        alt="PayPal">
+
+    <!-- Super -->
+    <img
+        class="payment-logo"
+        src="https://i.postimg.cc/yJRSNjGv/IMG-4259.png"
+        alt="Super">
+            </div>
+          </div>
           <div class="payment-radio-list">
             <div class="payment-radio-option selected" id="opt-crypto"><label class="payment-radio-label" for="pay-crypto"><div class="payment-radio-left"><input type="radio" id="pay-crypto" name="paymentMethod" value="crypto" checked onchange="handlePaymentChange('crypto')"><div class="payment-title-group"><span class="payment-title"><i class="fa-brands fa-bitcoin"></i> Cryptocurrency</span><span class="payment-subtitle">BTC, ETH, USDT, SOL accepted</span></div></div><span class="crypto-badge">SAVE 10%</span></label><div class="payment-details-panel"><p><strong>10% instant discount applied to your order total!</strong></p><p style="margin-top:4px;">Please transfer the exact amount after checkout to one of our payment addresses:</p><div class="crypto-wallet-box"><strong>BTC:</strong> 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa<br><strong>USDT (TRC20):</strong> T9yD14Nj9j7xAB4dbGeiX9h8A9yD14Nj9j</div></div></div>
             <div class="payment-radio-option" id="opt-cashapp"><label class="payment-radio-label" for="pay-cashapp"><div class="payment-radio-left"><input type="radio" id="pay-cashapp" name="paymentMethod" value="cashapp" onchange="handlePaymentChange('cashapp')"><div class="payment-title-group"><span class="payment-title"><i class="fa-solid fa-dollar-sign"></i> Cash App</span><span class="payment-subtitle">Fast & secure mobile transfer</span></div></div></label><div class="payment-details-panel"><p>Send payment to our Cashtag: <strong>$BikeWorldOfficial</strong></p><p style="margin-top:4px; color:#666;">Include your Order ID in the payment note.</p></div></div>
